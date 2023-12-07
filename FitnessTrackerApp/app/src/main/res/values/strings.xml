@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FitnessTrackerApp</string>
+    <string name="title_activity_sign_in">SignInActivity</string>
+<!--    <string name="google_play_services_version"></string>-->
+    <string name="google_maps_key">AIzaSyBQZpdMv_1VipWzL-4t_iR057ZZyD8Zdc8</string>
+    <!-- Strings used for fragments for navigation -->
+</resources>
