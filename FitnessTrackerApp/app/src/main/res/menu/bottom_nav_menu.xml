@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:id="@+id/trainingFragment"
+          android:title="@string/your_trainings"
+          android:icon="@drawable/runner" />
+
+    <item android:id="@+id/statisticsFragment"
+        android:title="@string/statistics"
+        android:icon="@drawable/statistics" />
+
+    <item android:id="@+id/settingsFragment"
+        android:title="@string/settings"
+        android:icon="@drawable/ic_settings" />
+</menu>

@@ -136,6 +136,8 @@ dependencies {
     // MPAndroidChart
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
+    implementation ("androidx.fragment:fragment-ktx:1.6.2")
+
     implementation("android.arch.lifecycle:extensions:1.1.1")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

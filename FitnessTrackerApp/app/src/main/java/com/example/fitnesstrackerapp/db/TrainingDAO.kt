@@ -17,19 +17,19 @@ interface TrainingDAO {
     suspend fun deleteTraining(training: Training)
 
     @Query("select * from training order by timestamp DESC")
-    fun getAllRunsSortedByDate(): LiveData<List<Training>>
+    fun getAllTrainingsSortedByDate(): LiveData<List<Training>>
 
     @Query("select * from training order by timeInMills DESC")
-    fun getAllRunsSortedByTimeInMills(): LiveData<List<Training>>
+    fun getAllTrainingsSortedByTimeInMills(): LiveData<List<Training>>
 
     @Query("select * from training order by caloriesBurned DESC")
-    fun getAllRunsSortedByCaloriesBurned(): LiveData<List<Training>>
+    fun getAllTrainingsSortedByCaloriesBurned(): LiveData<List<Training>>
 
     @Query("select * from training order by avgSpeedInKMH DESC")
-    fun getAllRunsSortedByAvgSpeed(): LiveData<List<Training>>
+    fun getAllTrainingsSortedByAvgSpeed(): LiveData<List<Training>>
 
     @Query("select * from training order by distanceInMeters DESC")
-    fun getAllRunsSortedByDistance(): LiveData<List<Training>>
+    fun getAllTrainingsSortedByDistance(): LiveData<List<Training>>
 
     @Query("select sum(timeInMills) from training")
     fun getTotalTimeInMilliseconds(): LiveData<List<Long>>

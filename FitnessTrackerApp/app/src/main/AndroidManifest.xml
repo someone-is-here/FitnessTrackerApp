@@ -29,7 +29,7 @@
         <activity
             android:name=".SignInActivity"
             android:exported="true"
-            android:label="@string/title_activity_sign_in"
+            android:label="@string/app_title"
             android:theme="@style/Theme.FitnessTrackerApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,13 +43,15 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.FitnessTrackerApp"
             android:launchMode="singleTask"></activity>
-    </application>
 
-    <meta-data
-        android:name="com.google.android.gms.version"
-        android:value="@integer/google_play_services_version"/>
-    <meta-data
-        android:name="com.google.android.geo.API_KEY"
-        android:value="@string/google_maps_key"/>
+        <service android:name=".services.TrackingService"
+                android:foregroundServiceType="location"/>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key"/>
+    </application>
 
 </manifest>
