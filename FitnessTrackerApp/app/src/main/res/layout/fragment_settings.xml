@@ -11,29 +11,55 @@
         android:id="@+id/ivLogo"
         android:layout_width="90dp"
         android:layout_height="90dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="18dp"
         android:alpha="0.8"
         app:layout_constraintBottom_toTopOf="@+id/tvWelcome"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.828"
+        app:layout_constraintVertical_bias="0.65"
         app:srcCompat="@mipmap/icon_circle" />
+
 
     <TextView
         android:id="@+id/tvWelcome"
         android:layout_width="314dp"
-        android:layout_height="108dp"
-        android:text="@string/update_your_height_and_weight"
+        android:layout_height="63dp"
+        android:layout_marginTop="140dp"
+        android:text="Update your data"
         android:textAlignment="center"
         android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/tilHeight"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.718" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilUsername"
+        android:layout_width="253dp"
+        android:layout_height="75dp"
+        app:layout_constraintBottom_toTopOf="@+id/tilHeight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvWelcome"
+        app:layout_constraintVertical_bias="0.868">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:alpha="0.3"
+            android:background="@color/grey"
+            android:ems="10"
+            android:hint="Username"
+            android:inputType="text"
+            android:textColor="@color/black" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilHeight"

@@ -17,19 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mapView">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvTimer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="00:00:00:00"
-            android:textSize="50sp"
-            app:layout_constraintBottom_toTopOf="@+id/btnToggleRun"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-<!--        <com.google.android.material.button.MaterialButton-->
+        <!--        <com.google.android.material.button.MaterialButton-->
 <!--            android:id="@+id/btnToggleRun"-->
 <!--            android:layout_width="245dp"-->
 <!--            android:layout_height="42dp"-->
@@ -39,6 +27,34 @@
 <!--            app:layout_constraintHorizontal_bias="0.5"-->
 <!--            app:layout_constraintStart_toStartOf="parent"-->
 <!--            app:layout_constraintTop_toBottomOf="@+id/tvTimer" />-->
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00:00:00"
+            android:textSize="50sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnToggleRun"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancelRun"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/ic_cancel"
+            android:gravity="center_vertical|center_horizontal"
+            android:visibility="gone"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            app:backgroundTint="#26D3FF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <Button
             android:id="@+id/btnToggleRun"
             android:layout_width="100dp"
@@ -47,7 +63,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/start"
             android:textColor="#fff"
-            android:textSize="22sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnFinishRun"
             app:layout_constraintHorizontal_bias="0.5"

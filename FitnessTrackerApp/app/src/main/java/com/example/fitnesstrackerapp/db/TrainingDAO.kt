@@ -32,15 +32,15 @@ interface TrainingDAO {
     fun getAllTrainingsSortedByDistance(): LiveData<List<Training>>
 
     @Query("select sum(timeInMills) from training")
-    fun getTotalTimeInMilliseconds(): LiveData<List<Long>>
+    fun getTotalTimeInMilliseconds(): LiveData<Long>
 
     @Query("select sum(caloriesBurned) from training")
-    fun getTotalCaloriesBurned(): LiveData<List<Int>>
+    fun getTotalCaloriesBurned(): LiveData<Int>
 
     @Query("select sum(distanceInMeters) from training")
-    fun getTotalDistance(): LiveData<List<Int>>
+    fun getTotalDistance(): LiveData<Int>
 
     @Query("select avg(avgSpeedInKMH) from training")
-    fun getTotalAverageSpeed(): LiveData<List<Float>>
+    fun getTotalAverageSpeed(): LiveData<Float>
 
 }

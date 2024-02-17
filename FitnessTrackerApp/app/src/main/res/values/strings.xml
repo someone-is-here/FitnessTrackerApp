@@ -26,6 +26,7 @@
     <string name="map">Map</string>
     <string name="sort_by">Sort by:</string>
     <string name="add">Add</string>
+    <string name="cancel_run">Cancel run</string>
     <!-- Strings used for fragments for navigation -->
     <string-array name="filter_options">
         <item>Date</item>

@@ -6,13 +6,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnesstrackerapp.R
+import com.example.fitnesstrackerapp.adapters.TrainingAdapter
 import com.example.fitnesstrackerapp.databinding.FragmentTrainingBinding
 import com.example.fitnesstrackerapp.mvvm.viewmodels.MainViewModel
 import com.example.fitnesstrackerapp.other.Constants.REQUEST_CODE_LOCATION_PERMISSION
+import com.example.fitnesstrackerapp.other.SortType
 import com.example.fitnesstrackerapp.other.TrackingUtility
 import dagger.hilt.android.AndroidEntryPoint
 import pub.devrel.easypermissions.AppSettingsDialog
@@ -22,6 +27,7 @@ import pub.devrel.easypermissions.EasyPermissions
 class TrainingFragment: Fragment(), EasyPermissions.PermissionCallbacks {
     private val viewModel: MainViewModel by viewModels()
     private var binding: FragmentTrainingBinding? = null
+    private lateinit var trainingAdapter: TrainingAdapter
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,11 +43,64 @@ class TrainingFragment: Fragment(), EasyPermissions.PermissionCallbacks {
         super.onViewCreated(view, savedInstanceState)
         
         requestPermissions()
+        setUpRecycleView()
+
+        when(viewModel.sortType) {
+            SortType.DATE -> binding!!.spFilter.setSelection(0)
+            SortType.RUNNING_TIME -> binding!!.spFilter.setSelection(1)
+            SortType.DISTANCE -> binding!!.spFilter.setSelection(2)
+            SortType.AVG_SPEED -> binding!!.spFilter.setSelection(3)
+            SortType.CALORIES_BURNED -> binding!!.spFilter.setSelection(4)
+        }
+
+        binding!!.spFilter.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                adapterView: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                when(position){
+                    0 -> {
+                        viewModel.sortRuns(SortType.DATE)
+                        trainingAdapter.notifyDataSetChanged()
+                    }
+                    1 -> {
+                        viewModel.sortRuns(SortType.RUNNING_TIME)
+                        trainingAdapter.notifyDataSetChanged()
+                    }
+                    2 -> {
+                        viewModel.sortRuns(SortType.DISTANCE)
+                        trainingAdapter.notifyDataSetChanged()
+                    }
+                    3 -> {
+                        viewModel.sortRuns(SortType.AVG_SPEED)
+                        trainingAdapter.notifyDataSetChanged()
+                    }
+                    4 -> {
+                        viewModel.sortRuns(SortType.CALORIES_BURNED)
+                        trainingAdapter.notifyDataSetChanged()
+                    }
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+
+        viewModel.trainings.observe(viewLifecycleOwner, Observer {
+            trainingAdapter.submitList(it)
+        })
 
         binding!!.fab.setOnClickListener {
             findNavController().navigate(R.id.action_trainingFragment_to_trackingFragment)
         }
 
+    }
+
+    private fun setUpRecycleView() = binding!!.rvRuns.apply {
+        trainingAdapter = TrainingAdapter()
+        adapter = trainingAdapter
+        layoutManager = LinearLayoutManager(requireContext())
     }
 
     private fun requestPermissions(){

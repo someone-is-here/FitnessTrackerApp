@@ -18,35 +18,62 @@
         android:alpha="0.8"
         app:layout_constraintBottom_toTopOf="@+id/tvWelcome"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.121"
+        app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.771"
+        app:layout_constraintVertical_bias="0.88"
         app:srcCompat="@mipmap/icon_circle" />
+
 
     <TextView
         android:id="@+id/tvWelcome"
         android:layout_width="294dp"
         android:layout_height="112dp"
-        android:text="Please enter your height and weight"
+        android:layout_marginTop="132dp"
+        android:text="Please fill out the form"
         android:textAlignment="center"
         android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/tilHeight"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.76" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilUsername"
+        android:layout_width="253dp"
+        android:layout_height="75dp"
+        app:layout_constraintBottom_toTopOf="@+id/tilHeight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.626"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvWelcome"
+        app:layout_constraintVertical_bias="1.0">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:alpha="0.3"
+            android:background="@color/grey"
+            android:ems="10"
+            android:hint="Username"
+            android:inputType="text"
+            android:textColor="@color/black" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilHeight"
         android:layout_width="153dp"
         android:layout_height="76dp"
+        android:layout_marginBottom="164dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/tvWelcome">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etHeight"
@@ -54,10 +81,10 @@
             android:layout_height="76dp"
             android:alpha="0.3"
             android:background="@color/grey"
-            android:textColor="@color/black"
             android:ems="10"
             android:hint="Your Height"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textColor="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,20 +108,21 @@
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilHeight"
-        app:layout_constraintVertical_bias="0.242">
+        app:layout_constraintVertical_bias="0.118">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etWeight"
             android:layout_width="match_parent"
             android:layout_height="72dp"
-            android:ems="10"
             android:alpha="0.3"
             android:background="@color/grey"
-            android:textColor="@color/black"
+            android:ems="10"
             android:hint="Your Weight"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:textColor="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
