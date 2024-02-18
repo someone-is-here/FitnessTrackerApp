@@ -21,7 +21,7 @@ class CustomMarkerView (
 ): MarkerView(context, layoutId) {
 
     override fun getOffset(): MPPointF {
-        return MPPointF(-width/2f, -height.toFloat())
+        return MPPointF(-width/1.2f, -height.toFloat()/1.2f)
     }
 
     override fun refreshContent(e: Entry?, highlight: Highlight?) {

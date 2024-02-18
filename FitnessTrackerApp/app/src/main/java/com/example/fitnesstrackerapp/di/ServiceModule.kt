@@ -4,10 +4,9 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
-import com.example.fitnesstrackerapp.MainActivity
+import com.example.fitnesstrackerapp.mvvm.MainActivity
 import com.example.fitnesstrackerapp.R
 import com.example.fitnesstrackerapp.other.Constants
-import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import dagger.Module
 import dagger.Provides

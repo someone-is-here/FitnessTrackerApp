@@ -12,15 +12,12 @@ import android.location.Location
 import android.os.Build
 import android.os.Looper
 import androidx.annotation.RequiresApi
-import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationCompat
 import androidx.lifecycle.LifecycleService
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.example.fitnesstrackerapp.MainActivity
 import com.example.fitnesstrackerapp.R
 import com.example.fitnesstrackerapp.other.Constants.ACTION_PAUSE_SERVICE
-import com.example.fitnesstrackerapp.other.Constants.ACTION_SHOW_TRACKING_FRAGMENT
 import com.example.fitnesstrackerapp.other.Constants.ACTION_START_OR_RESUME_SERVICE
 import com.example.fitnesstrackerapp.other.Constants.ACTION_STOP_SERVICE
 import com.example.fitnesstrackerapp.other.Constants.FASTEST_LOCATION_INTERVAL
@@ -35,7 +32,6 @@ import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY
 import com.google.android.gms.location.LocationResult
-import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope

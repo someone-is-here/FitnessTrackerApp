@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.FitnessTrackerApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-         <!-- Primary brand color. -->
+        <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/black</item>

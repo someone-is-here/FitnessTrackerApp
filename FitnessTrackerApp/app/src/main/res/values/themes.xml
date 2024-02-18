@@ -2,7 +2,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Theme.FitnessTrackerApp" parent="android:Theme.Material.Light.NoActionBar" />
-     Base application theme.
+    Base application theme.
+
     <style name="Base.Theme.FitnessTrackerApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->

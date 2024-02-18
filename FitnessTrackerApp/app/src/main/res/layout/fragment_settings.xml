@@ -43,7 +43,6 @@
         android:layout_height="75dp"
         app:layout_constraintBottom_toTopOf="@+id/tilHeight"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvWelcome"
         app:layout_constraintVertical_bias="0.868">
@@ -51,7 +50,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etUsername"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
+            android:layout_height="63dp"
             android:alpha="0.3"
             android:background="@color/grey"
             android:ems="10"
