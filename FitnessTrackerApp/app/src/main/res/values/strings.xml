@@ -6,6 +6,8 @@
     <string name="app_title">TEAM</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_caps">LOGIN</string>
+    <string name="sign_up_caps">SIGN UP</string>
     <string name="sign_up">Sign Up</string>
     <string name="your_trainings">Your Trainings</string>
     <string name="statistics">Statistics</string>
@@ -83,5 +85,7 @@
     <string name="distance">Distance:</string>
     <string name="avg_speed">Avg speed:</string>
     <string name="calories_burned">Calories burned:</string>
+    <string name="welcome">Welcome</string>
+    <string name="to_the">TO THE</string>
 
 </resources>

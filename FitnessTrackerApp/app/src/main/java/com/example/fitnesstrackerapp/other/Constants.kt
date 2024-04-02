@@ -26,9 +26,10 @@ object Constants {
 
     const val TIME_UPDATE_INTERVAL = 50L
 
-    const val SHARED_PREFERENCES_NAME = "sharedPerf"
+    const val SHARED_PREFERENCES_NAME = "TEAM_SH_PREF"
     const val KEY_FIRST_TIME_TOGGLE = "KEY_FIRST_TIME_TOGGLE"
     const val KEY_NAME = "KEY_NAME"
     const val KEY_HEIGHT = "KEY_HEIGHT"
     const val KEY_WEIGHT = "KEY_WEIGHT"
+    const val KEY_EMAIL = "KEY_EMAIL"
 }

@@ -85,6 +85,7 @@ dependencies {
     // Room
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.core:core-ktx:+")
+    implementation("androidx.cardview:cardview:1.0.0")
     kapt("androidx.room:room-compiler:2.6.1")
 
     // Kotlin Extensions and Coroutines support for room
@@ -119,15 +120,6 @@ dependencies {
 
     // Activity KTX for viewModels()
     implementation("androidx.activity:activity-ktx:1.8.1")
-
-    // Dagger Core
-//    implementation("com.google.dagger:dagger:2.25.4")
-//    kapt("com.google.dagger:dagger-compiler:2.25.2")
-//
-//    // Dagger Android
-//    api("com.google.dagger:dagger-android:2.32.2")
-//    api("com.google.dagger:dagger-android-support:2.32.2")
-//    kapt("com.google.dagger:dagger-android-processor:2.32.2")
 
     // Easy Permissions
     implementation("pub.devrel:easypermissions:3.0.0")

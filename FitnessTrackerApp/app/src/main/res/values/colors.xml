@@ -6,10 +6,12 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="black_opacity">#70000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="cyan">#4CEFDB</color>
     <color name="grey">#818887</color>
     <color name="yellow">#FFC801</color>
     <color name="button">#BF11DE</color>
     <color name="main">#0fcaf0</color>
+    <color name="sky_blue">#5599E9</color>
 </resources>

@@ -3,6 +3,7 @@ package com.example.fitnesstrackerapp.other
 import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Intent
+import android.content.SharedPreferences
 import android.text.TextUtils
 import android.util.Patterns
 import android.widget.Toast
@@ -23,6 +24,9 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 open class Signing: Fragment() {
+
+    @Inject
+    lateinit var  sharedPref: SharedPreferences
     @Inject
     protected lateinit var firebaseAuth: FirebaseAuth
     @Inject
@@ -52,6 +56,9 @@ open class Signing: Fragment() {
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
             if(it.isSuccessful){
+                sharedPref.edit()
+                    .putString(Constants.KEY_EMAIL, account.email)
+                    .apply()
                 updateUI()
             }else{
                 Toast.makeText(activity, it.exception.toString(), Toast.LENGTH_SHORT).show()
@@ -65,16 +72,22 @@ open class Signing: Fragment() {
             // There's something already here! Finish the sign-in for your user.
             pendingResultTask
                 .addOnSuccessListener {
+                    sharedPref.edit()
+                        .putString(Constants.KEY_EMAIL, it.user?.email)
+                        .apply()
                     updateUI()
                 }
                 .addOnFailureListener {
                     Timber.d("signInGitHubAccount:addOnFailureListener()")
                 }
         } else {
-            activity?.let {
+            activity?.let { fragmentActivity ->
                 firebaseAuth
-                    .startActivityForSignInWithProvider(it, providerGitHub.build())
+                    .startActivityForSignInWithProvider(fragmentActivity, providerGitHub.build())
                     .addOnSuccessListener {
+                        sharedPref.edit()
+                            .putString(Constants.KEY_EMAIL, it.user?.email)
+                            .apply()
                         updateUI()
                     }
                     .addOnFailureListener {
@@ -91,16 +104,22 @@ open class Signing: Fragment() {
             // There's something already here! Finish the sign-in for your user.
             pendingResultTask
                 .addOnSuccessListener {
+                    sharedPref.edit()
+                        .putString(Constants.KEY_EMAIL, it.user?.email)
+                        .apply()
                     updateUI()
                 }
                 .addOnFailureListener {
                     Timber.d( "signInTwitterAccount:addOnFailureListener()")
                 }
         } else {
-            activity?.let {
+            activity?.let { fragmentActivity ->
                 firebaseAuth
-                    .startActivityForSignInWithProvider(it, providerX.build())
+                    .startActivityForSignInWithProvider(fragmentActivity, providerX.build())
                     .addOnSuccessListener {
+                        sharedPref.edit()
+                            .putString(Constants.KEY_EMAIL, it.user?.email)
+                            .apply()
                         updateUI()
                     }
                     .addOnFailureListener {

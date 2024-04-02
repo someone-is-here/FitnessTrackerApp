@@ -1,18 +1,25 @@
 package com.example.fitnesstrackerapp.mvvm.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.fitnesstrackerapp.R
 import com.example.fitnesstrackerapp.databinding.FragmentSignInBinding
+import com.example.fitnesstrackerapp.mvvm.MainActivity
+import com.example.fitnesstrackerapp.other.Constants.KEY_EMAIL
 import com.example.fitnesstrackerapp.other.Signing
-import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 class SignInFragment : Signing() {
     private var binding: FragmentSignInBinding? = null
+
+    @set:Inject
+    var email:String = ""
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,9 +31,18 @@ class SignInFragment : Signing() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setUpHandlers()
+       if(isSignedIn()){
+           val intent = Intent(context, MainActivity::class.java)
+           startActivity(intent)
+           activity?.finish();
+       }
     }
+
+    private fun isSignedIn(): Boolean {
+        return sharedPref.contains(KEY_EMAIL)
+    }
+
     private fun setUpHandlers() {
         binding!!.ivGoogle.setOnClickListener {
             signInGoogle()
@@ -58,6 +74,9 @@ class SignInFragment : Signing() {
         if(checkInput(email, password)){
             firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                 if(it.isSuccessful){
+                    sharedPref.edit()
+                        .putString(KEY_EMAIL, email)
+                        .apply()
                     updateUI()
                 } else {
                     binding!!.etEmail.error = "Invalid credentials!"
