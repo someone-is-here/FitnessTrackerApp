@@ -14,4 +14,7 @@
     <color name="button">#BF11DE</color>
     <color name="main">#0fcaf0</color>
     <color name="sky_blue">#5599E9</color>
+    <color name="hint">#66000000</color>
+    <color name="white_75">#BFFFFFFF</color>
+    <color name="white_additional_info">#FCF5F5</color>
 </resources>

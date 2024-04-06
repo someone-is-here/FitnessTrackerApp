@@ -17,17 +17,6 @@
             app:destination="@id/signInFragment" />
     </fragment>
     <fragment
-        android:id="@+id/signInFragment"
-        android:name="com.example.fitnesstrackerapp.mvvm.fragments.SignInFragment"
-        android:label="SignInFragment" >
-        <action
-            android:id="@+id/action_signInFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
-        <action
-            android:id="@+id/action_signInFragment_to_resetPasswordFragment"
-            app:destination="@id/resetPasswordFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/signUpFragment"
         android:name="com.example.fitnesstrackerapp.mvvm.fragments.SignUpFragment"
         android:label="SignUpFragment" >
@@ -41,10 +30,21 @@
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
-            android:id="@+id/action_welcomeFragment_to_signInFragment"
-            app:destination="@id/signInFragment" />
-        <action
             android:id="@+id/action_welcomeFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.fitnesstrackerapp.mvvm.fragments.SignInFragment"
+        android:label="SignInFragment" >
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_resetPasswordFragment"
+            app:destination="@id/resetPasswordFragment" />
     </fragment>
 </navigation>

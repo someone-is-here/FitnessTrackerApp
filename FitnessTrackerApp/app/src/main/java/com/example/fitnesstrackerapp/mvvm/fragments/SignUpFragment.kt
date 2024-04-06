@@ -30,23 +30,11 @@ class SignUpFragment : Signing() {
     }
 
     private fun setUpHandlers(){
-        binding!!.ivGoogle.setOnClickListener {
-            signInGoogle()
-        }
-
-        binding!!.ivGithub.setOnClickListener {
-            signInGitHubAccount()
-        }
-
-        binding!!.ivTwitter.setOnClickListener {
-            signInTwitterAccount()
-        }
-
-        binding!!.btnLogin.setOnClickListener {
+        binding!!.tvSignIn.setOnClickListener {
             findNavController().navigate(R.id.action_signUpFragment_to_signInFragment)
         }
 
-        binding!!.btnSignUpConfirm.setOnClickListener{
+        binding!!.btnSignUp.setOnClickListener{
             signUp()
         }
     }
