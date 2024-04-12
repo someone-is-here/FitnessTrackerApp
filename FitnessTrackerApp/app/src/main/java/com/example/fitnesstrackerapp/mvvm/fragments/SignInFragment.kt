@@ -32,11 +32,12 @@ class SignInFragment : Signing() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpHandlers()
-       if(isSignedIn()){
-           val intent = Intent(context, MainActivity::class.java)
-           startActivity(intent)
-           activity?.finish();
-       }
+
+//       if(isSignedIn()){
+//           val intent = Intent(context, MainActivity::class.java)
+//           startActivity(intent)
+//           activity?.finish();
+//       }
     }
 
     private fun isSignedIn(): Boolean {
@@ -44,26 +45,26 @@ class SignInFragment : Signing() {
     }
 
     private fun setUpHandlers() {
-        binding!!.ivGoogle.setOnClickListener {
+        binding!!.btnGoogleSignIn.setOnClickListener {
             signInGoogle()
         }
 
-        binding!!.ivGithub.setOnClickListener {
+        binding!!.btnGitHubSignIn.setOnClickListener {
             signInGitHubAccount()
         }
 
-        binding!!.ivTwitter.setOnClickListener {
+        binding!!.btnXSignIn.setOnClickListener {
             signInTwitterAccount()
         }
         binding!!.tvForgotPassword.setOnClickListener {
             findNavController().navigate(R.id.action_signInFragment_to_resetPasswordFragment)
         }
 
-        binding!!.btnSignup.setOnClickListener{
+        binding!!.tvSignUp.setOnClickListener{
             findNavController().navigate(R.id.action_signInFragment_to_signUpFragment)
         }
 
-        binding!!.btnLoginConfirm.setOnClickListener {
+        binding!!.btnLogin.setOnClickListener {
             signIn()
         }
     }
