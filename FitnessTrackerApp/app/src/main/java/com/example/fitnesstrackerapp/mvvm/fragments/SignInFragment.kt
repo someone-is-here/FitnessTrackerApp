@@ -1,5 +1,6 @@
 package com.example.fitnesstrackerapp.mvvm.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -34,17 +35,17 @@ class SignInFragment : Signing() {
         super.onViewCreated(view, savedInstanceState)
         setUpHandlers()
 
-        setAnimation()
+        setAnimation(context)
     }
-    private fun setAnimation(){
-        val topToBottomAnimation = AnimationUtils.loadAnimation(context, R.anim.top_to_bottom)
-        val scaleAnimation = AnimationUtils.loadAnimation(context, R.anim.scale)
+    override fun setAnimation(context: Context?) {
+        super.setAnimation(context)
 
         val googleAnimation = AnimationUtils.loadAnimation(context, R.anim.anim_google)
         val xAnimation = AnimationUtils.loadAnimation(context, R.anim.anim_x)
         val githubAnimation = AnimationUtils.loadAnimation(context, R.anim.anim_github)
 
         binding!!.tvLogin.startAnimation(topToBottomAnimation)
+        binding!!.ivSettings.startAnimation(settingsAnimation)
 
         binding!!.btnGoogleSignIn.startAnimation(googleAnimation)
         binding!!.btnXSignIn.startAnimation(xAnimation)

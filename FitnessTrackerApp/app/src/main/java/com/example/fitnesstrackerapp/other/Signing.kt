@@ -2,6 +2,7 @@ package com.example.fitnesstrackerapp.other
 
 import android.app.Activity
 import android.app.ActivityOptions
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
@@ -9,10 +10,13 @@ import android.opengl.Visibility
 import android.text.TextUtils
 import android.util.Patterns
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.fitnesstrackerapp.R
 import com.example.fitnesstrackerapp.mvvm.MainActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -39,8 +43,17 @@ open class Signing: Fragment() {
 
     private val providerGitHub = OAuthProvider.newBuilder("github.com")
 
+    protected lateinit var topToBottomAnimation:Animation
+    protected lateinit var scaleAnimation:Animation
+    protected lateinit var settingsAnimation: Animation
+
     protected fun isValidEmail(target: CharSequence): Boolean {
         return !TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches()
+    }
+    open fun setAnimation(context: Context?){
+        topToBottomAnimation = AnimationUtils.loadAnimation(context, R.anim.top_to_bottom)
+        scaleAnimation = AnimationUtils.loadAnimation(context, R.anim.scale)
+        settingsAnimation = AnimationUtils.loadAnimation(context, R.anim.anim_settings)
     }
 
     private fun handleResult(task: Task<GoogleSignInAccount>) {
@@ -149,6 +162,8 @@ open class Signing: Fragment() {
         if (result.resultCode == Activity.RESULT_OK){
             val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
             handleResult(task)
+        } else {
+          Toast.makeText(activity, result.data.toString(), Toast.LENGTH_SHORT).show()
         }
     }
 

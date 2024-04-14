@@ -1,5 +1,6 @@
 package com.example.fitnesstrackerapp.mvvm.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -28,13 +29,13 @@ class SignUpFragment : Signing() {
         super.onViewCreated(view, savedInstanceState)
 
         setUpHandlers()
-        setAnimation()
+        setAnimation(context)
     }
-    private fun setAnimation(){
-        val topToBottomAnimation = AnimationUtils.loadAnimation(context, R.anim.top_to_bottom)
-        val scaleAnimation = AnimationUtils.loadAnimation(context, R.anim.scale)
+    override fun setAnimation(context: Context?){
+        super.setAnimation(context)
 
         binding!!.tvSignUp.startAnimation(topToBottomAnimation)
+        binding!!.ivSettings.startAnimation(settingsAnimation)
 
         binding!!.tvHaveAccount.startAnimation(scaleAnimation)
         binding!!.tvSignIn.startAnimation(scaleAnimation)

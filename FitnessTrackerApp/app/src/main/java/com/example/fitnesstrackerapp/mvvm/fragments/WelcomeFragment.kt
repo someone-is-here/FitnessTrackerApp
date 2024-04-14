@@ -51,6 +51,9 @@ class WelcomeFragment : Fragment() {
     private fun setAnimation(){
         val topToBottomAnimation = AnimationUtils.loadAnimation(context, R.anim.top_to_bottom)
         val scaleAnimation = AnimationUtils.loadAnimation(context, R.anim.scale)
+        val settingsAnimation = AnimationUtils.loadAnimation(context, R.anim.anim_settings)
+
+        binding!!.ivSettings.startAnimation(settingsAnimation)
 
         binding!!.tvWelcome.startAnimation(topToBottomAnimation)
         binding!!.tvToThe.startAnimation(topToBottomAnimation)
