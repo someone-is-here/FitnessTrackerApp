@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
@@ -33,15 +34,24 @@ class SignInFragment : Signing() {
         super.onViewCreated(view, savedInstanceState)
         setUpHandlers()
 
-//       if(isSignedIn()){
-//           val intent = Intent(context, MainActivity::class.java)
-//           startActivity(intent)
-//           activity?.finish();
-//       }
+        setAnimation()
     }
+    private fun setAnimation(){
+        val topToBottomAnimation = AnimationUtils.loadAnimation(context, R.anim.top_to_bottom)
+        val scaleAnimation = AnimationUtils.loadAnimation(context, R.anim.scale)
 
-    private fun isSignedIn(): Boolean {
-        return sharedPref.contains(KEY_EMAIL)
+        val googleAnimation = AnimationUtils.loadAnimation(context, R.anim.anim_google)
+        val xAnimation = AnimationUtils.loadAnimation(context, R.anim.anim_x)
+        val githubAnimation = AnimationUtils.loadAnimation(context, R.anim.anim_github)
+
+        binding!!.tvLogin.startAnimation(topToBottomAnimation)
+
+        binding!!.btnGoogleSignIn.startAnimation(googleAnimation)
+        binding!!.btnXSignIn.startAnimation(xAnimation)
+        binding!!.btnGitHubSignIn.startAnimation(githubAnimation)
+
+        binding!!.tvNoAccount.startAnimation(scaleAnimation)
+        binding!!.tvSignUp.startAnimation(scaleAnimation)
     }
 
     private fun setUpHandlers() {
