@@ -41,15 +41,15 @@ class CustomMarkerView (
         val dateFormat = SimpleDateFormat("dd.MM.yy", Locale.getDefault())
         findViewById<TextView>(R.id.tvDate).text = dateFormat.format(calendar.time)
 
-        val avgSpeed = "${training.avgSpeedInKMH} km/h"
+        val avgSpeed = "${training.avgSpeedInKMH}  ${context.getString(R.string.km_h)}"
         findViewById<TextView>(R.id.tvAvgSpeed).text = avgSpeed
 
-        val distanceInKm = "${training.distanceInMeters / 1000f} km"
+        val distanceInKm = "${training.distanceInMeters / 1000f} ${context.getString(R.string.km)}"
         findViewById<TextView>(R.id.tvDistance).text = distanceInKm
 
         findViewById<TextView>(R.id.tvDuration).text = TrackingUtility.getFormattedStopWatchTime(training.timeInMills)
 
-        val caloriesBurned = "${training.caloriesBurned} kcal"
+        val caloriesBurned = "${training.caloriesBurned} ${context.getString(R.string.kcal)}"
         findViewById<TextView>(R.id.tvCaloriesBurned).text = caloriesBurned
     }
 }

@@ -152,10 +152,10 @@ class TrackingFragment : Fragment() {
     private fun updateTracking(isTracking: Boolean){
         this.isTracking = isTracking
         if(!isTracking){
-            binding!!.btnToggleRun.text = "Start"
+            binding!!.btnToggleRun.text = requireContext().getString(R.string.start)
             binding!!.btnFinishRun.visibility = View.VISIBLE
         } else {
-            binding!!.btnToggleRun.text = "Stop"
+            binding!!.btnToggleRun.text = requireContext().getString(R.string.stop)
             binding!!.btnCancelRun.visibility = View.VISIBLE
             binding!!.btnFinishRun.visibility = View.GONE
         }
@@ -233,7 +233,7 @@ class TrackingFragment : Fragment() {
 
             com.google.android.material.snackbar.Snackbar.make(
                 requireActivity().findViewById(R.id.rootView),
-                "Training completed!",
+                requireContext().getString(R.string.training_completed),
                 com.google.android.material.snackbar.Snackbar.LENGTH_LONG,
             ).show()
             stopRun()
@@ -315,13 +315,13 @@ class TrackingFragment : Fragment() {
 
     private fun showCancelTrackingDialog(){
         val dialog = MaterialAlertDialogBuilder(requireContext(), R.style.AlertDialogTheme)
-            .setTitle("Cancel the run?")
-            .setMessage("Are you sure to cancel the current run and delete all its data?")
+            .setTitle(requireContext().getString(R.string.cancel_the_run))
+            .setMessage(requireContext().getString(R.string.sure_cancel_run))
             .setIcon(R.drawable.ic_delete)
-            .setPositiveButton("Yes"){ _, _ ->
+            .setPositiveButton(requireContext().getString(R.string.yes)){ _, _ ->
                 stopRun()
             }
-            .setNegativeButton("No") { dialogInterface, _ ->
+            .setNegativeButton(requireContext().getString(R.string.no)) { dialogInterface, _ ->
                 dialogInterface.cancel()
             }
             .create()

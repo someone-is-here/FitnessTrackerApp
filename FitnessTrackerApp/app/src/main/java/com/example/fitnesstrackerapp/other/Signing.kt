@@ -64,7 +64,7 @@ open class Signing: Fragment() {
             }
 
         }else{
-            Toast.makeText(activity,task.exception.toString(), Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, requireContext().getString(R.string.login_failed), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -77,7 +77,8 @@ open class Signing: Fragment() {
                     .apply()
                 updateUI()
             }else{
-                Toast.makeText(activity, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, requireContext().getString(R.string.login_failed), Toast.LENGTH_SHORT).show()
+                Timber.e(it.exception.toString())
             }
         }
     }
@@ -94,6 +95,7 @@ open class Signing: Fragment() {
                     updateUI()
                 }
                 .addOnFailureListener {
+                    Toast.makeText(activity, requireContext().getString(R.string.login_failed), Toast.LENGTH_SHORT).show()
                     Timber.d("signInGitHubAccount:addOnFailureListener()")
                 }
         } else {
@@ -107,6 +109,7 @@ open class Signing: Fragment() {
                         updateUI()
                     }
                     .addOnFailureListener {
+                        Toast.makeText(activity, requireContext().getString(R.string.login_failed), Toast.LENGTH_SHORT).show()
                         Timber.d("signInGitHubAccount(authentication):addOnFailureListener()")
                     }
             }
@@ -126,6 +129,7 @@ open class Signing: Fragment() {
                     updateUI()
                 }
                 .addOnFailureListener {
+                    Toast.makeText(activity, requireContext().getString(R.string.login_failed), Toast.LENGTH_SHORT).show()
                     Timber.d( "signInTwitterAccount:addOnFailureListener()")
                 }
         } else {
@@ -139,6 +143,7 @@ open class Signing: Fragment() {
                         updateUI()
                     }
                     .addOnFailureListener {
+                        Toast.makeText(activity, requireContext().getString(R.string.login_failed), Toast.LENGTH_SHORT).show()
                         Timber.d( "signInTwitterAccount(authentication):addOnFailureListener()")
                     }
             }
@@ -150,7 +155,7 @@ open class Signing: Fragment() {
         launcher.launch(signInIntent)
     }
 
-    protected fun updateUI(message: String = "Login successfully!") {
+    protected fun updateUI(message: String = requireContext().getString(R.string.login_successfully)) {
         val intent = Intent(context, MainActivity::class.java)
         startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle())
 
@@ -163,7 +168,8 @@ open class Signing: Fragment() {
             val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
             handleResult(task)
         } else {
-          Toast.makeText(activity, result.data.toString(), Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, requireContext().getString(R.string.login_failed), Toast.LENGTH_SHORT).show()
+            Timber.e(result.resultCode .toString() + result.data.toString())
         }
     }
 

@@ -59,7 +59,7 @@ class SetUpFragment : Fragment() {
             if(success) {
                 findNavController().navigate(R.id.action_setUpFragment_to_trainingFragment)
             } else {
-                Snackbar.make(requireView(), "Please enter all the fields!", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(requireView(), requireContext().getString(R.string.filled_out_fields), Snackbar.LENGTH_SHORT).show()
             }
         }
     }

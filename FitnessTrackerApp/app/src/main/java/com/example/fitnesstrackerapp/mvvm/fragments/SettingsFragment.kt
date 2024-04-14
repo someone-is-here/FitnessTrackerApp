@@ -40,9 +40,9 @@ class SettingsFragment : Fragment() {
         binding!!.btnApplyChanges.setOnClickListener {
             val success = applyChangesToSharedPref()
             if(success){
-                Snackbar.make(view, "Saved changes", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(view, requireContext().getString(R.string.changes_saved), Snackbar.LENGTH_SHORT).show()
             } else {
-              Snackbar.make(view, "Please fill out all the fields!", Snackbar.LENGTH_LONG).show()
+              Snackbar.make(view, requireContext().getString(R.string.filled_out_fields), Snackbar.LENGTH_LONG).show()
             }
         }
     }

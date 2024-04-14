@@ -57,7 +57,7 @@ class StatisticsFragment : Fragment() {
             textColor = Color.WHITE
         }
         barChart.apply {
-            description.text = "Average Speed Over Time"
+            description.text = context.getString(R.string.avg_speed_over_time)
             legend.isEnabled = false
         }
     }
@@ -73,20 +73,20 @@ class StatisticsFragment : Fragment() {
             it?.let{
                 val km = it / 100f
                 val totalDistance = round(km * 10f) / 10f
-                val totalDistanceString = "$totalDistance km"
+                val totalDistanceString = "$totalDistance ${requireContext().getString(R.string.km)}"
                 binding!!.tvTotalDistance.text = totalDistanceString
             }
         })
         viewModel.totalAverageSpeed.observe(viewLifecycleOwner, Observer{
             it?.let{
                val averageSpeed = round(it * 10f) / 10f
-                val avgSpeedString = "$averageSpeed km/h"
+                val avgSpeedString = "$averageSpeed ${requireContext().getString(R.string.km_h)}"
                 binding!!.tvAverageSpeed.text = avgSpeedString
             }
         })
         viewModel.totalCaloriesBurned.observe(viewLifecycleOwner, Observer{
             it?.let{
-               val totalCalories = "${it}kcal"
+               val totalCalories = "${it}${requireContext().getString(R.string.kcal)}"
                 binding!!.tvTotalCalories.text = totalCalories
             }
         })
@@ -94,7 +94,7 @@ class StatisticsFragment : Fragment() {
             it?.let {
                 val barChart = binding!!.barChart
                 val allAvgSpeed = it.indices.map { i -> BarEntry(i.toFloat(), it[i].avgSpeedInKMH) }
-                val barDataSet = BarDataSet(allAvgSpeed, "Average Speed Over Time").apply {
+                val barDataSet = BarDataSet(allAvgSpeed, requireContext().getString(R.string.avg_speed_over_time)).apply {
                     valueTextColor = Color.WHITE
                     color = ContextCompat.getColor(requireContext(), R.color.yellow)
                 }
