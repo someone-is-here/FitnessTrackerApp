@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.core.text.isDigitsOnly
 import androidx.navigation.fragment.findNavController
@@ -27,6 +28,16 @@ class SignUpFragment : Signing() {
         super.onViewCreated(view, savedInstanceState)
 
         setUpHandlers()
+        setAnimation()
+    }
+    private fun setAnimation(){
+        val topToBottomAnimation = AnimationUtils.loadAnimation(context, R.anim.top_to_bottom)
+        val scaleAnimation = AnimationUtils.loadAnimation(context, R.anim.scale)
+
+        binding!!.tvSignUp.startAnimation(topToBottomAnimation)
+
+        binding!!.tvHaveAccount.startAnimation(scaleAnimation)
+        binding!!.tvSignIn.startAnimation(scaleAnimation)
     }
 
     private fun setUpHandlers(){
