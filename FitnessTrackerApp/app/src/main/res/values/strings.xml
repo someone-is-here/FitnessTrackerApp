@@ -70,7 +70,6 @@
     <string name="average_speed">Average Speed</string>
     <string name="start">Start</string>
     <string name="finish_run">Finish Run</string>
-    <string name="let_s_go_username">Let\'s go, USERNAME!</string>
     <string name="map">Map</string>
     <string name="sort_by">Sort by:</string>
     <string name="add">Add</string>
@@ -92,7 +91,6 @@
         <item>Average Speed</item>
         <item>Calories Burned</item>
     </string-array>
-    <string name="title_activity_signing">SigningActivity</string>
 
     <string name="date">Date:</string>
     <string name="duration">Duration:</string>
@@ -112,6 +110,12 @@
     <string name="login_successfully">Login successfully!</string>
     <string name="pause">Pause</string>
     <string name="resume">Resume</string>
+
+    <!-- Settings fragment -->
+    <string name="update_your_data">Update your data</string>
+    <string name="username">Username</string>
+    <string name="your_height">Your Height</string>
+    <string name="cm">cm</string>
 
 
 </resources>

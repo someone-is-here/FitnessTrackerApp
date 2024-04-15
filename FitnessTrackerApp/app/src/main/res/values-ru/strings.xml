@@ -36,82 +36,87 @@
     <string name="email_sending_failed">Проверьте корректность адреса электронной почты <br/> или наличие подключения к интернету!</string>
 
     <!-- Authentication -->
-    <string name="email_field_empty">Email field is empty!</string>
-    <string name="password_field_empty">Password field is empty!</string>
-    <string name="email_invalid">"Invalid email!"</string>
-    <string name="invalid_credentials">Invalid credentials!</string>
-    <string name="check_input_or_internet">Check input or internet connection!</string>
-    <string name="password_6_symbols">Password should be at least 6 symbols!</string>
-    <string name="password_1_character_or_symbol">Password must contain at least 1 character or symbol!</string>
-    <string name="confirm_password_field_empty">Confirm password field is empty!</string>
-    <string name="passwords_different">Passwords are different!</string>
-    <string name="account_created">Account created successfully!</string>
+    <string name="email_field_empty">Поле электронная почта не заполнено!</string>
+    <string name="password_field_empty">Поле пароль не заполнено!</string>
+    <string name="email_invalid">Некорректный адрес электронной почты!</string>
+    <string name="invalid_credentials">Некорректные данные!</string>
+    <string name="check_input_or_internet">Проверьте корректность ввода\n и соединение с интернетом!</string>
+    <string name="password_6_symbols">Пароль должен содержать минимум 6 символов!</string>
+    <string name="password_1_character_or_symbol">Пароль должен содержать минимум 1 букву или символ!</string>
+    <string name="confirm_password_field_empty">Поле подтверждения пароля не заполнено!</string>
+    <string name="passwords_different">Пароли различаются!</string>
+    <string name="account_created">Аккаунт успешно создан!</string>
 
     <!-- Settings fragment -->
-    <string name="changes_saved">Changes saved!</string>
-    <string name="filled_out_fields">Please fill out all the fields!</string>
+    <string name="changes_saved">Изменения сохранены!</string>
+    <string name="filled_out_fields">Пожалуйста, заполните все поля!</string>
 
     <!-- Statistics fragment -->
-    <string name="avg_speed_over_time">Average Speed Over Time</string>
+    <string name="avg_speed_over_time">Средняя скорость от времени</string>
 
     <!--   Another fragment   -->
-    <string name="your_trainings">Your Trainings</string>
-    <string name="statistics">Statistics</string>
-    <string name="settings">Settings</string>
-    <string name="update_your_height_and_weight">Update your height and weight</string>
-    <string name="apply_changes">Apply Changes</string>
-    <string name="kg">kg</string>
-    <string name="your_weight">Your Weight</string>
-    <string name="total_distance">Total Distance</string>
-    <string name="_0km">0km</string>
-    <string name="total_time">Total Time</string>
-    <string name="total_calories_burned">Total Calories Burned</string>
-    <string name="_0kcal">0kcal</string>
-    <string name="average_speed">Average Speed</string>
-    <string name="start">Start</string>
-    <string name="finish_run">Finish Run</string>
-    <string name="let_s_go_username">Let\'s go, USERNAME!</string>
-    <string name="map">Map</string>
-    <string name="sort_by">Sort by:</string>
-    <string name="add">Add</string>
-    <string name="cancel_run">Cancel run</string>
+    <string name="your_trainings">Тренировки</string>
+    <string name="statistics">Статистика</string>
+    <string name="settings">Настройки</string>
+    <string name="update_your_height_and_weight">Обновление роста и веса</string>
+    <string name="apply_changes">Подтвердить изменения</string>
+    <string name="kg">кг</string>
+    <string name="your_weight">Вес</string>
+    <string name="total_distance">Пройденная дистанция</string>
+    <string name="_0km">0км</string>
+    <string name="total_time">Общее время</string>
+    <string name="total_calories_burned">Сожжено калорий</string>
+    <string name="_0kcal">0ккал</string>
+    <string name="average_speed">Средняя скорость</string>
+    <string name="start">Старт</string>
+    <string name="finish_run">Завершить тренировку</string>
+
+    <string name="sort_by">Сортировать по:</string>
+    <string name="add">Добавить</string>
+    <string name="cancel_run">Отменить тренировку</string>
 
     <!-- Strings for training adapter -->
-    <string name="km_h">km/h</string>
-    <string name="km">km</string>
-    <string name="kcal">kcal</string>
+    <string name="km_h">км/ч</string>
+    <string name="km">км</string>
+    <string name="kcal">ккал</string>
 
     <!-- Notification -->
-    <string name="notification_name">Training</string>
+    <string name="notification_name">Тренировка</string>
 
     <!-- Strings used for fragments for navigation -->
     <string-array name="filter_options">
-        <item>Date</item>
-        <item>Running Time</item>
-        <item>Distance</item>
-        <item>Average Speed</item>
-        <item>Calories Burned</item>
+        <item>Дата</item>
+        <item>Продолжительность тренировки</item>
+        <item>Пройденная дистанция</item>
+        <item>Средняя скорость</item>
+        <item>Сожжено калорий</item>
     </string-array>
-    <string name="title_activity_signing">SigningActivity</string>
 
-    <string name="date">Date:</string>
-    <string name="duration">Duration:</string>
-    <string name="distance">Distance:</string>
-    <string name="avg_speed">Avg speed:</string>
-    <string name="calories_burned">Calories burned:</string>
+    <string name="date">Дата:</string>
+    <string name="duration">Продолжительность:</string>
+    <string name="distance">Пройденная дистанция:</string>
+    <string name="avg_speed">Средняя скорость:</string>
+    <string name="calories_burned">Сожжено калорий:</string>
 
     <!-- Tracking -->
-    <string name="stop">Stop</string>
-    <string name="training_completed">Training completed!</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="cancel_the_run">Cancel the run?</string>
-    <string name="sure_cancel_run">Are you sure to cancel the current run and delete all its data?</string>
-    <string name="accepting_permissions_request">You need to accept location permissions to use this app!</string>
-    <string name="login_failed">Login failed( Something went wrong!</string>
-    <string name="login_successfully">Login successfully!</string>
-    <string name="pause">Pause</string>
-    <string name="resume">Resume</string>
+    <string name="stop">Стоп</string>
+    <string name="training_completed">Тренировка завершена!</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="map">Карта</string>
+    <string name="cancel_the_run">Отменить тренировку?</string>
+    <string name="sure_cancel_run">Вы уверены, что хотите отменить тренировку и удалить все данные по ней?</string>
+    <string name="accepting_permissions_request">Вам необходимо разрешить приложению использовать данные о местоположении!</string>
+    <string name="login_failed">Вход неуспешный( что-то пошло не так!</string>
+    <string name="login_successfully">Вход успешный!</string>
+    <string name="pause">Пауза</string>
+    <string name="resume">Возобновить</string>
+
+    <!-- Settings fragment -->
+    <string name="update_your_data">Обновить Ваши данные</string>
+    <string name="username">Имя пользователя</string>
+    <string name="your_height">Рост</string>
+    <string name="cm">см</string>
 
 
 </resources>

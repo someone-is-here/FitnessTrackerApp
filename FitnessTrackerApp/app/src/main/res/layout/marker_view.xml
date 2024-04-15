@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="200dp"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="15dp"
-    android:alpha="0.9">
+    android:alpha="0.7">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="15dp">
@@ -22,6 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:autoSizeTextType="uniform"
                 android:text="@string/date"
                 android:textSize="16sp" />
 
@@ -31,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:text="01.01.2024"
+                android:autoSizeTextType="uniform"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -46,6 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:text="@string/duration"
+                android:autoSizeTextType="uniform"
                 android:textSize="16sp" />
 
             <TextView
@@ -54,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:text="00:00:39"
+                android:autoSizeTextType="uniform"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -68,6 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:autoSizeTextType="uniform"
                 android:text="@string/avg_speed"
                 android:textSize="16sp" />
 
@@ -77,6 +82,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:text="13km/h"
+                android:autoSizeTextType="uniform"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -92,6 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:text="@string/distance"
+                android:autoSizeTextType="uniform"
                 android:textSize="16sp" />
 
             <TextView
@@ -100,26 +107,29 @@
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:text="0.068 km"
+                android:autoSizeTextType="uniform"
                 android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="153dp"
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tvCaloriesBurnedText"
-                android:layout_width="68dp"
+                android:layout_width="86dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:text="@string/calories_burned"
+                android:autoSizeTextType="uniform"
                 android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tvCaloriesBurned"
-                android:layout_width="62dp"
-                android:layout_height="wrap_content"
+                android:layout_width="81dp"
+                android:layout_height="match_parent"
+                android:autoSizeTextType="uniform"
                 android:gravity="end"
                 android:text="13 kcal"
                 android:textSize="16sp" />

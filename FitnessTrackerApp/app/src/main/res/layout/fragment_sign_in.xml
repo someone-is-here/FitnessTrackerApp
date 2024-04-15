@@ -110,7 +110,7 @@
 
     <Button
         android:id="@+id/btnGoogleSignIn"
-        android:layout_width="124dp"
+        android:layout_width="134dp"
         android:layout_height="54dp"
         android:backgroundTint="@color/white"
         android:drawableLeft="@mipmap/ic_google"
@@ -129,7 +129,7 @@
 
     <Button
         android:id="@+id/btnXSignIn"
-        android:layout_width="124dp"
+        android:layout_width="134dp"
         android:layout_height="54dp"
         android:backgroundTint="@color/white"
         android:drawableLeft="@mipmap/ic_x"
@@ -147,7 +147,7 @@
 
     <Button
         android:id="@+id/btnGitHubSignIn"
-        android:layout_width="124dp"
+        android:layout_width="134dp"
         android:layout_height="54dp"
         android:backgroundTint="@color/white"
         android:drawableLeft="@mipmap/ic_github"

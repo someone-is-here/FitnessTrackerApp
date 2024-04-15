@@ -9,13 +9,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
 
 
         <TextView
             android:id="@+id/tvWelcome"
-            android:layout_width="221dp"
-            android:layout_height="115dp"
+            android:layout_width="214dp"
+            android:layout_height="101dp"
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/itim"
             android:gravity="center"
@@ -35,8 +38,8 @@
 
         <TextView
             android:id="@+id/tvToThe"
-            android:layout_width="89dp"
-            android:layout_height="31dp"
+            android:layout_width="93dp"
+            android:layout_height="43dp"
             android:fontFamily="@font/itim"
             android:gravity="center"
             android:shadowColor="@color/black_opacity"
@@ -67,10 +70,10 @@
             android:textSize="56sp"
             app:layout_constraintBottom_toTopOf="@+id/btnLogin"
             app:layout_constraintEnd_toEndOf="@+id/tvToThe"
-            app:layout_constraintHorizontal_bias="0.513"
+            app:layout_constraintHorizontal_bias="0.467"
             app:layout_constraintStart_toStartOf="@+id/tvToThe"
             app:layout_constraintTop_toBottomOf="@+id/tvWelcome"
-            app:layout_constraintVertical_bias="0.088" />
+            app:layout_constraintVertical_bias="0.122" />
 
         <TextView
             android:id="@+id/btnLogin"
