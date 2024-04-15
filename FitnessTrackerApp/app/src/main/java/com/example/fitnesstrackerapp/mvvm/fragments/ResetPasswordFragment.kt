@@ -56,11 +56,10 @@ class ResetPasswordFragment : Signing() {
 
             if(checkInput(email)) {
                 firebaseAuth.sendPasswordResetEmail(email).addOnSuccessListener {
-                    Toast.makeText(activity, "Email sent! PLease, check you email!", Toast.LENGTH_SHORT).show()
-
+                    Toast.makeText(activity, requireContext().getString(R.string.email_sent), Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.action_resetPasswordFragment_to_signInFragment)
                 }.addOnFailureListener {
-                    Toast.makeText(activity, "Check email or internet connection!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity, requireContext().getString(R.string.email_sending_failed), Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -68,10 +67,10 @@ class ResetPasswordFragment : Signing() {
 
     private fun checkInput(email: String):Boolean {
         if (email.isEmpty()){
-            binding!!.etEmail.error = "Email field is empty!"
+            binding!!.etEmail.error = requireContext().getString(R.string.email_field_empty)
             return false
         }else if(!isValidEmail(email)){
-            binding!!.etEmail.error = "Invalid email!"
+            binding!!.etEmail.error = requireContext().getString(R.string.email_invalid)
             return false
         }
 

@@ -1,0 +1,122 @@
+<resources>
+    <string name="app_name">TEAM</string>
+    <string name="title_activity_sign_in">SignInActivity</string>
+
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDxIP7cTZqVW4MvJn4T89EZ9ewjp8iTBt0</string>
+    <string name="app_title">TEAM</string>
+
+    <!-- Welcome fragment -->
+    <string name="welcome">Запрашаем</string>
+    <string name="to_the">у</string>
+
+    <!-- Login fragment -->
+    <string name="login_caps">Увайсці</string>
+    <string name="sign_in_underline"><u>Увайсці</u></string>
+    <string name="sign_in">Увайсці</string>
+
+    <!-- Sign up fragment -->
+    <string name="sign_up_caps">Рэгістрацыя</string>
+    <string name="sign_up">Рэгістрацыя</string>
+    <string name="sign_up_underline"><u>Рэгістрацыя</u></string>
+
+    <!-- Reset password fragment -->
+    <string name="reset_password">Аднавіць пароль</string>
+    <string name="reset">Аднавіць</string>
+    <string name="confirm_password">Пацвердзіць пароль</string>
+
+    <!-- Authentication (fragments) -->
+    <string name="login">Логін</string>
+    <string name="email">Электронная пошта</string>
+    <string name="password">Пароль</string>
+
+    <string name="forgot_password"><u>Забыліся пароль?</u></string>
+    <string name="don_t_have_an_account">Яшчэ няма акаўнта?</string>
+    <string name="i_already_have_an_account">У мяне ўжо ёсць акаўнт!</string>
+    <string name="email_sent">Пісьмо адпраўлена!\n Калі ласка, праверце Вашу пошту!</string>
+    <string name="email_sending_failed">Праверце карэктнасць электроннай пошты <br/> і наяўнасць падключэння да інтэрнэту!</string>
+
+    <!-- Authentication -->
+    <string name="email_field_empty">Поле электронная пошта не запоўнена!</string>
+    <string name="password_field_empty">Поле пароль не запоўнена!</string>
+    <string name="email_invalid">Некарэктны адрас электроннай пошты!</string>
+    <string name="invalid_credentials">Некарэктныя данныя!</string>
+    <string name="check_input_or_internet">Праверце карэктнасць уводу\n і наяўнасць падключэння да інтэрнэту!</string>
+    <string name="password_6_symbols">Пароль павінен змяшчаць мінімум 6 сімвалаў!</string>
+    <string name="password_1_character_or_symbol">Пароль должен содержать минимум 1 букву или символ!</string>
+    <string name="confirm_password_field_empty">Поле пацверджання пароля не запоўнена!</string>
+    <string name="passwords_different">Паролі адрозніваюцца!</string>
+    <string name="account_created">Акаўнт паспяхова створаны!</string>
+
+    <!-- Settings fragment -->
+    <string name="changes_saved">Змены захаваны!</string>
+    <string name="filled_out_fields">Калі ласка, запоўніце ўсе палі!</string>
+
+    <!-- Statistics fragment -->
+    <string name="avg_speed_over_time">Сярэдняя хуткасць ад часу</string>
+
+    <!--   Another fragment   -->
+    <string name="your_trainings">Трэніроўкі</string>
+    <string name="statistics">Статыстыка</string>
+    <string name="settings">Настройкі</string>
+    <string name="update_your_height_and_weight">Абнаўленне росту і вагі</string>
+    <string name="apply_changes">Пацвердзіць змены</string>
+    <string name="kg">кг</string>
+    <string name="your_weight">Вага</string>
+    <string name="total_distance">Пройдзеная дыстанцыя</string>
+    <string name="_0km">0км</string>
+    <string name="total_time">Агульны час</string>
+    <string name="total_calories_burned">Спалена калорый</string>
+    <string name="_0kcal">0ккал</string>
+    <string name="average_speed">Сярэдняя хуткасць</string>
+    <string name="start">Старт</string>
+    <string name="finish_run">Завяршыць трэніроўку</string>
+
+    <string name="sort_by">Сарціраваць па:</string>
+    <string name="add">Дадаць</string>
+    <string name="cancel_run">Адмяніць трэніроўку</string>
+
+    <!-- Strings for training adapter -->
+    <string name="km_h">км/ч</string>
+    <string name="km">км</string>
+    <string name="kcal">ккал</string>
+
+    <!-- Notification -->
+    <string name="notification_name">Трэніроўка</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string-array name="filter_options">
+        <item>Дата</item>
+        <item>Працягласць трэніроўкі</item>
+        <item>Пройдзеная дыстанцыя</item>
+        <item>Сярэдняя хуткасць</item>
+        <item>Спалена калорый</item>
+    </string-array>
+
+    <string name="date">Дата:</string>
+    <string name="duration">Працягласць:</string>
+    <string name="distance">Пройдзеная дыстанцыя:</string>
+    <string name="avg_speed">Сярэдняя хуткасць:</string>
+    <string name="calories_burned">Спалена калорый:</string>
+
+    <!-- Tracking -->
+    <string name="stop">Стоп</string>
+    <string name="training_completed">Трэніроўка завершана!</string>
+    <string name="yes">Так</string>
+    <string name="no">Не</string>
+    <string name="map">Карта</string>
+    <string name="cancel_the_run">Адмяніць трэніроўку?</string>
+    <string name="sure_cancel_run">Вы ўпэўненыя, што жадаеце адмяніць трэніроўку і выдаліць усе данныя па ёй?</string>
+    <string name="accepting_permissions_request">Вам неабходна дазволіць праграмме выкарыстоўваць дадзеныя аб месцазнаходжанні!</string>
+    <string name="login_failed">Уваход няўдалы( нешта пайшло не так!</string>
+    <string name="login_successfully">Уваход паспяховы!</string>
+    <string name="pause">Паўза</string>
+    <string name="resume">Аднавіць</string>
+
+    <!-- Settings fragment -->
+    <string name="update_your_data">Абнавіць Вашы данныя</string>
+    <string name="username">Імя</string>
+    <string name="your_height">Рост</string>
+    <string name="cm">см</string>
+
+
+</resources>

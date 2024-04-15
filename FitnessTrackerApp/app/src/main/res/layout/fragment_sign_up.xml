@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/tvSignUp"
-        android:layout_width="199dp"
-        android:layout_height="72dp"
+        android:layout_width="280dp"
+        android:layout_height="75dp"
         android:fontFamily="@font/itim"
         android:gravity="center"
         android:shadowColor="@color/black_opacity"
@@ -20,6 +20,7 @@
         android:text="@string/sign_up"
         android:textColor="@color/white"
         android:textSize="56sp"
+        android:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -125,24 +126,24 @@
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintHorizontal_bias="0.109"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSignUp"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/tvSignIn"
-        android:layout_width="80dp"
-        android:layout_height="36dp"
-        android:layout_marginEnd="32dp"
+        android:layout_width="130dp"
+        android:layout_height="37dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/itim"
         android:text="@string/sign_in_underline"
+        android:textAlignment="center"
         android:textColor="@color/white_additional_info"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/tvHaveAccount"
         app:layout_constraintTop_toBottomOf="@+id/btnSignUp"
         app:layout_constraintVertical_bias="1.0" />

@@ -5,6 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -42,6 +44,7 @@ class TrainingAdapter: RecyclerView.Adapter<TrainingAdapter.TrainingViewHolder>(
             )
         )
     }
+
     override fun onBindViewHolder(holder: TrainingViewHolder, position: Int) {
         val training = differ.currentList[position]
 
@@ -54,15 +57,15 @@ class TrainingAdapter: RecyclerView.Adapter<TrainingAdapter.TrainingViewHolder>(
             val dateFormat = SimpleDateFormat("dd.MM.yy", Locale.getDefault())
             holder.itemView.findViewById<TextView>(R.id.tvDate).text = dateFormat.format(calendar.time)
 
-            val avgSpeed = "${training.avgSpeedInKMH} km/h"
+            val avgSpeed = "${training.avgSpeedInKMH} ${context.resources.getString(R.string.km_h)}"
             holder.itemView.findViewById<TextView>(R.id.tvAvgSpeed).text = avgSpeed
 
-            val distanceInKm = "${training.distanceInMeters / 1000f} km"
+            val distanceInKm = "${training.distanceInMeters / 1000f} ${context.resources.getString(R.string.km)}"
             holder.itemView.findViewById<TextView>(R.id.tvDistance).text = distanceInKm
 
             holder.itemView.findViewById<TextView>(R.id.tvTime).text = TrackingUtility.getFormattedStopWatchTime(training.timeInMills)
 
-            val caloriesBurned = "${training.caloriesBurned} kcal"
+            val caloriesBurned = "${training.caloriesBurned} ${context.resources.getString(R.string.kcal)}"
             holder.itemView.findViewById<TextView>(R.id.tvCalories).text = caloriesBurned
         }
     }

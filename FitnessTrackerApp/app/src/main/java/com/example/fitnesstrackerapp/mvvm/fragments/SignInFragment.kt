@@ -91,10 +91,10 @@ class SignInFragment : Signing() {
                         .apply()
                     updateUI()
                 } else {
-                    binding!!.etEmail.error = "Invalid credentials!"
-                    binding!!.etPassword.error = "Invalid credentials!"
+                    binding!!.etEmail.error = requireContext().getString(R.string.invalid_credentials)
+                    binding!!.etPassword.error = requireContext().getString(R.string.invalid_credentials)
 
-                    Toast.makeText(activity, "Check input or internet connection!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity, requireContext().getString(R.string.check_input_or_internet),  Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -102,15 +102,15 @@ class SignInFragment : Signing() {
 
     private fun checkInput(email: String, password: String): Boolean {
         if (email.isEmpty()){
-            binding!!.etEmail.error = "Email field is empty!"
+            binding!!.etEmail.error = requireContext().getString(R.string.email_field_empty)
             return false
         }else if(!isValidEmail(email)){
-            binding!!.etEmail.error = "Invalid email!"
+            binding!!.etEmail.error = requireContext().getString(R.string.email_invalid)
             return false
         }
 
         if (password.isEmpty()){
-            binding!!.etPassword.error = "Password field is empty!"
+            binding!!.etPassword.error = requireContext().getString(R.string.password_field_empty)
             return false
         }
 

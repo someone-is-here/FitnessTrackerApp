@@ -3,6 +3,7 @@ package com.example.fitnesstrackerapp.di
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.example.fitnesstrackerapp.mvvm.MainActivity
 import com.example.fitnesstrackerapp.R
@@ -29,14 +30,24 @@ object ServiceModule {
     @Provides
     fun provideMainActivityPendingIntent(
         @ApplicationContext app: Context
-    )= PendingIntent.getActivity(
+    )=
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        PendingIntent.getActivity(
         app,
     0,
         Intent(app, MainActivity::class.java).also {
             it.action = Constants.ACTION_SHOW_TRACKING_FRAGMENT
         },
-        PendingIntent.FLAG_UPDATE_CURRENT
-    )
+        PendingIntent.FLAG_IMMUTABLE
+    )} else {
+        PendingIntent.getActivity(
+            app,
+            0,
+            Intent(app, MainActivity::class.java).also {
+                it.action = Constants.ACTION_SHOW_TRACKING_FRAGMENT
+            },
+            PendingIntent.FLAG_UPDATE_CURRENT)
+    }
 
     @ServiceScoped
     @Provides
@@ -47,7 +58,7 @@ object ServiceModule {
         .setAutoCancel(false)
         .setOngoing(true)
         .setSmallIcon(R.drawable.runner)
-        .setContentTitle("Training")
+        .setContentTitle(app.getString(R.string.notification_name))
         .setContentText("00:00:00")
         .setContentIntent(pendingIntent)
 

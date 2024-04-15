@@ -5,6 +5,8 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.NotificationManager.IMPORTANCE_LOW
 import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_IMMUTABLE
+import android.app.PendingIntent.FLAG_MUTABLE
 import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context
 import android.content.Intent
@@ -226,17 +228,27 @@ class TrackingService: LifecycleService() {
     }
     @SuppressLint("NotificationPermission")
     private fun updateNotificationTrackingState(isTracking: Boolean){
-        val notificationActionText = if(isTracking) "Pause" else "Resume"
+        val notificationActionText = if(isTracking) applicationContext.getString(R.string.pause)
+                                            else applicationContext.getString(R.string.resume)
+
         val pendingIntent = if(isTracking) {
             val pauseIntent = Intent(this, TrackingService::class.java).apply {
                 action = ACTION_PAUSE_SERVICE
             }
-            PendingIntent.getService(this, 1, pauseIntent, FLAG_UPDATE_CURRENT)
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                PendingIntent.getService(this, 1, pauseIntent, FLAG_IMMUTABLE)
+            }else{
+                PendingIntent.getService(this, 1, pauseIntent, FLAG_UPDATE_CURRENT)
+            }
         } else {
             val resumeIntent = Intent(this, TrackingService::class.java).apply {
                 action = ACTION_START_OR_RESUME_SERVICE
             }
-            PendingIntent.getService(this, 2, resumeIntent, FLAG_UPDATE_CURRENT)
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                PendingIntent.getService(this, 2, resumeIntent, FLAG_IMMUTABLE)
+            }else {
+                PendingIntent.getService(this, 2, resumeIntent, FLAG_UPDATE_CURRENT)
+            }
         }
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
