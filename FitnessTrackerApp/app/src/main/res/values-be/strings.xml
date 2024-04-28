@@ -118,5 +118,15 @@
     <string name="your_height">Рост</string>
     <string name="cm">см</string>
 
+    <!-- App Settings -->
+    <string name="night_mode">Начная тэма</string>
+    <string name="private_account">Прыватны акаўнт</string>
+    <string name="notifications">Паведамленні</string>
+    <string name="language">Мова</string>
+    <string name="send_us_message">Звязацца з намі</string>
+    <string name="personal_settings">Персанальныя настройкі</string>
+    <string name="app_settings">Настройкі прылады</string>
+
+    <string name="sign_out">Выйсці з аккаўнта</string>
 
 </resources>

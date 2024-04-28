@@ -117,5 +117,15 @@
     <string name="your_height">Your Height</string>
     <string name="cm">cm</string>
 
+    <!-- App Settings -->
+    <string name="night_mode">Night mode</string>
+    <string name="private_account">Private account</string>
+    <string name="notifications">Notifications</string>
+    <string name="language">Language</string>
+    <string name="send_us_message">Send us message</string>
+    <string name="personal_settings">Personal settings</string>
+    <string name="app_settings">App settings</string>
+    <string name="sign_out">Sign out</string>
+
 
 </resources>

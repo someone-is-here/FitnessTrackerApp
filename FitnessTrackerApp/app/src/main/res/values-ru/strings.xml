@@ -118,5 +118,14 @@
     <string name="your_height">Рост</string>
     <string name="cm">см</string>
 
+    <!-- App Settings -->
+    <string name="night_mode">Ночная тема</string>
+    <string name="private_account">Приватный аккаунт</string>
+    <string name="notifications">Уведомления</string>
 
+    <string name="language">Язык</string>
+    <string name="send_us_message">Связаться с нами</string>
+    <string name="personal_settings">Персональные настройки</string>
+    <string name="app_settings">Настройки приложения</string>
+    <string name="sign_out">Выйти из аккаунта</string>
 </resources>
