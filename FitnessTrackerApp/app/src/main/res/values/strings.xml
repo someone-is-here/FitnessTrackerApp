@@ -126,6 +126,13 @@
     <string name="personal_settings">Personal settings</string>
     <string name="app_settings">App settings</string>
     <string name="sign_out">Sign out</string>
+    <string name="edit_profile_underline"><u>Edit profile</u></string>
+
+    <string-array name="language_options">
+        <item>English</item>
+        <item>Русский</item>
+        <item>Беларуская</item>
+    </string-array>
 
 
 </resources>

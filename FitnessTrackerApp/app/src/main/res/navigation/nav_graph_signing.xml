@@ -61,7 +61,7 @@
     </fragment>
     <fragment
         android:id="@+id/appSettingsFragment"
-        android:name="com.example.fitnesstrackerapp.mvvm.fragments.signing.AppSettingsFragment"
+        android:name="com.example.fitnesstrackerapp.mvvm.fragments.app_settings.AppSettingsFragment"
         android:label="fragment_app_settings"
         tools:layout="@layout/fragment_app_settings" >
         <action
@@ -76,5 +76,17 @@
         <action
             android:id="@+id/action_appSettingsFragment_to_signInFragment"
             app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_appSettingsFragment_to_languagesFragment"
+            app:destination="@id/languagesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/languagesFragment"
+        android:name="com.example.fitnesstrackerapp.mvvm.fragments.app_settings.LanguagesFragment"
+        android:label="fragment_languages"
+        tools:layout="@layout/fragment_languages" >
+        <action
+            android:id="@+id/action_languagesFragment_to_appSettingsFragment"
+            app:destination="@id/appSettingsFragment" />
     </fragment>
 </navigation>

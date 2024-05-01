@@ -128,5 +128,11 @@
     <string name="app_settings">Настройкі прылады</string>
 
     <string name="sign_out">Выйсці з аккаўнта</string>
+    <string name="edit_profile_underline"><u>Рэдагаваць акаўнт</u></string>
+    <string-array name="language_options">
+        <item>English</item>
+        <item>Русский</item>
+        <item>Беларуская</item>
+    </string-array>
 
 </resources>
