@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background_app_settings"
+    tools:context=".mvvm.fragments.app_settings.AppSettingsFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/icBack"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:src="@drawable/btn_back"
+            android:padding="14dp" />
+
+        <TextView
+            android:id="@+id/tvSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:fontFamily="@font/itim"
+            android:gravity="center"
+            android:shadowColor="@color/black_opacity"
+            android:shadowDx="7"
+            android:shadowDy="7"
+            android:shadowRadius="3"
+            android:textSize="36sp"
+            android:autoSizeTextType="uniform"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/llUserInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/round_black_white">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="10dp"
+                android:alpha="0.85"
+                android:src="@drawable/icon_profile" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/username"
+                android:textColor="@color/black_opacity"
+                android:fontFamily="@font/itim"
+                android:gravity="center"
+                android:shadowColor="@color/black_opacity"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:shadowRadius="3"
+                android:textSize="35sp"
+                android:autoSizeTextType="uniform"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.5"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/itim"
+                    android:gravity="center"
+                    android:shadowColor="@color/black_opacity"
+                    android:shadowDx="5"
+                    android:shadowDy="5"
+                    android:shadowRadius="1"
+                    android:text="@string/edit_profile_underline"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llPersonalSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="10dp"                android:orientation="vertical"
+                android:background="@drawable/round_black_white"
+                android:padding="15dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="@string/personal_settings"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/itim"
+                    android:textSize="25sp"
+                    android:autoSizeTextType="uniform"
+                    android:shadowColor="@color/black_opacity"
+                    android:shadowDx="7"
+                    android:shadowDy="7"
+                    android:shadowRadius="3"/>
+                <!-- Night Mode -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/icNightMode"
+                        android:background="@drawable/round_back_night_mode"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="7dp"
+                        android:alpha="0.7"
+                        android:src="@drawable/ic_night_mode" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="20dp"
+                        android:text="@string/night_mode"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/itim"
+                        android:gravity="center"
+                        android:textSize="19sp"
+                        android:layout_toEndOf="@id/icNightMode"/>
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:switchMinWidth="50dp"
+                        android:theme="@style/nightModeSwitch"/>
+                </RelativeLayout>
+                <!-- Notification -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:id="@+id/icNotification"
+                        android:background="@drawable/round_back_notification"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="7dp"
+                        android:alpha="0.7"
+                        android:src="@drawable/ic_notification" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="20dp"
+                        android:text="@string/notifications"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/itim"
+                        android:gravity="center"
+                        android:textSize="19sp"
+                        android:layout_toEndOf="@id/icNotification"/>
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:switchMinWidth="50dp"
+                        android:theme="@style/notificationSwitch"/>
+                </RelativeLayout>
+                <!-- Secure account -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:id="@+id/icSecureAccount"
+                        android:background="@drawable/round_back_private_account"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="7dp"
+                        android:alpha="0.7"
+                        android:src="@drawable/ic_secure_account" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="20dp"
+                        android:text="@string/private_account"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/itim"
+                        android:gravity="center"
+                        android:textSize="19sp"
+                        android:layout_toEndOf="@id/icSecureAccount"/>
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:switchMinWidth="50dp"
+                        android:theme="@style/secureAccountSwitch"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+        <LinearLayout
+            android:id="@+id/llAppSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_black_white"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="10dp"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:text="@string/app_settings"
+                android:textColor="@color/white"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/itim"
+                android:textSize="25sp"
+                android:shadowColor="@color/black_opacity"
+                android:shadowDx="7"
+                android:shadowDy="7"
+                android:shadowRadius="3"/>
+            <!-- Language -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/icLanguage"
+                    android:background="@drawable/round_back_language"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="7dp"
+                    android:alpha="0.7"
+                    android:src="@drawable/ic_language" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/language"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/itim"
+                    android:gravity="center"
+                    android:textSize="19sp"
+                    android:layout_toEndOf="@id/icLanguage"/>
+                <ImageView
+                    android:id="@+id/icLanguageSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_right_arrow"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
+            <!-- Send message-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/icSendMessage"
+                    android:background="@drawable/round_back_message"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="7dp"
+                    android:alpha="0.7"
+                    android:src="@drawable/ic_message" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/send_us_message"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/itim"
+                    android:gravity="center"
+                    android:textSize="19sp"
+                    android:layout_toEndOf="@id/icSendMessage"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_right_arrow"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llSignOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_black_white"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="vertical"
+            android:padding="5dp">
+            <Button
+                android:id="@+id/btnSignUp"
+                style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.75"
+                app:icon="@drawable/ic_sign_out"
+                app:iconTint="@color/white"
+                android:backgroundTint="@android:color/transparent"
+                android:fontFamily="@font/itim"
+                android:text="@string/sign_out"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:cornerRadius="56dp" />
+
+        </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

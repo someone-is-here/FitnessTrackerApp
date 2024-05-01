@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/welcome"
-    tools:context=".mvvm.fragments.WelcomeFragment">
+    tools:context=".mvvm.fragments.signing.WelcomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

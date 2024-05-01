@@ -16,5 +16,14 @@
     <color name="sky_blue">#5599E9</color>
     <color name="hint">#66000000</color>
     <color name="white_75">#BFFFFFFF</color>
-    <color name="white_additional_info">#FCF5F5</color>
+    <color name="white_30">#4DFFFFFF</color>
+    <color name="white_10">#1AFFFFFF</color>
+    <color name="white_additional_info">#CCFCF5F5</color>
+    <color name="settings_background">#4AAAD3</color>
+    <color name="night_mode">#ED9999</color>
+    <color name="notifications">#9FF278</color>
+    <color name="secure_account">#68E7D8</color>
+    <color name="language">#CC815BE6</color>
+    <color name="message">#E57CEE</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>

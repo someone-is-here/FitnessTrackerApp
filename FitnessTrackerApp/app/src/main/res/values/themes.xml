@@ -8,5 +8,21 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
+    <style name="nightModeSwitch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/night_mode</item>
+        <item name="colorSwitchThumbNormal">@color/white</item>
+        <item name="android:foreground">@color/transparent</item>
+    </style>
+    <style name="notificationSwitch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/notifications</item>
+        <item name="colorSwitchThumbNormal">@color/white</item>
+        <item name="android:foreground">@color/transparent</item>
+    </style>
+    <style name="secureAccountSwitch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/secure_account</item>
+        <item name="colorSwitchThumbNormal">@color/white</item>
+        <item name="android:foreground">@color/transparent</item>
+    </style>
+
 
 </resources>
