@@ -72,8 +72,6 @@ dependencies {
     implementation ("com.facebook.android:facebook-android-sdk:[4,5)")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
     implementation("com.google.android.gms:play-services-auth:20.7.0")
 
     // Material Design

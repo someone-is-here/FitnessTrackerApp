@@ -124,8 +124,8 @@
     <string name="notifications">Паведамленні</string>
     <string name="language">Мова</string>
     <string name="send_us_message">Звязацца з намі</string>
-    <string name="personal_settings">Персанальныя настройкі</string>
-    <string name="app_settings">Настройкі прылады</string>
+    <string name="personal_settings">Акаўнта</string>
+    <string name="app_settings">Прылады</string>
 
     <string name="sign_out">Выйсці з аккаўнта</string>
     <string name="edit_profile_underline"><u>Рэдагаваць акаўнт</u></string>
@@ -135,4 +135,6 @@
         <item>Беларуская</item>
     </string-array>
 
+    <string name="write_something">Напішыце нам…</string>
+    <string name="send">Адправіць</string>
 </resources>

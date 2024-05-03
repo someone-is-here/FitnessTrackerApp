@@ -79,6 +79,9 @@
         <action
             android:id="@+id/action_appSettingsFragment_to_languagesFragment"
             app:destination="@id/languagesFragment" />
+        <action
+            android:id="@+id/action_appSettingsFragment_to_sendUsMessageFragment"
+            app:destination="@id/sendUsMessageFragment" />
     </fragment>
     <fragment
         android:id="@+id/languagesFragment"
@@ -87,6 +90,15 @@
         tools:layout="@layout/fragment_languages" >
         <action
             android:id="@+id/action_languagesFragment_to_appSettingsFragment"
+            app:destination="@id/appSettingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sendUsMessageFragment"
+        android:name="com.example.fitnesstrackerapp.mvvm.fragments.app_settings.SendUsMessageFragment"
+        android:label="fragment_send_us_message"
+        tools:layout="@layout/fragment_send_us_message" >
+        <action
+            android:id="@+id/action_sendUsMessageFragment_to_appSettingsFragment"
             app:destination="@id/appSettingsFragment" />
     </fragment>
 </navigation>

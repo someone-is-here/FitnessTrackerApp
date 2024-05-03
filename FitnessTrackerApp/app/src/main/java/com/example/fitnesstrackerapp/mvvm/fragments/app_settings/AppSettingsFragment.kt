@@ -19,9 +19,6 @@ import timber.log.Timber
 
 class AppSettingsFragment : Fragment() {
     private var binding: FragmentAppSettingsBinding? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,14 +42,19 @@ class AppSettingsFragment : Fragment() {
                 R.id.action_appSettingsFragment_to_languagesFragment
             )
         }
-        requireActivity().supportFragmentManager.commit {
-            setCustomAnimations(
-                R.anim.slide_in, // enter
-                R.anim.fade_out, // exit
-                R.anim.fade_in, // popEnter
-                R.anim.slide_out // popExit
+        binding!!.SentMessageArrow.setOnClickListener{
+            findNavController().navigate(
+                R.id.action_appSettingsFragment_to_sendUsMessageFragment
             )
         }
+//        requireActivity().supportFragmentManager.commit {
+//            setCustomAnimations(
+//                R.anim.slide_in, // enter
+//                R.anim.fade_out, // exit
+//                R.anim.fade_in, // popEnter
+//                R.anim.slide_out // popExit
+//            )
+//        }
         binding!!.icBack.setOnClickListener {
             val destination = findNavController().previousBackStackEntry!!.destination.id
             val navOptions = NavOptions.Builder().setPopUpTo(R.id.appSettingsFragment, true).build()
@@ -60,6 +62,7 @@ class AppSettingsFragment : Fragment() {
             // Delete from stack unnecessary fragments
             findNavController().popBackStack(R.id.languagesFragment,true)
             findNavController().popBackStack(R.id.appSettingsFragment,true)
+            findNavController().popBackStack(R.id.sendUsMessageFragment,true)
                 when (destination) {
                    R.id.welcomeFragment -> {
                        findNavController().navigate(
