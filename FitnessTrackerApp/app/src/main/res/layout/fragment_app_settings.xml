@@ -8,104 +8,141 @@
     android:background="@drawable/background_app_settings"
     tools:context=".mvvm.fragments.app_settings.AppSettingsFragment">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="214dp"
+        android:background="@drawable/back_user_account3"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/icBack"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:src="@drawable/btn_back"
-            android:padding="14dp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tvSettings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/settings"
-            android:layout_centerInParent="true"
-            android:textColor="@color/white"
-            android:fontFamily="@font/itim"
-            android:gravity="center"
-            android:shadowColor="@color/black_opacity"
-            android:shadowDx="7"
-            android:shadowDy="7"
-            android:shadowRadius="3"
-            android:textSize="36sp"
-            android:autoSizeTextType="uniform"/>
+            <ImageView
+                android:id="@+id/icBack"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:padding="14dp"
+                android:src="@drawable/btn_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/tvSettings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/itim"
+                android:gravity="left"
+                android:shadowColor="@color/black_opacity"
+                android:shadowDx="7"
+                android:shadowDy="7"
+                android:shadowRadius="3"
+                android:text="@string/settings"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.419"
+                app:layout_constraintStart_toEndOf="@+id/icBack"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/llUserInfo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/round_black_white">
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="10dp"
-                android:alpha="0.85"
-                android:src="@drawable/icon_profile" />
             <LinearLayout
+                android:id="@+id/llUserInfo"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/username"
-                android:textColor="@color/black_opacity"
-                android:fontFamily="@font/itim"
-                android:gravity="center"
-                android:shadowColor="@color/black_opacity"
-                android:shadowDx="3"
-                android:shadowDy="3"
-                android:shadowRadius="3"
-                android:textSize="35sp"
-                android:autoSizeTextType="uniform"/>
+                android:layout_height="148dp"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:alpha="0.85"
+                    android:src="@drawable/icon_profile" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:alpha="0.5"
-                    android:autoSizeTextType="uniform"
-                    android:fontFamily="@font/itim"
-                    android:gravity="center"
-                    android:shadowColor="@color/black_opacity"
-                    android:shadowDx="5"
-                    android:shadowDy="5"
-                    android:shadowRadius="1"
-                    android:text="@string/edit_profile_underline"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:layout_marginTop="30dp"
+                    android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/itim"
+                        android:gravity="center"
+                        android:shadowColor="@color/black_opacity"
+                        android:shadowDx="3"
+                        android:shadowDy="3"
+                        android:shadowRadius="3"
+                        android:text="@string/username"
+                        android:textColor="@color/white"
+                        android:textSize="28sp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="147dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.9"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/itim"
+                        android:gravity="left"
+                        android:shadowColor="@color/black_opacity"
+                        android:shadowDx="5"
+                        android:shadowDy="5"
+                        android:shadowRadius="1"
+                        android:text="@string/edit_profile_underline"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_edit"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/textView"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
             </LinearLayout>
-
         </LinearLayout>
 
-            <LinearLayout
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+        <LinearLayout
                 android:id="@+id/llPersonalSettings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="10dp"                android:orientation="vertical"
+                android:layout_marginVertical="10dp"
+                android:orientation="vertical"
                 android:background="@drawable/round_black_white"
                 android:padding="15dp">
                 <TextView
@@ -115,7 +152,7 @@
                     android:text="@string/personal_settings"
                     android:textColor="@color/white"
                     android:fontFamily="@font/itim"
-                    android:textSize="25sp"
+                    android:textSize="23sp"
                     android:autoSizeTextType="uniform"
                     android:shadowColor="@color/black_opacity"
                     android:shadowDx="7"
@@ -143,7 +180,7 @@
                         android:textColor="@color/white"
                         android:fontFamily="@font/itim"
                         android:gravity="center"
-                        android:textSize="19sp"
+                        android:textSize="17sp"
                         android:layout_toEndOf="@id/icNightMode"/>
                     <Switch
                         android:layout_width="wrap_content"
@@ -176,7 +213,7 @@
                         android:textColor="@color/white"
                         android:fontFamily="@font/itim"
                         android:gravity="center"
-                        android:textSize="19sp"
+                        android:textSize="17sp"
                         android:layout_toEndOf="@id/icNotification"/>
                     <Switch
                         android:layout_width="wrap_content"
@@ -209,7 +246,7 @@
                         android:textColor="@color/white"
                         android:fontFamily="@font/itim"
                         android:gravity="center"
-                        android:textSize="19sp"
+                        android:textSize="17sp"
                         android:layout_toEndOf="@id/icSecureAccount"/>
                     <Switch
                         android:layout_width="wrap_content"
@@ -239,7 +276,7 @@
                 android:textColor="@color/white"
                 android:autoSizeTextType="uniform"
                 android:fontFamily="@font/itim"
-                android:textSize="25sp"
+                android:textSize="23sp"
                 android:shadowColor="@color/black_opacity"
                 android:shadowDx="7"
                 android:shadowDy="7"
@@ -266,7 +303,7 @@
                     android:textColor="@color/white"
                     android:fontFamily="@font/itim"
                     android:gravity="center"
-                    android:textSize="19sp"
+                    android:textSize="17sp"
                     android:layout_toEndOf="@id/icLanguage"/>
                 <ImageView
                     android:id="@+id/icLanguageSwitch"
@@ -300,9 +337,10 @@
                     android:textColor="@color/white"
                     android:fontFamily="@font/itim"
                     android:gravity="center"
-                    android:textSize="19sp"
+                    android:textSize="17sp"
                     android:layout_toEndOf="@id/icSendMessage"/>
                 <ImageView
+                    android:id="@+id/SentMessageArrow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_right_arrow"
@@ -312,31 +350,31 @@
             </RelativeLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/llSignOut"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/round_black_white"
-            android:layout_marginVertical="5dp"
-            android:layout_marginHorizontal="20dp"
-            android:orientation="vertical"
-            android:padding="5dp">
-            <Button
-                android:id="@+id/btnSignUp"
-                style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
+            <LinearLayout
+                android:id="@+id/llSignOut"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:alpha="0.75"
-                app:icon="@drawable/ic_sign_out"
-                app:iconTint="@color/white"
-                android:backgroundTint="@android:color/transparent"
-                android:fontFamily="@font/itim"
-                android:text="@string/sign_out"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                app:cornerRadius="56dp" />
+                android:background="@drawable/round_black_white"
+                android:layout_marginVertical="5dp"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical"
+                android:padding="5dp">
+                <Button
+                    android:id="@+id/btnSignUp"
+                    style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.75"
+                    app:icon="@drawable/ic_sign_out"
+                    app:iconTint="@color/white"
+                    android:backgroundTint="@android:color/transparent"
+                    android:fontFamily="@font/itim"
+                    android:text="@string/sign_out"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:cornerRadius="56dp" />
 
-        </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

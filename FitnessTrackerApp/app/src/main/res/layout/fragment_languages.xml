@@ -32,7 +32,7 @@
             android:shadowDx="7"
             android:shadowDy="7"
             android:shadowRadius="3"
-            android:textSize="36sp"
+            android:textSize="30sp"
             android:autoSizeTextType="uniform"/>
 
     </RelativeLayout>
@@ -52,5 +52,18 @@
         android:popupBackground="@android:color/transparent"
         style="@android:style/Widget.Holo.Light.Spinner" />
     </com.google.android.material.card.MaterialCardView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <ProgressBar
+            android:id="@+id/progress_Bar"
+            style="?android:attr/progressBarStyle"
+            android:indeterminateTint="@color/settings_background"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_centerInParent="true"
+            android:indeterminate="true"
+            android:visibility="invisible" />
+    </RelativeLayout>
 </LinearLayout>

@@ -114,7 +114,7 @@
 
     <!-- Settings fragment -->
     <string name="update_your_data">Обновить Ваши данные</string>
-    <string name="username">Имя пользователя</string>
+    <string name="username">Имя</string>
     <string name="your_height">Рост</string>
     <string name="cm">см</string>
 
@@ -125,8 +125,8 @@
 
     <string name="language">Язык</string>
     <string name="send_us_message">Связаться с нами</string>
-    <string name="personal_settings">Персональные настройки</string>
-    <string name="app_settings">Настройки приложения</string>
+    <string name="personal_settings">Аккаунта</string>
+    <string name="app_settings">Приложения</string>
     <string name="sign_out">Выйти из аккаунта</string>
 
     <string name="edit_profile_underline"><u>Редактировать аккаунт</u></string>
@@ -137,4 +137,6 @@
         <item>Беларуская</item>
     </string-array>
 
+    <string name="write_something">Напишите нам…</string>
+    <string name="send">Отправить</string>
 </resources>
