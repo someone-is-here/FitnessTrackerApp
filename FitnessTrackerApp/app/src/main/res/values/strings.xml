@@ -138,6 +138,12 @@
     <string name="send">Send</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="bio">Bio</string>
+    <string name="location">location</string>
+    <string name="birthday">Birthday</string>
+    <string name="height">height</string>
+    <string name="save">Save</string>
 
 
 </resources>

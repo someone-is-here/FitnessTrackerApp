@@ -46,7 +46,11 @@ tools:context=".mvvm.fragments.app_settings.SendUsMessageFragment">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp">
+        android:layout_margin="20dp"
+        android:shadowColor="@color/black_opacity"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="3">
 
         <EditText
             android:id="@+id/etMessage"

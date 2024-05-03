@@ -11,14 +11,14 @@ import com.example.fitnesstrackerapp.databinding.FragmentSendUsMessageBinding
 
 
 class SendUsMessageFragment : Fragment() {
-    private var binding:FragmentSendUsMessageBinding? = null
+    private lateinit var binding:FragmentSendUsMessageBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSendUsMessageBinding.inflate(inflater, container, false)
-        return binding!!.root
+        return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,7 +27,7 @@ class SendUsMessageFragment : Fragment() {
     }
 
     private fun setUpHandlers() {
-        binding!!.icBack.setOnClickListener {
+        binding.icBack.setOnClickListener {
             findNavController().navigate(R.id.action_languagesFragment_to_appSettingsFragment)
         }
     }
