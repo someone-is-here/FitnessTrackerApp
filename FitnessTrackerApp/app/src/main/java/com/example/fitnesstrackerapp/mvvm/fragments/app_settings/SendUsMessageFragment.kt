@@ -28,7 +28,7 @@ class SendUsMessageFragment : Fragment() {
 
     private fun setUpHandlers() {
         binding.icBack.setOnClickListener {
-            findNavController().navigate(R.id.action_languagesFragment_to_appSettingsFragment)
+            findNavController().navigate(R.id.action_sendUsMessageFragment_to_appSettingsFragment)
         }
     }
 }

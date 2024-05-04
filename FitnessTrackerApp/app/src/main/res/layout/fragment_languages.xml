@@ -40,6 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         app:strokeWidth="2dp"
+        android:theme="@style/Theme.MaterialComponents.DayNight"
         android:layout_margin="30dp"
         app:strokeColor="@color/white"
         android:backgroundTint="@color/transparent"

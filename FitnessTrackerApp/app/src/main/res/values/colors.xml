@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="black_opacity">#66000000</color>
+    <color name="black_20">#1A000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="cyan">#4CEFDB</color>
     <color name="grey">#818887</color>
@@ -14,6 +15,7 @@
     <color name="button">#BF11DE</color>
     <color name="main">#0fcaf0</color>
     <color name="sky_blue">#5599E9</color>
+    <color name="sky_blue_pressed">#755599E9</color>
     <color name="hint">#66000000</color>
     <color name="white_75">#BFFFFFFF</color>
     <color name="white_60">#99FFFFFF</color>

@@ -37,17 +37,17 @@ class AppSettingsFragment : Fragment() {
 
 
     private fun setUpHandlers(savedInstanceState: Bundle?){
-        binding.icLanguageSwitch.setOnClickListener{
+        binding.rlLanguageSwitch.setOnClickListener{
             findNavController().navigate(
                 R.id.action_appSettingsFragment_to_languagesFragment
             )
         }
-        binding.SentMessageArrow.setOnClickListener{
+        binding.rlSentMessage.setOnClickListener{
             findNavController().navigate(
                 R.id.action_appSettingsFragment_to_sendUsMessageFragment
             )
         }
-        binding.clEditProfile.setOnClickListener {
+        binding.tvEditProfile.setOnClickListener {
             findNavController().navigate(
                 R.id.action_appSettingsFragment_to_editProfileFragment
             )
@@ -61,14 +61,14 @@ class AppSettingsFragment : Fragment() {
 //            )
 //        }
         binding.icBack.setOnClickListener {
-            val destination = findNavController().previousBackStackEntry!!.destination.id
-            val navOptions = NavOptions.Builder().setPopUpTo(R.id.appSettingsFragment, true).build()
-
             // Delete from stack unnecessary fragments
             findNavController().popBackStack(R.id.languagesFragment,true)
-            findNavController().popBackStack(R.id.appSettingsFragment,true)
             findNavController().popBackStack(R.id.sendUsMessageFragment,true)
             findNavController().popBackStack(R.id.editProfileFragment,true)
+
+            //Getting destination
+            val destination = findNavController().previousBackStackEntry!!.destination.id
+            val navOptions = NavOptions.Builder().setPopUpTo(R.id.appSettingsFragment, true).build()
 
                 when (destination) {
                    R.id.welcomeFragment -> {
@@ -77,18 +77,24 @@ class AppSettingsFragment : Fragment() {
                            savedInstanceState,
                            navOptions)
 
+                        // Clear stack (not to return to the app_settings & reduce doubled welcome fragment)
+                       findNavController().popBackStack(R.id.appSettingsFragment,true)
                        findNavController().popBackStack(R.id.welcomeFragment,true)
                    }
                    R.id.signInFragment -> {
                        findNavController().navigate(R.id.action_appSettingsFragment_to_signInFragment,
                                                     savedInstanceState,
                                                     navOptions)
+                       // Clear stack
+                       findNavController().popBackStack(R.id.appSettingsFragment,true)
                        findNavController().popBackStack(R.id.signInFragment,true)
                    }
                     R.id.signUpFragment -> {
                         findNavController().navigate(R.id.action_appSettingsFragment_to_signUpFragment,
                             savedInstanceState,
                             navOptions)
+                        // Clear stack
+                        findNavController().popBackStack(R.id.appSettingsFragment,true)
                         findNavController().popBackStack(R.id.signUpFragment,true)
 
                     }
@@ -97,7 +103,8 @@ class AppSettingsFragment : Fragment() {
                         findNavController().navigate(R.id.action_appSettingsFragment_to_resetPasswordFragment,
                             savedInstanceState,
                             navOptions)
-
+                        // Clear stack
+                        findNavController().popBackStack(R.id.appSettingsFragment,true)
                         findNavController().popBackStack(R.id.resetPasswordFragment,true)
                     }
 

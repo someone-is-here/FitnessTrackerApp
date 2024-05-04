@@ -57,7 +57,7 @@ object ServiceModule {
     ) = NotificationCompat.Builder(app, Constants.NOTIFICATION_CHANNEL_ID)
         .setAutoCancel(false)
         .setOngoing(true)
-        .setSmallIcon(R.drawable.runner)
+        .setSmallIcon(R.drawable.ic_runner)
         .setContentTitle(app.getString(R.string.notification_name))
         .setContentText("00:00:00")
         .setContentIntent(pendingIntent)
