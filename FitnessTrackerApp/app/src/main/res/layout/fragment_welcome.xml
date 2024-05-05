@@ -80,7 +80,7 @@
             android:layout_width="314dp"
             android:layout_height="45dp"
             android:alpha="0.75"
-            android:background="@drawable/button_bg"
+            android:background="@drawable/btn_login_welcome"
             android:elevation="5dp"
             android:fontFamily="@font/itim"
             android:gravity="center"
@@ -99,13 +99,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.805" />
 
-
         <Button
             android:id="@+id/btnSignUp"
             android:layout_width="314dp"
-            android:layout_height="52dp"
+            android:layout_height="45dp"
             android:alpha="0.75"
-            android:backgroundTint="@android:color/transparent"
+            android:background="@drawable/btn_sign_up_welcome"
             android:fontFamily="@font/itim"
             android:gravity="center"
             android:shadowColor="@color/black_opacity"
@@ -113,9 +112,9 @@
             android:shadowDy="4"
             android:shadowRadius="3"
             android:text="@string/sign_up_caps"
+            android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="22sp"
-            app:cornerRadius="56dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -125,13 +124,13 @@
             app:strokeColor="@color/white"
             app:strokeWidth="2dp" />
 
-        <ImageView
-            android:id="@+id/ivSettings"
+        <Button
+            android:id="@+id/btnSettings"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="31dp"
             android:contentDescription="@string/settings"
-            android:src="@drawable/ic_settings"
+            android:background="@drawable/ic_settings"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.951"

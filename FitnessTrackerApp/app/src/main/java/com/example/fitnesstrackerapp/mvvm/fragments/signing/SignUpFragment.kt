@@ -33,7 +33,7 @@ class SignUpFragment : Signing() {
         super.setAnimation(context)
 
         binding!!.tvSignUp.startAnimation(topToBottomAnimation)
-        binding!!.ivSettings.startAnimation(settingsAnimation)
+        binding!!.btnSettings.startAnimation(settingsAnimation)
 
         binding!!.tvHaveAccount.startAnimation(scaleAnimation)
         binding!!.tvSignIn.startAnimation(scaleAnimation)
@@ -41,7 +41,7 @@ class SignUpFragment : Signing() {
 
     private fun setUpHandlers(){
 
-        binding!!.ivSettings.setOnClickListener{
+        binding!!.btnSettings.setOnClickListener{
             findNavController().navigate(R.id.action_signUpFragment_to_appSettingsFragment);
         }
 

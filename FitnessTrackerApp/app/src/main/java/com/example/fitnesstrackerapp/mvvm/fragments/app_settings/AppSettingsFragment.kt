@@ -18,7 +18,7 @@ import timber.log.Timber
 
 
 class AppSettingsFragment : Fragment() {
-    private var binding: FragmentAppSettingsBinding? = null
+    private lateinit var binding: FragmentAppSettingsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +26,7 @@ class AppSettingsFragment : Fragment() {
     ): View {
         binding = FragmentAppSettingsBinding.inflate(inflater, container, false)
 
-        return binding!!.root
+        return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,14 +37,19 @@ class AppSettingsFragment : Fragment() {
 
 
     private fun setUpHandlers(savedInstanceState: Bundle?){
-        binding!!.icLanguageSwitch.setOnClickListener{
+        binding.rlLanguageSwitch.setOnClickListener{
             findNavController().navigate(
                 R.id.action_appSettingsFragment_to_languagesFragment
             )
         }
-        binding!!.SentMessageArrow.setOnClickListener{
+        binding.rlSentMessage.setOnClickListener{
             findNavController().navigate(
                 R.id.action_appSettingsFragment_to_sendUsMessageFragment
+            )
+        }
+        binding.tvEditProfile.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_appSettingsFragment_to_editProfileFragment
             )
         }
 //        requireActivity().supportFragmentManager.commit {
@@ -55,14 +60,16 @@ class AppSettingsFragment : Fragment() {
 //                R.anim.slide_out // popExit
 //            )
 //        }
-        binding!!.icBack.setOnClickListener {
+        binding.btnBack.setOnClickListener {
+            // Delete from stack unnecessary fragments
+            findNavController().popBackStack(R.id.languagesFragment,true)
+            findNavController().popBackStack(R.id.sendUsMessageFragment,true)
+            findNavController().popBackStack(R.id.editProfileFragment,true)
+
+            //Getting destination
             val destination = findNavController().previousBackStackEntry!!.destination.id
             val navOptions = NavOptions.Builder().setPopUpTo(R.id.appSettingsFragment, true).build()
 
-            // Delete from stack unnecessary fragments
-            findNavController().popBackStack(R.id.languagesFragment,true)
-            findNavController().popBackStack(R.id.appSettingsFragment,true)
-            findNavController().popBackStack(R.id.sendUsMessageFragment,true)
                 when (destination) {
                    R.id.welcomeFragment -> {
                        findNavController().navigate(
@@ -70,18 +77,24 @@ class AppSettingsFragment : Fragment() {
                            savedInstanceState,
                            navOptions)
 
+                        // Clear stack (not to return to the app_settings & reduce doubled welcome fragment)
+                       findNavController().popBackStack(R.id.appSettingsFragment,true)
                        findNavController().popBackStack(R.id.welcomeFragment,true)
                    }
                    R.id.signInFragment -> {
                        findNavController().navigate(R.id.action_appSettingsFragment_to_signInFragment,
                                                     savedInstanceState,
                                                     navOptions)
+                       // Clear stack
+                       findNavController().popBackStack(R.id.appSettingsFragment,true)
                        findNavController().popBackStack(R.id.signInFragment,true)
                    }
                     R.id.signUpFragment -> {
                         findNavController().navigate(R.id.action_appSettingsFragment_to_signUpFragment,
                             savedInstanceState,
                             navOptions)
+                        // Clear stack
+                        findNavController().popBackStack(R.id.appSettingsFragment,true)
                         findNavController().popBackStack(R.id.signUpFragment,true)
 
                     }
@@ -90,7 +103,8 @@ class AppSettingsFragment : Fragment() {
                         findNavController().navigate(R.id.action_appSettingsFragment_to_resetPasswordFragment,
                             savedInstanceState,
                             navOptions)
-
+                        // Clear stack
+                        findNavController().popBackStack(R.id.appSettingsFragment,true)
                         findNavController().popBackStack(R.id.resetPasswordFragment,true)
                     }
 
@@ -103,11 +117,11 @@ class AppSettingsFragment : Fragment() {
         val topToBottomAnimation = AnimationUtils.loadAnimation(context, R.anim.top_to_bottom)
         val scaleAnimation = AnimationUtils.loadAnimation(context, R.anim.scale)
 
-        binding!!.tvSettings.startAnimation(scaleAnimation)
-        binding!!.llUserInfo.startAnimation(topToBottomAnimation)
-        binding!!.llPersonalSettings.startAnimation(topToBottomAnimation)
-        binding!!.llAppSettings.startAnimation(topToBottomAnimation)
-        binding!!.llSignOut.startAnimation(topToBottomAnimation)
+        binding.tvSettings.startAnimation(scaleAnimation)
+        binding.llUserInfo.startAnimation(topToBottomAnimation)
+        binding.llPersonalSettings.startAnimation(topToBottomAnimation)
+        binding.llAppSettings.startAnimation(topToBottomAnimation)
+        binding.llSignOut.startAnimation(topToBottomAnimation)
     }
 
 

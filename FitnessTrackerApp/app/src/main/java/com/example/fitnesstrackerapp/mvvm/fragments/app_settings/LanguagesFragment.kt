@@ -18,7 +18,7 @@ import java.util.Locale
 
 
 class LanguagesFragment : Fragment() {
-    private var binding: FragmentLanguagesBinding? = null
+    private lateinit var binding: FragmentLanguagesBinding
     private val languages = mapOf("English" to "en", "Беларуская" to "be", "Русский" to "ru")
     private var progressDialog: ProgressDialog? = null
     override fun onCreateView(
@@ -27,7 +27,7 @@ class LanguagesFragment : Fragment() {
     ): View {
         binding = FragmentLanguagesBinding.inflate(inflater, container, false)
 
-        return binding!!.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,13 +37,13 @@ class LanguagesFragment : Fragment() {
     }
 
     private fun setUpHandlers() {
-        binding!!.icBack.setOnClickListener {
+        binding.btnBack.setOnClickListener {
             findNavController().navigate(R.id.action_languagesFragment_to_appSettingsFragment)
         }
     }
 
     private fun setUpSpinner() {
-       val spinner = binding!!.spLanguageSwitch
+       val spinner = binding.spLanguageSwitch
 
         val lang = resources.configuration.locale.language
         //val adapter = ArrayAdapter(requireContext(), R.layout.simple_spinner_item, languages.keys.toTypedArray())

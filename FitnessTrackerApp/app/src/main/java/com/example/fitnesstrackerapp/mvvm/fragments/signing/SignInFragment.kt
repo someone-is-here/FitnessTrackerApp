@@ -42,7 +42,7 @@ class SignInFragment : Signing() {
         val githubAnimation = AnimationUtils.loadAnimation(context, R.anim.anim_github)
 
         binding!!.tvLogin.startAnimation(topToBottomAnimation)
-        binding!!.ivSettings.startAnimation(settingsAnimation)
+        binding!!.btnSettings.startAnimation(settingsAnimation)
 
         binding!!.btnGoogleSignIn.startAnimation(googleAnimation)
         binding!!.btnXSignIn.startAnimation(xAnimation)
@@ -72,7 +72,7 @@ class SignInFragment : Signing() {
             findNavController().navigate(R.id.action_signInFragment_to_signUpFragment)
         }
 
-        binding!!.ivSettings.setOnClickListener{
+        binding!!.btnSettings.setOnClickListener{
             findNavController().navigate(R.id.action_signInFragment_to_appSettingsFragment);
         }
 

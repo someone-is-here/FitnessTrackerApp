@@ -34,7 +34,7 @@ class ResetPasswordFragment : Signing() {
         super.setAnimation(context)
 
         binding!!.tvResetPassword.startAnimation(topToBottomAnimation)
-        binding!!.ivSettings.startAnimation(settingsAnimation)
+        binding!!.btnSettings.startAnimation(settingsAnimation)
 
         binding!!.tvSignUp.startAnimation(scaleAnimation)
         binding!!.tvSignIn.startAnimation(scaleAnimation)
@@ -49,7 +49,7 @@ class ResetPasswordFragment : Signing() {
             findNavController().navigate(R.id.action_resetPasswordFragment_to_signUpFragment)
         }
 
-        binding!!.ivSettings.setOnClickListener{
+        binding!!.btnSettings.setOnClickListener{
             findNavController().navigate(R.id.action_resetPasswordFragment_to_appSettingsFragment);
         }
 

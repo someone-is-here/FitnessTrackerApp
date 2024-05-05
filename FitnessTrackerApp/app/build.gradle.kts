@@ -85,6 +85,7 @@ dependencies {
     implementation("androidx.core:core-ktx:+")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("com.google.firebase:firebase-database:20.3.1")
+    implementation("com.google.android.libraries.play.games:inputmapping:1.1.0-beta")
     kapt("androidx.room:room-compiler:2.6.1")
 
     // Kotlin Extensions and Coroutines support for room
