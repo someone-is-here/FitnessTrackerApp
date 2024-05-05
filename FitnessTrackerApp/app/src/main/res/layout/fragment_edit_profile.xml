@@ -8,6 +8,11 @@
     android:background="@drawable/background_edit_profile"
     tools:context=".mvvm.fragments.app_settings.AppSettingsFragment">
 
+    <include
+        android:id="@+id/include_number_pitcher_dialog"
+        layout="@layout/number_pitcher_dialog"
+        android:visibility="gone" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -20,19 +25,20 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
 
-            <ImageView
-                android:id="@+id/icBack"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:padding="14dp"
-                android:src="@drawable/btn_back"
+                android:background="@drawable/ic_back"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvSettings"
+                android:id="@+id/tvEditProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -45,11 +51,11 @@
                 android:shadowRadius="3"
                 android:text="@string/edit_profile"
                 android:textColor="@color/white"
-                android:textSize="30sp"
+                android:textSize="26sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.419"
-                app:layout_constraintStart_toEndOf="@+id/icBack"
+                app:layout_constraintStart_toEndOf="@+id/btnBack"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -101,7 +107,6 @@
                         android:shadowDx="7"
                         android:shadowDy="7"
                         android:shadowRadius="3"
-                        android:text="Alexandr"
                         android:textColor="@color/white"
                         android:textSize="24sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -135,6 +140,7 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/etBio"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
                 android:alpha="0.9"
@@ -154,6 +160,7 @@
                 android:textColorHint="@color/white_75" />
 
             <LinearLayout
+                android:id="@+id/llEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -181,7 +188,6 @@
                     android:shadowDx="7"
                     android:shadowDy="7"
                     android:shadowRadius="3"
-                    android:text="email@gmail.com"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -194,6 +200,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llCounty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -203,23 +210,34 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
                     android:fontFamily="@font/itim"
-                    android:text="@string/location"
+                    android:text="@string/country"
                     android:textAllCaps="true"
                     android:textColor="@color/black_opacity"
                     android:textSize="12sp" />
 
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    app:strokeWidth="2dp"
+                    android:theme="@style/Theme.MaterialComponents.DayNight"
+                    app:strokeColor="@color/white"
+                    android:backgroundTint="@color/transparent"
+                    app:cardCornerRadius="4dp">
+
                 <Spinner
                     android:id="@+id/spLocation"
-                    style="@android:style/Widget.Holo.Light.Spinner"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:dropDownVerticalOffset="40dp"
-                    android:popupBackground="@android:color/transparent" />
+                    style="@android:style/Widget.Holo.Light.Spinner" />
 
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llBirthday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -240,7 +258,7 @@
                     style="@android:style/Widget.Holo.Light.Spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="-5dp"
+                    android:layout_marginTop="-10dp"
                     android:layout_marginBottom="-5dp"
                     android:fontFamily="@font/itim"
                     android:padding="1dp"
@@ -248,9 +266,13 @@
                     android:shadowDx="7"
                     android:shadowDy="7"
                     android:shadowRadius="3"
-                    android:text="28.07.2002"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:textColor="@color/white"
                     android:textSize="20sp"
+                    android:background="@color/transparent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.495"
@@ -261,6 +283,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llHeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -281,7 +304,7 @@
                     style="@android:style/Widget.Holo.Light.Spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="-5dp"
+                    android:layout_marginTop="-10dp"
                     android:layout_marginBottom="-5dp"
                     android:fontFamily="@font/itim"
                     android:padding="1dp"
@@ -289,9 +312,9 @@
                     android:shadowDx="7"
                     android:shadowDy="7"
                     android:shadowRadius="3"
-                    android:text="165 cm"
                     android:textColor="@color/white"
                     android:textSize="20sp"
+                    android:background="@color/transparent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.495"
@@ -302,6 +325,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llWeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -312,7 +336,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/itim"
-                    android:text="@string/height"
+                    android:text="@string/weight"
                     android:textAllCaps="true"
                     android:textColor="@color/black_opacity"
                     android:textSize="12sp" />
@@ -322,7 +346,7 @@
                     style="@android:style/Widget.Holo.Light.Spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="-5dp"
+                    android:layout_marginTop="-10dp"
                     android:layout_marginBottom="-5dp"
                     android:fontFamily="@font/itim"
                     android:padding="1dp"
@@ -330,9 +354,9 @@
                     android:shadowDx="7"
                     android:shadowDy="7"
                     android:shadowRadius="3"
-                    android:text="50 kg"
                     android:textColor="@color/white"
                     android:textSize="20sp"
+                    android:background="@color/transparent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.495"
@@ -343,12 +367,12 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnSave"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginVertical="20dp"
                 android:alpha="0.9"
-                android:background="@drawable/btn_login_welcome_normal"
+                android:background="@drawable/btn_login_welcome"
                 android:elevation="5dp"
                 android:fontFamily="@font/itim"
                 android:gravity="center"

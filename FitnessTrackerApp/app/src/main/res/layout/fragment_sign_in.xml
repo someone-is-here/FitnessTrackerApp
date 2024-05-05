@@ -119,7 +119,7 @@
         android:id="@+id/btnGoogleSignIn"
         android:layout_width="134dp"
         android:layout_height="54dp"
-        android:background="@drawable/btn_round_black_white"
+        android:background="@drawable/btn_sign_in"
         android:drawableLeft="@mipmap/ic_google"
         android:drawablePadding="3dp"
         android:fontFamily="@font/itim"
@@ -140,7 +140,7 @@
         android:id="@+id/btnXSignIn"
         android:layout_width="134dp"
         android:layout_height="54dp"
-        android:background="@drawable/btn_round_black_white"
+        android:background="@drawable/btn_sign_in"
         android:drawableLeft="@mipmap/ic_x"
         android:drawablePadding="3dp"
         android:fontFamily="@font/itim"
@@ -160,7 +160,7 @@
         android:id="@+id/btnGitHubSignIn"
         android:layout_width="134dp"
         android:layout_height="54dp"
-        android:background="@drawable/btn_round_black_white"
+        android:background="@drawable/btn_sign_in"
         android:drawableLeft="@mipmap/ic_github"
         android:drawablePadding="3dp"
         android:fontFamily="@font/itim"
@@ -216,13 +216,13 @@
         app:layout_constraintTop_toBottomOf="@+id/btnGitHubSignIn"
         app:layout_constraintVertical_bias="1.0" />
 
-    <ImageView
-        android:id="@+id/ivSettings"
+    <Button
+        android:id="@+id/btnSettings"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="31dp"
         android:contentDescription="@string/settings"
-        android:src="@drawable/ic_settings_normal"
+        android:background="@drawable/ic_settings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.951"

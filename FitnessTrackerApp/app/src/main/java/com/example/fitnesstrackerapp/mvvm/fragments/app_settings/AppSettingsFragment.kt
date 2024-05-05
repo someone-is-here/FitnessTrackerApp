@@ -60,7 +60,7 @@ class AppSettingsFragment : Fragment() {
 //                R.anim.slide_out // popExit
 //            )
 //        }
-        binding.icBack.setOnClickListener {
+        binding.btnBack.setOnClickListener {
             // Delete from stack unnecessary fragments
             findNavController().popBackStack(R.id.languagesFragment,true)
             findNavController().popBackStack(R.id.sendUsMessageFragment,true)

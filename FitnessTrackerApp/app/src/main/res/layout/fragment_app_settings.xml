@@ -16,14 +16,15 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
 
-            <ImageView
-                android:id="@+id/icBack"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:padding="14dp"
-                android:src="@drawable/btn_back"
+                android:background="@drawable/ic_back"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,7 +46,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.419"
-                app:layout_constraintStart_toEndOf="@+id/icBack"
+                app:layout_constraintStart_toEndOf="@+id/btnBack"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -57,7 +58,7 @@
             <LinearLayout
                 android:id="@+id/llUserInfo"
                 android:layout_width="match_parent"
-                android:layout_height="148dp"
+                android:layout_height="128dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -91,7 +92,7 @@
 
                     <Button
                         android:id="@+id/tvEditProfile"
-                        android:layout_width="157dp"
+                        android:layout_width="165dp"
                         android:layout_height="45dp"
                         android:textAllCaps="false"
                         android:background="@drawable/btn_signing_text"
@@ -274,6 +275,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/btn_signing_text"
                 android:id="@+id/rlLanguageSwitch">
 
                 <ImageView
@@ -308,6 +310,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:background="@drawable/btn_signing_text"
                 android:id="@+id/rlSentMessage">
 
                 <ImageView

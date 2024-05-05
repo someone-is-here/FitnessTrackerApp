@@ -53,7 +53,7 @@ class WelcomeFragment : Fragment() {
         val scaleAnimation = AnimationUtils.loadAnimation(context, R.anim.scale)
         val settingsAnimation = AnimationUtils.loadAnimation(context, R.anim.anim_settings)
 
-        binding!!.ivSettings.startAnimation(settingsAnimation)
+        binding!!.btnSettings.startAnimation(settingsAnimation)
 
         binding!!.tvWelcome.startAnimation(topToBottomAnimation)
         binding!!.tvToThe.startAnimation(topToBottomAnimation)
@@ -63,7 +63,7 @@ class WelcomeFragment : Fragment() {
         binding!!.btnSignUp.startAnimation(scaleAnimation)
     }
     private fun setUpHandlers() {
-        binding!!.ivSettings.setOnClickListener{
+        binding!!.btnSettings.setOnClickListener{
             findNavController().navigate(R.id.action_welcomeFragment_to_appSettingsFragment)
         }
 

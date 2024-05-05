@@ -135,6 +135,18 @@
         <item>Беларуская</item>
     </string-array>
 
+    <!-- Send us fragment -->
     <string name="write_something">Напішыце нам…</string>
     <string name="send">Адправіць</string>
+
+    <!-- Edit profile fragment -->
+    <string name="edit_profile">Рэдагаваць акаўнт</string>
+    <string name="bio">Статус</string>
+    <string name="country">Краіна</string>
+    <string name="birthday">День нараджэння</string>
+    <string name="height">Вышыня</string>
+    <string name="save">Захаваць</string>
+    <string name="weight">Вага</string>
+    <string name="cancel">Адмяніць</string>
+    <string name="set">Усталяваць</string>
 </resources>
