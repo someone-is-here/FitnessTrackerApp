@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.fitnesstrackerapp.R
 import com.example.fitnesstrackerapp.databinding.FragmentResetPasswordBinding
-import com.example.fitnesstrackerapp.other.Signing
+import com.example.fitnesstrackerapp.mvvm.fragments.parent.Signing
 
 class ResetPasswordFragment : Signing() {
 

@@ -4,167 +4,352 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@drawable/background_edit_profile"
     tools:context=".mvvm.fragments.SetUpFragment"
     android:id="@+id/nav_setup">
 
+
     <ImageView
-        android:id="@+id/ivLogo"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="18dp"
-        android:alpha="0.8"
-        app:layout_constraintBottom_toTopOf="@+id/tvWelcome"
+        android:id="@+id/iv_background"
+        android:layout_width="450dp"
+        android:layout_height="163dp"
+        android:background="@drawable/back_user_account"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.88"
-        app:srcCompat="@mipmap/icon_circle" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvWelcome"
-        android:layout_width="294dp"
-        android:layout_height="112dp"
-        android:layout_marginTop="132dp"
-        android:text="Please fill out the form"
-        android:textAlignment="center"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilUsername"
-        android:layout_width="253dp"
-        android:layout_height="75dp"
-        app:layout_constraintBottom_toTopOf="@+id/tilHeight"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvWelcome"
-        app:layout_constraintVertical_bias="1.0">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etUsername"
-            android:layout_width="match_parent"
-            android:layout_height="63dp"
-            android:alpha="0.3"
-            android:background="@color/grey"
-            android:ems="10"
-            android:hint="Username"
-            android:inputType="text"
-            android:textColor="@color/black" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilHeight"
-        android:layout_width="153dp"
-        android:layout_height="76dp"
-        android:layout_marginBottom="164dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.465"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvWelcome">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etHeight"
-            android:layout_width="match_parent"
-            android:layout_height="76dp"
-            android:alpha="0.3"
-            android:background="@color/grey"
-            android:ems="10"
-            android:hint="Your Height"
-            android:inputType="number"
-            android:textColor="@color/black" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/tvHeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="72dp"
-        android:text="cm"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tilHeight"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/tilWeight"
-        app:layout_constraintTop_toTopOf="@+id/tilHeight"
-        app:layout_constraintVertical_bias="0.454" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilWeight"
-        android:layout_width="155dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilHeight"
-        app:layout_constraintVertical_bias="0.118">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etWeight"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:alpha="0.3"
-            android:background="@color/grey"
-            android:ems="10"
-            android:hint="Your Weight"
-            android:inputType="numberDecimal"
-            android:textColor="@color/black" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/tvWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:layout_marginEnd="76dp"
-        android:text="kg"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tilWeight"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/tilWeight"
-        app:layout_constraintTop_toTopOf="@+id/tilWeight"
-        app:layout_constraintVertical_bias="0.625" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/tvCreateAccount"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/button"
-        android:padding="8dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="14dp"
+        android:layout_alignParentEnd="true"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/itim"
+        android:gravity="center"
+        android:shadowColor="@color/black_opacity"
+        android:shadowDx="7"
+        android:shadowDy="7"
+        android:shadowRadius="3"
+        android:text="@string/create_an_account"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnUploadBackground"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/transparent"
+        android:clickable="true"
+        android:src="@drawable/ic_upload"
+        app:borderWidth="0dp"
+        app:fabCustomSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/tvCreateAccount"
+        app:layout_constraintVertical_bias="0.131" />
 
-        <TextView
-            android:id="@+id/tvContinue"
-            android:layout_width="wrap_content"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnUploadProfile"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:backgroundTint="@color/black_20"
+        android:clickable="true"
+        android:src="@drawable/ic_upload"
+        app:borderWidth="0dp"
+        app:fabCustomSize="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
+        app:layout_constraintEnd_toEndOf="@+id/iv_profile"
+        app:layout_constraintHorizontal_bias="0.78"
+        app:layout_constraintStart_toStartOf="@+id/iv_profile" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_profile"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@drawable/back_user_account3"
+        app:civ_border_color="#FFFFFF"
+        app:civ_border_width="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_background" />
+    <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:letterSpacing="0.15"
-            android:text="Continue"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="italic"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.333" />
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="15dp"
+            android:orientation="vertical">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <EditText
+                android:id="@+id/etBio"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:alpha="0.9"
+                android:background="@drawable/shadow_for_rectangle"
+                android:ems="10"
+                android:fontFamily="@font/itim"
+                android:gravity="top"
+                android:hint="@string/bio"
+                android:textSize="20sp"
+                android:inputType="textMultiLine"
+                android:padding="15dp"
+                android:shadowColor="@color/black_opacity"
+                android:shadowDx="7"
+                android:shadowDy="7"
+                android:shadowRadius="3"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white_75" />
+
+
+            <LinearLayout
+                android:id="@+id/llEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itim"
+                    android:text="@string/email"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black_opacity"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-5dp"
+                    android:background="@drawable/edit_text_bottom_line"
+                    android:fontFamily="@font/itim"
+                    android:inputType="textEmailAddress"
+                    android:padding="1dp"
+                    android:shadowColor="@color/black_opacity"
+                    android:shadowDx="7"
+                    android:shadowDy="7"
+                    android:shadowRadius="3"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLogin"
+                    app:layout_constraintVertical_bias="0.0" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llCounty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edit_text_bottom_line"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:fontFamily="@font/itim"
+                    android:text="@string/country"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black_opacity"
+                    android:textSize="12sp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:backgroundTint="@color/transparent"
+                    android:theme="@style/Theme.MaterialComponents.DayNight"
+                    app:cardCornerRadius="4dp"
+                    app:strokeColor="@color/white"
+                    app:strokeWidth="2dp">
+
+                    <Spinner
+                        android:id="@+id/spLocation"
+                        style="@android:style/Widget.Holo.Light.Spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:dropDownVerticalOffset="40dp" />
+
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llBirthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edit_text_bottom_line"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itim"
+                    android:text="@string/birthday"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black_opacity"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btnBirthday"
+                    style="@android:style/Widget.Holo.Light.Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-10dp"
+                    android:layout_marginBottom="-5dp"
+                    android:background="@color/transparent"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/itim"
+                    android:padding="1dp"
+                    android:shadowColor="@color/black_opacity"
+                    android:shadowDx="7"
+                    android:shadowDy="7"
+                    android:shadowRadius="3"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLogin"
+                    app:layout_constraintVertical_bias="0.0" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edit_text_bottom_line"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itim"
+                    android:text="@string/height"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black_opacity"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btnHeight"
+                    style="@android:style/Widget.Holo.Light.Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-10dp"
+                    android:layout_marginBottom="-5dp"
+                    android:background="@color/transparent"
+                    android:fontFamily="@font/itim"
+                    android:padding="1dp"
+                    android:shadowColor="@color/black_opacity"
+                    android:shadowDx="7"
+                    android:shadowDy="7"
+                    android:shadowRadius="3"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLogin"
+                    app:layout_constraintVertical_bias="0.0" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edit_text_bottom_line"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itim"
+                    android:text="@string/weight"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black_opacity"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btnWeight"
+                    style="@android:style/Widget.Holo.Light.Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-10dp"
+                    android:layout_marginBottom="-5dp"
+                    android:background="@color/transparent"
+                    android:fontFamily="@font/itim"
+                    android:padding="1dp"
+                    android:shadowColor="@color/black_opacity"
+                    android:shadowDx="7"
+                    android:shadowDy="7"
+                    android:shadowRadius="3"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLogin"
+                    app:layout_constraintVertical_bias="0.0" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginVertical="20dp"
+                android:alpha="0.9"
+                android:background="@drawable/btn_login_welcome"
+                android:elevation="5dp"
+                android:fontFamily="@font/itim"
+                android:gravity="center"
+                android:padding="2dp"
+                android:shadowColor="@color/black_opacity"
+                android:shadowDx="4"
+                android:shadowDy="4"
+                android:shadowRadius="3"
+                android:text="@string/save"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.805" />
+        </LinearLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

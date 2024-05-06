@@ -10,7 +10,7 @@ import androidx.core.text.isDigitsOnly
 import androidx.navigation.fragment.findNavController
 import com.example.fitnesstrackerapp.R
 import com.example.fitnesstrackerapp.databinding.FragmentSignUpBinding
-import com.example.fitnesstrackerapp.other.Signing
+import com.example.fitnesstrackerapp.mvvm.fragments.parent.Signing
 
 class SignUpFragment : Signing() {
     private var binding: FragmentSignUpBinding? = null

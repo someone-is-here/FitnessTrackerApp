@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.fitnesstrackerapp.R
 import com.example.fitnesstrackerapp.databinding.FragmentSignInBinding
 import com.example.fitnesstrackerapp.other.Constants.KEY_EMAIL
-import com.example.fitnesstrackerapp.other.Signing
+import com.example.fitnesstrackerapp.mvvm.fragments.parent.Signing
 import javax.inject.Inject
 
 class SignInFragment : Signing() {

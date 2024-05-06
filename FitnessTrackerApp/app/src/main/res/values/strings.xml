@@ -146,6 +146,9 @@
     <string name="cancel">Cancel</string>
     <string name="set">Set</string>
     <string name="country">Country</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="somethig_went_wrong">Something went wrong</string>
+    <string name="upload_successful">Upload successful!</string>
 
 
 </resources>
