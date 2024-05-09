@@ -56,7 +56,7 @@ class TrackingFragment : Fragment() {
 
     private var currentTimeInMillis: Long = 0L
 
-    @set:Inject
+//    @set:Inject
     var weight = 80f
     override fun onCreateView(
         inflater: LayoutInflater,

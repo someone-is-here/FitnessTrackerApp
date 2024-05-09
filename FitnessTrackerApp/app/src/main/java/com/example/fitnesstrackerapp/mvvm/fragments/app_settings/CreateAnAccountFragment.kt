@@ -1,64 +1,31 @@
-package com.example.fitnesstrackerapp.mvvm.fragments
+package com.example.fitnesstrackerapp.mvvm.fragments.app_settings
 
 import android.app.Activity
-import android.content.Context
-import android.content.SharedPreferences
-import android.graphics.drawable.Drawable
+import android.app.ActivityOptions
+import android.content.Intent
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.net.toFile
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.navigation.NavOptions
-import androidx.navigation.fragment.findNavController
 import com.example.fitnesstrackerapp.R
-import com.example.fitnesstrackerapp.databinding.FragmentSetUpBinding
-import com.example.fitnesstrackerapp.other.Constants.KEY_FIRST_TIME_TOGGLE
-import com.example.fitnesstrackerapp.other.Constants.KEY_HEIGHT
-import com.example.fitnesstrackerapp.other.Constants.KEY_NAME
-import com.example.fitnesstrackerapp.other.Constants.KEY_WEIGHT
+import com.example.fitnesstrackerapp.databinding.FragmentCreateAccountBinding
+import com.example.fitnesstrackerapp.mvvm.MainActivity
+import com.example.fitnesstrackerapp.mvvm.fragments.parent.Profile
 import com.github.dhaval2404.imagepicker.ImagePicker
-import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import dagger.hilt.android.AndroidEntryPoint
-import java.io.File
-import java.net.URI
-import javax.inject.Inject
 
-@AndroidEntryPoint
-class SetUpFragment : Fragment() {
-    @Inject
-    lateinit var  sharedPref: SharedPreferences
-
-    @set:Inject
-    var isFirstAppOpen:Boolean = true
-
-    @Inject
-    lateinit var storageRef: StorageReference
-
-    @Inject
-    lateinit var databaseReference: DatabaseReference
-
-    @Inject
-    lateinit var firebaseAuth: FirebaseAuth
-
-    private lateinit var binding: FragmentSetUpBinding
+class CreateAnAccountFragment : Profile() {
+    private lateinit var binding: FragmentCreateAccountBinding
     private lateinit var uid:String
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSetUpBinding.inflate(inflater, container, false)
+        binding = FragmentCreateAccountBinding.inflate(inflater, container, false)
 
         return binding.root
     }
@@ -68,7 +35,14 @@ class SetUpFragment : Fragment() {
 
         uid = firebaseAuth.currentUser?.uid.toString()
 
+        setAnimation()
         setUpHandlers()
+        setUpEditProfileView(binding.etEmail,
+                             binding.btnHeight,
+                             binding.btnWeight,
+                             binding.btnBirthday,
+                             binding.spLocation)
+
 //        if(!isFirstAppOpen){
 //            val navOptions = NavOptions.Builder()
 //                .setPopUpTo(R.id.setUpFragment, true)
@@ -79,25 +53,30 @@ class SetUpFragment : Fragment() {
 //                navOptions
 //            )
 //        }
+    }
 
-//        binding!!.tvContinue.setOnClickListener {
-//            val success = writePersonalDataToSharedPref()
-//            if(success) {
-//                findNavController().navigate(R.id.action_setUpFragment_to_trainingFragment)
-//            } else {
-//                Snackbar.make(requireView(), requireContext().getString(R.string.filled_out_fields), Snackbar.LENGTH_SHORT).show()
-//            }
-//        }
+    private fun setAnimation() {
+        val topToBottomAnimation = AnimationUtils.loadAnimation(context, R.anim.top_to_bottom)
+        val scaleAnimation = AnimationUtils.loadAnimation(context, R.anim.scale)
+
+        binding.tvCreateAccount.startAnimation(scaleAnimation)
+        binding.etBio.startAnimation(topToBottomAnimation)
+        binding.llEmail.startAnimation(topToBottomAnimation)
+        binding.llCounty.startAnimation(topToBottomAnimation)
+        binding.llBirthday.startAnimation(topToBottomAnimation)
+        binding.llHeight.startAnimation(topToBottomAnimation)
+        binding.llWeight.startAnimation(topToBottomAnimation)
+        binding.btnSave.startAnimation(topToBottomAnimation)
     }
 
     private fun setUpHandlers() {
         binding.btnUploadBackground.setOnClickListener {
-            val metrics = requireContext().resources.displayMetrics
-            val dpWidth = metrics.widthPixels / metrics.density - 100
-            val dpHeight = metrics.heightPixels / metrics.density
+//            val metrics = requireContext().resources.displayMetrics
+//            val dpWidth = metrics.widthPixels / metrics.density - 150
+//            val dpHeight = metrics.heightPixels / metrics.density - 150
 
             ImagePicker.with(this)
-                .crop(dpHeight,dpWidth)
+                .crop(5f,2.24f)
                 .compress(1024)         //Final image size will be less than 1 MB(Optional)
                 .maxResultSize(1080, 1080)  //Final image resolution will be less than 1080 x 1080(Optional)
                 .createIntent { intent ->
@@ -113,7 +92,27 @@ class SetUpFragment : Fragment() {
                     startForProfileImageResult.launch(intent)
                 }
         }
+        binding.btnSave.setOnClickListener {
+            if(checkInput(binding.etUsername.text.toString(),
+                          binding.btnBirthday.text.toString(),
+                          binding.btnHeight.text.toString(),
+                          binding.btnWeight.text.toString())){
 
+                saveUser(binding.etUsername.text.toString(),
+                         binding.etBio.text.toString(),
+                         binding.spLocation.selectedItem.toString(),
+                         binding.btnBirthday.text.toString(),
+                         binding.btnHeight.text.toString(),
+                         binding.btnWeight.text.toString())
+
+                writeUIDToSharedPref()
+
+                val intent = Intent(context, MainActivity::class.java)
+                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle())
+                activity?.finish()
+
+            }
+        }
     }
     private val startForBackgroundImageResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
@@ -125,17 +124,19 @@ class SetUpFragment : Fragment() {
                 val fileUri = data?.data!!
 
 //                val filePath = fileUri.toFile()
-//
 //                val drawable = Drawable.createFromPath(filePath.absolutePath)
 
                 binding.ivBackground.setImageURI(fileUri)
 
-                val backgroundRef = storageRef.child("background/${uid}/${fileUri.lastPathSegment}")
+                val fileName = fileUri.lastPathSegment
+                val permission = fileName?.substring(fileName.indexOf('.'))
+                val backgroundRef = storageRef.child("images/${uid}/${"background$permission"}")
+
                 val uploadTask = backgroundRef.putFile(fileUri)
 
                 // Register observers to listen for when the download is done or if it fails
                 uploadTask.addOnFailureListener {
-                    Toast.makeText(requireContext(),  requireContext().getString(R.string.somethig_went_wrong), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),  requireContext().getString(R.string.something_went_wrong), Toast.LENGTH_SHORT).show()
                 }.addOnSuccessListener { taskSnapshot ->
                     Toast.makeText(requireContext(), requireContext().getString(R.string.upload_successful), Toast.LENGTH_SHORT).show()
                 }
@@ -143,7 +144,7 @@ class SetUpFragment : Fragment() {
             } else if (resultCode == ImagePicker.RESULT_ERROR) {
                 Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(requireContext(),  requireContext().getString(R.string.somethig_went_wrong), Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),  requireContext().getString(R.string.something_went_wrong), Toast.LENGTH_SHORT).show()
             }
         }
     private val startForProfileImageResult =
@@ -156,16 +157,18 @@ class SetUpFragment : Fragment() {
                 val fileUri = data?.data!!
 
 //                val filePath = fileUri.toFile()
-//
 //                val drawable = Drawable.createFromPath(filePath.absolutePath)
                 binding.ivProfile.setImageURI(fileUri)
 
-                val profileRef = storageRef.child("profile/${uid}/${fileUri.lastPathSegment}")
+                val fileName = fileUri.lastPathSegment
+                val permission = fileName?.substring(fileName.indexOf('.'))
+                val profileRef = storageRef.child("images/${uid}/${"profile$permission"}")
+
                 val uploadTask = profileRef.putFile(fileUri)
 
                 // Register observers to listen for when the download is done or if it fails
                 uploadTask.addOnFailureListener {
-                    Toast.makeText(requireContext(),  requireContext().getString(R.string.somethig_went_wrong), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),  requireContext().getString(R.string.something_went_wrong), Toast.LENGTH_SHORT).show()
                 }.addOnSuccessListener { taskSnapshot ->
                     Toast.makeText(requireContext(), requireContext().getString(R.string.upload_successful), Toast.LENGTH_SHORT).show()
                 }
@@ -173,26 +176,7 @@ class SetUpFragment : Fragment() {
             } else if (resultCode == ImagePicker.RESULT_ERROR) {
                 Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(requireContext(),  requireContext().getString(R.string.somethig_went_wrong), Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),  requireContext().getString(R.string.something_went_wrong), Toast.LENGTH_SHORT).show()
             }
         }
-
-    private fun writePersonalDataToSharedPref(): Boolean{
-//        val name = binding!!.etUsername.text.toString()
-//        val weight = binding!!.etWeight.text.toString()
-//        val height = binding!!.etHeight.text.toString()
-//
-//        if(name.isEmpty() || weight.isEmpty() || height.isEmpty()){
-//            return false
-//        }
-//
-//        sharedPref.edit()
-//            .putString(KEY_NAME, name)
-//            .putFloat(KEY_WEIGHT, weight.toFloat())
-//            .putFloat(KEY_HEIGHT, height.toFloat())
-//            .putBoolean(KEY_FIRST_TIME_TOGGLE, false)
-//            .apply()
-//
-        return true
-    }
 }

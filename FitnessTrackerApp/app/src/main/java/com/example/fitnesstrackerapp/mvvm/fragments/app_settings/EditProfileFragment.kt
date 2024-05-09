@@ -26,7 +26,8 @@ class EditProfileFragment : Profile() {
 
         setAnimation()
         setUpHandlers()
-        setUpEditProfileView(binding.btnHeight,
+        setUpEditProfileView(binding.etEmail,
+                             binding.btnHeight,
                              binding.btnWeight,
                              binding.btnBirthday,
                              binding.spLocation)

@@ -102,4 +102,8 @@ class SignUpFragment : Signing() {
             }
         }
     }
+    override fun updateUI(message: String) {
+        findNavController().navigate(R.id.action_signUpFragment_to_createAnAccountFragment)
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+    }
 }

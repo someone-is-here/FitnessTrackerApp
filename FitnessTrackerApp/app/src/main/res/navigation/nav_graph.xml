@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/setUpFragment">
+    app:startDestination="@id/trainingFragment">
 
     <action android:id="@+id/action_global_trackingFragment"
             app:destination="@+id/trackingFragment"
@@ -14,15 +14,6 @@
         android:name="com.example.fitnesstrackerapp.mvvm.fragments.StatisticsFragment"
         android:label="fragment_statistics"
         tools:layout="@layout/fragment_statistics" />
-    <fragment
-        android:id="@+id/setUpFragment"
-        android:name="com.example.fitnesstrackerapp.mvvm.fragments.SetUpFragment"
-        android:label="fragment_set_up"
-        tools:layout="@layout/fragment_set_up" >
-        <action
-            android:id="@+id/action_setUpFragment_to_trainingFragment"
-            app:destination="@id/trainingFragment" />
-    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.fitnesstrackerapp.mvvm.fragments.SettingsFragment"

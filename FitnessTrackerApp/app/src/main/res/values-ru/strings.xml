@@ -151,4 +151,13 @@
     <string name="weight">Вес</string>
     <string name="cancel">Отменить</string>
     <string name="set">Установить</string>
+
+    <!-- Create an account -->
+    <string name="create_an_account">Создание аккаунта</string>
+    <string name="something_went_wrong">Что-то пошло не так</string>
+    <string name="upload_successful">Загружено успешно!</string>
+    <string name="birthday_required">Введите день рождения</string>
+    <string name="height_required">Введите высоту</string>
+    <string name="weight_required">Введите вес</string>
+    <string name="username_required">Введите имя пользователя</string>
 </resources>

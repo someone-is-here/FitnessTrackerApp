@@ -2,16 +2,21 @@ package com.example.fitnesstrackerapp.mvvm.fragments.parent
 
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.EditText
 import android.widget.NumberPicker
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.fitnesstrackerapp.R
 import com.example.fitnesstrackerapp.databinding.NumberPitcherDialogBinding
+import com.example.fitnesstrackerapp.other.Constants.KEY_UID
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.storage.StorageReference
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import java.text.SimpleDateFormat
@@ -22,20 +27,35 @@ import javax.inject.Inject
 @AndroidEntryPoint
 open class Profile: Fragment()  {
     private lateinit var bindingPicker: NumberPitcherDialogBinding
-    @Inject
-    lateinit var database: DatabaseReference
+
     private lateinit var countryList: Map<String,String>
     private val calendar = Calendar.getInstance()
 
-    protected fun setUpEditProfileView(btnHeight: Button, btnWeight: Button, btnBirthday: Button, spLocation:Spinner){
-        setDefaultValue(btnHeight, btnWeight, btnBirthday)
+    @Inject
+    lateinit var storageRef: StorageReference
+
+    @Inject
+    lateinit var databaseReference: DatabaseReference
+
+    @Inject
+    lateinit var firebaseAuth: FirebaseAuth
+
+    @Inject
+    lateinit var  sharedPref: SharedPreferences
+
+    @set:Inject
+    var isFirstAppOpen:Boolean = true
+
+    protected fun setUpEditProfileView(etEmail: EditText, btnHeight: Button, btnWeight: Button, btnBirthday: Button, spLocation:Spinner){
+        setDefaultValue(etEmail,btnHeight, btnWeight, btnBirthday)
         setCalendarValue()
         setUpBirthdaySelector(btnBirthday)
         setUpHeightSelector(btnHeight)
         setUpWeightSelector(btnWeight)
         setUpLocationSpinner(spLocation)
     }
-    private fun setDefaultValue(btnHeight: Button, btnWeight: Button, btnBirthday: Button) {
+    private fun setDefaultValue(etEmail: EditText, btnHeight: Button, btnWeight: Button, btnBirthday: Button) {
+        etEmail.setText(firebaseAuth.currentUser?.email ?: "")
         btnWeight.text = "${60} ${requireContext().getString(R.string.kg)}"
         btnHeight.text = "${170} ${requireContext().getString(R.string.cm)}"
         btnBirthday.text = "01.01.2000"
@@ -155,7 +175,7 @@ open class Profile: Fragment()  {
     }
     private fun setUpLocationSpinner(spLocation: Spinner) {
         val spinner = spLocation
-        database.child("Country").get().addOnSuccessListener {
+        databaseReference.child("Country").get().addOnSuccessListener {
             val countries = it.value as HashMap<String, String>
             countryList = countries.toSortedMap()
             Timber.i("Got value ${it.value}")
@@ -180,6 +200,59 @@ open class Profile: Fragment()  {
             Toast.makeText(activity, requireContext().getString(R.string.check_input_or_internet),  Toast.LENGTH_SHORT).show()
             Timber.e( "Error getting data $it")
         }
+    }
+
+    protected fun checkInput(username:String, birthday:String, height: String, weight: String): Boolean{
+        if(username.isEmpty()){
+            Toast.makeText(activity, requireContext().getString(R.string.username_required),  Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if(birthday.isEmpty()){
+            Toast.makeText(activity, requireContext().getString(R.string.birthday_required),  Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if(height.isEmpty()){
+            Toast.makeText(activity, requireContext().getString(R.string.height_required),  Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if(weight.isEmpty()){
+            Toast.makeText(activity, requireContext().getString(R.string.weight_required),  Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return true
+    }
+    protected fun saveUser(username:String, bio:String, location:String, birthday:String, height:String, weight:String){
+        val uid = firebaseAuth.currentUser!!.uid
+        var countryCode:String? =null
+
+        countryList.forEach { entry ->
+            if (entry.value == location){
+                countryCode = entry.key
+            }
+        }
+
+        databaseReference.child("User").child(uid).setValue("Username")
+        databaseReference.child("User").child(uid).setValue("Bio")
+        databaseReference.child("User").child(uid).setValue("Country")
+        databaseReference.child("User").child(uid).setValue("Birthday")
+        databaseReference.child("User").child(uid).setValue("Height")
+        databaseReference.child("User").child(uid).setValue("Weight")
+
+        databaseReference.child("User").child(uid).child("Username").setValue(username)
+        databaseReference.child("User").child(uid).child("Bio").setValue(bio)
+        databaseReference.child("User").child(uid).child("Country").setValue(countryCode)
+        databaseReference.child("User").child(uid).child("Birthday").setValue(birthday)
+        databaseReference.child("User").child(uid).child("Height").setValue(height)
+        databaseReference.child("User").child(uid).child("Weight").setValue(weight)
+    }
+
+    protected fun writeUIDToSharedPref(){
+
+        val uid = firebaseAuth.currentUser!!.uid
+
+        sharedPref.edit()
+            .putString(KEY_UID, uid)
+            .apply()
 
     }
 }

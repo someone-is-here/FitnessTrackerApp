@@ -10,8 +10,9 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.fitnesstrackerapp.R
 import com.example.fitnesstrackerapp.databinding.FragmentSignInBinding
-import com.example.fitnesstrackerapp.other.Constants.KEY_EMAIL
 import com.example.fitnesstrackerapp.mvvm.fragments.parent.Signing
+import com.example.fitnesstrackerapp.other.Constants.KEY_UID
+import timber.log.Timber
 import javax.inject.Inject
 
 class SignInFragment : Signing() {
@@ -88,7 +89,7 @@ class SignInFragment : Signing() {
             firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                 if(it.isSuccessful){
                     sharedPref.edit()
-                        .putString(KEY_EMAIL, email)
+                        .putString(KEY_UID, it.result.user?.uid)
                         .apply()
                     updateUI()
                 } else {
@@ -116,5 +117,10 @@ class SignInFragment : Signing() {
         }
 
         return true
+    }
+     override fun updateUI(message: String) {
+
+        findNavController().navigate(R.id.action_signInFragment_to_createAnAccountFragment)
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 }

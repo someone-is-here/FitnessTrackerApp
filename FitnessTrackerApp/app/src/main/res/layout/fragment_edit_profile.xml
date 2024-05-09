@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background_edit_profile"
-    tools:context=".mvvm.fragments.app_settings.AppSettingsFragment">
+    tools:context=".mvvm.fragments.app_settings.EditProfileFragment">
 
     <include
         android:id="@+id/include_number_pitcher_dialog"
@@ -180,6 +180,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-5dp"
+                    android:editable="false"
                     android:background="@drawable/edit_text_bottom_line"
                     android:fontFamily="@font/itim"
                     android:inputType="textEmailAddress"

@@ -31,16 +31,16 @@ class WelcomeFragment : Fragment() {
         return binding!!.root
     }
     private fun isSignedIn(): Boolean {
-        return sharedPref.contains(Constants.KEY_EMAIL)
+        return sharedPref.contains(Constants.KEY_UID)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        if(isSignedIn()){
-//            val intent = Intent(context, MainActivity::class.java)
-//            startActivity(intent)
-//            activity?.finish();
-//        }
+        if(isSignedIn()){
+            val intent = Intent(context, MainActivity::class.java)
+            startActivity(intent)
+            activity?.finish()
+        }
 
         setUpHandlers()
 
