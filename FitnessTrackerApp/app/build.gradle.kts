@@ -68,7 +68,6 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
-    implementation("com.google.firebase:firebase-auth:22.3.0")
     implementation ("com.facebook.android:facebook-android-sdk:[4,5)")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
@@ -84,7 +83,7 @@ dependencies {
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.core:core-ktx:+")
     implementation("androidx.cardview:cardview:1.0.0")
-    implementation("com.google.firebase:firebase-database:20.3.1")
+
     implementation("com.google.android.libraries.play.games:inputmapping:1.1.0-beta")
     kapt("androidx.room:room-compiler:2.6.1")
 
@@ -139,6 +138,21 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.5.4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    // Image Picker
+    implementation("com.github.dhaval2404:imagepicker:2.1")
+    //Circular Image View
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+    
+    // Firebase
+    implementation("com.google.firebase:firebase-auth:22.3.0")
+    implementation("com.google.firebase:firebase-database:20.3.1")
+    // Import the BoM for the Firebase platform
+    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
+
+    // Add the dependency for the Cloud Storage library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation("com.google.firebase:firebase-storage")
 
 }
 // Allow references to generated code

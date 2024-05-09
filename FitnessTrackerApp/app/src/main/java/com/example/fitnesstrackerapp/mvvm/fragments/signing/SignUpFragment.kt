@@ -10,7 +10,7 @@ import androidx.core.text.isDigitsOnly
 import androidx.navigation.fragment.findNavController
 import com.example.fitnesstrackerapp.R
 import com.example.fitnesstrackerapp.databinding.FragmentSignUpBinding
-import com.example.fitnesstrackerapp.other.Signing
+import com.example.fitnesstrackerapp.mvvm.fragments.parent.Signing
 
 class SignUpFragment : Signing() {
     private var binding: FragmentSignUpBinding? = null
@@ -101,5 +101,9 @@ class SignUpFragment : Signing() {
                 binding!!.etConfirmPassword.error = requireContext().getString(R.string.passwords_different)
             }
         }
+    }
+    override fun updateUI(message: String) {
+        findNavController().navigate(R.id.action_signUpFragment_to_createAnAccountFragment)
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 }

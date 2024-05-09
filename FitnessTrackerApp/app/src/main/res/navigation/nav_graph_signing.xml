@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_signUpFragment_to_appSettingsFragment"
             app:destination="@id/appSettingsFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_createAnAccountFragment"
+            app:destination="@id/createAnAccountFragment" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
@@ -58,6 +61,9 @@
         <action
             android:id="@+id/action_signInFragment_to_appSettingsFragment"
             app:destination="@id/appSettingsFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_createAnAccountFragment"
+            app:destination="@id/createAnAccountFragment" />
     </fragment>
     <fragment
         android:id="@+id/appSettingsFragment"
@@ -112,4 +118,9 @@
             android:id="@+id/action_editProfileFragment_to_appSettingsFragment"
             app:destination="@id/appSettingsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/createAnAccountFragment"
+        android:name="com.example.fitnesstrackerapp.mvvm.fragments.app_settings.CreateAnAccountFragment"
+        android:label="fragment_create_account"
+        tools:layout="@layout/fragment_create_account" />
 </navigation>

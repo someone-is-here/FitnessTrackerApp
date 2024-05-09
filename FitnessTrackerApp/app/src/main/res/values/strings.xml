@@ -2,7 +2,7 @@
     <string name="app_name">TEAM</string>
     <string name="title_activity_sign_in">SignInActivity</string>
 
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDxIP7cTZqVW4MvJn4T89EZ9ewjp8iTBt0</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCGtt6Mvfu15bMqwFuYy69fAW4ursVTNN8</string>
     <string name="app_title">TEAM</string>
 
     <!-- Welcome fragment -->
@@ -146,6 +146,15 @@
     <string name="cancel">Cancel</string>
     <string name="set">Set</string>
     <string name="country">Country</string>
+
+    <!-- Create an account -->
+    <string name="create_an_account">Create an account</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="upload_successful">Upload successful!</string>
+    <string name="birthday_required">Birthday is required</string>
+    <string name="height_required">Height required</string>
+    <string name="weight_required">Weight required</string>
+    <string name="username_required">Username required</string>
 
 
 </resources>

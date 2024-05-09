@@ -149,4 +149,13 @@
     <string name="weight">Вага</string>
     <string name="cancel">Адмяніць</string>
     <string name="set">Усталяваць</string>
+
+    <!-- Create an account -->
+    <string name="create_an_account">Стварэнне акаўнта</string>
+    <string name="something_went_wrong">Нешта здарылася! Паспрабуйце яшчэ раз</string>
+    <string name="upload_successful">Загружана паспяхова!</string>
+    <string name="birthday_required">Увядзіце дзень нараджэння</string>
+    <string name="height_required">Увядзіце вышыню</string>
+    <string name="weight_required">Увядзіце вагу</string>
+    <string name="username_required">Увядзіце імя</string>
 </resources>

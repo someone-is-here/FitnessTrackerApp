@@ -1,23 +1,22 @@
-package com.example.fitnesstrackerapp.other
+package com.example.fitnesstrackerapp.mvvm.fragments.parent
 
 import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Color
-import android.opengl.Visibility
 import android.text.TextUtils
 import android.util.Patterns
-import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.fitnesstrackerapp.R
 import com.example.fitnesstrackerapp.mvvm.MainActivity
+import com.example.fitnesstrackerapp.other.Constants
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -30,7 +29,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
-open class Signing: Fragment() {
+abstract class Signing: Fragment() {
 
     @Inject
     lateinit var  sharedPref: SharedPreferences
@@ -73,7 +72,7 @@ open class Signing: Fragment() {
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
             if(it.isSuccessful){
                 sharedPref.edit()
-                    .putString(Constants.KEY_EMAIL, account.email)
+                    .putString(Constants.KEY_UID, account.idToken)
                     .apply()
                 updateUI()
             }else{
@@ -90,7 +89,7 @@ open class Signing: Fragment() {
             pendingResultTask
                 .addOnSuccessListener {
                     sharedPref.edit()
-                        .putString(Constants.KEY_EMAIL, it.user?.email)
+                        .putString(Constants.KEY_UID, it.user?.uid)
                         .apply()
                     updateUI()
                 }
@@ -104,7 +103,7 @@ open class Signing: Fragment() {
                     .startActivityForSignInWithProvider(fragmentActivity, providerGitHub.build())
                     .addOnSuccessListener {
                         sharedPref.edit()
-                            .putString(Constants.KEY_EMAIL, it.user?.email)
+                            .putString(Constants.KEY_UID, it.user?.uid)
                             .apply()
                         updateUI()
                     }
@@ -124,7 +123,7 @@ open class Signing: Fragment() {
             pendingResultTask
                 .addOnSuccessListener {
                     sharedPref.edit()
-                        .putString(Constants.KEY_EMAIL, it.user?.email)
+                        .putString(Constants.KEY_UID, it.user?.uid)
                         .apply()
                     updateUI()
                 }
@@ -138,7 +137,7 @@ open class Signing: Fragment() {
                     .startActivityForSignInWithProvider(fragmentActivity, providerX.build())
                     .addOnSuccessListener {
                         sharedPref.edit()
-                            .putString(Constants.KEY_EMAIL, it.user?.email)
+                            .putString(Constants.KEY_UID, it.user?.uid)
                             .apply()
                         updateUI()
                     }
@@ -155,11 +154,8 @@ open class Signing: Fragment() {
         launcher.launch(signInIntent)
     }
 
-    protected fun updateUI(message: String = requireContext().getString(R.string.login_successfully)) {
-        val intent = Intent(context, MainActivity::class.java)
-        startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle())
+    protected open fun updateUI(message: String = requireContext().getString(R.string.login_successfully)) {
 
-        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 
     private val launcher = registerForActivityResult( ActivityResultContracts.StartActivityForResult()){
