@@ -112,7 +112,7 @@
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.example.fitnesstrackerapp.mvvm.fragments.app_settings.EditProfileFragment"
+        android:name="com.example.fitnesstrackerapp.mvvm.fragments.app_settings.EditSettingsFragment"
         android:label="EditProfileFragment" >
         <action
             android:id="@+id/action_editProfileFragment_to_appSettingsFragment"

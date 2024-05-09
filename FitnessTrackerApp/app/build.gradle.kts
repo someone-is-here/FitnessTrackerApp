@@ -56,7 +56,27 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    android.sourceSets.getByName("main") {
+        res.srcDirs("src/main/res",
+                    "src/main/res/layout/signing",
+                    "src/main/res/layout/additional", "src/main/res/layout/activity", "src/main/res/layout/app_settings",
+            "src/main/res/layout/main"
+        )
+    }
+
+//    android.sourceSets.getByName("main") {
+//        res.srcDirs(
+//            "/src/main/res",
+//            "src/main/res/layouts/signing",
+//            "src/main/res/layouts/main",
+//            "src/main/res/layouts/spinner",
+//            "src/main/res/layouts/app_setting",
+//            "src/main/res/layout/activity"
+//        )
+//    }
 }
+
+
 
 dependencies {
 

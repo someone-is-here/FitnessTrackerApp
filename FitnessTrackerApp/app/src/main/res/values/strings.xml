@@ -155,6 +155,12 @@
     <string name="height_required">Height required</string>
     <string name="weight_required">Weight required</string>
     <string name="username_required">Username required</string>
+    <string name="profile">Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="community">Community</string>
+    <string name="news">News</string>
+    <string name="activity">Activity</string>
 
 
 </resources>

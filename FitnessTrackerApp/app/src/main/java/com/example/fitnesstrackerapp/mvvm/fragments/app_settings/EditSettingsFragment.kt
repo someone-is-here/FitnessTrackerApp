@@ -10,7 +10,7 @@ import com.example.fitnesstrackerapp.R
 import com.example.fitnesstrackerapp.databinding.FragmentEditProfileBinding
 import com.example.fitnesstrackerapp.mvvm.fragments.parent.Profile
 
-class EditProfileFragment : Profile() {
+class EditSettingsFragment : Profile() {
     private lateinit var binding: FragmentEditProfileBinding
 
     override fun onCreateView(

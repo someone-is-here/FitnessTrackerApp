@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item android:id="@+id/newsFragment"
+        android:title="@string/news"
+        android:icon="@drawable/ic_runner" />
 
-    <item android:id="@+id/trainingFragment"
-          android:title="@string/your_trainings"
+    <item android:id="@+id/communityFragment"
+        android:title="@string/community"
+        android:icon="@drawable/ic_runner" />
+
+    <item android:id="@+id/trackingFragment"
+          android:title="@string/activity"
           android:icon="@drawable/ic_runner" />
 
     <item android:id="@+id/statisticsFragment"
         android:title="@string/statistics"
         android:icon="@drawable/ic_statistics" />
 
-    <item android:id="@+id/settingsFragment"
-        android:title="@string/settings"
+    <item android:id="@+id/editProfileFragment"
+        android:title="@string/profile"
         android:icon="@drawable/ic_settings_normal" />
 </menu>

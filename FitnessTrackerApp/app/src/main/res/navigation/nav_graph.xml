@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/trainingFragment">
+    app:startDestination="@id/trackingFragment">
 
     <action android:id="@+id/action_global_trackingFragment"
             app:destination="@+id/trackingFragment"
@@ -11,17 +11,17 @@
 
     <fragment
         android:id="@+id/statisticsFragment"
-        android:name="com.example.fitnesstrackerapp.mvvm.fragments.StatisticsFragment"
+        android:name="com.example.fitnesstrackerapp.mvvm.fragments.main.StatisticsFragment"
         android:label="fragment_statistics"
         tools:layout="@layout/fragment_statistics" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.fitnesstrackerapp.mvvm.fragments.SettingsFragment"
+        android:name="com.example.fitnesstrackerapp.mvvm.fragments.main.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/trackingFragment"
-        android:name="com.example.fitnesstrackerapp.mvvm.fragments.TrackingFragment"
+        android:name="com.example.fitnesstrackerapp.mvvm.fragments.main.TrackingFragment"
         android:label="fragment_tracking"
         tools:layout="@layout/fragment_tracking" >
         <action
@@ -30,11 +30,26 @@
     </fragment>
     <fragment
         android:id="@+id/trainingFragment"
-        android:name="com.example.fitnesstrackerapp.mvvm.fragments.TrainingFragment"
+        android:name="com.example.fitnesstrackerapp.mvvm.fragments.main.TrainingFragment"
         android:label="fragment_training"
         tools:layout="@layout/fragment_training" >
         <action
             android:id="@+id/action_trainingFragment_to_trackingFragment"
             app:destination="@id/trackingFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/communityFragment"
+        android:name="com.example.fitnesstrackerapp.mvvm.fragments.main.CommunityFragment"
+        android:label="fragment_community"
+        tools:layout="@layout/fragment_community" />
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.example.fitnesstrackerapp.mvvm.fragments.main.NewsFragment"
+        android:label="fragment_news"
+        tools:layout="@layout/fragment_news" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.fitnesstrackerapp.mvvm.fragments.main.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

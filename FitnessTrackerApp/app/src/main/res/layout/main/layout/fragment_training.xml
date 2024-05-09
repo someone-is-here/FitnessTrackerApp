@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cyan"
-    tools:context=".mvvm.fragments.TrainingFragment">
+    tools:context=".mvvm.fragments.main.TrainingFragment">
 
     <Spinner
         android:id="@+id/spFilter"

@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mvvm.fragments.TrackingFragment">
+    tools:context=".mvvm.fragments.main.TrackingFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clInnerLayout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="413dp"
+        android:layout_height="289dp"
         android:background="@drawable/gradient_drawable"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,17 +18,17 @@
         app:layout_constraintTop_toBottomOf="@+id/mapView">
 
         <!--        <com.google.android.material.button.MaterialButton-->
-<!--            android:id="@+id/btnToggleRun"-->
-<!--            android:layout_width="245dp"-->
-<!--            android:layout_height="42dp"-->
-<!--            android:text="@string/start"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toStartOf="@+id/btnFinishRun"-->
-<!--            app:layout_constraintHorizontal_bias="0.5"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/tvTimer" />-->
+        <!--            android:id="@+id/btnToggleRun"-->
+        <!--            android:layout_width="245dp"-->
+        <!--            android:layout_height="42dp"-->
+        <!--            android:text="@string/start"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toStartOf="@+id/btnFinishRun"-->
+        <!--            app:layout_constraintHorizontal_bias="0.5"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/tvTimer" />-->
 
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             android:id="@+id/tvTimer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btnCancelRun"
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -48,9 +48,9 @@
             android:layout_marginEnd="16dp"
             android:background="@drawable/ic_cancel"
             android:gravity="center_vertical|center_horizontal"
-            android:visibility="gone"
             android:textColor="#fff"
             android:textSize="18sp"
+            android:visibility="visible"
             app:backgroundTint="#26D3FF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -70,7 +70,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTimer" />
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btnFinishRun"
             android:layout_width="100dp"
             android:layout_height="100dp"
