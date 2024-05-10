@@ -3,12 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/trackingFragment">
+    app:startDestination="@id/trackingRouteFragment">
 
-    <action android:id="@+id/action_global_trackingFragment"
-            app:destination="@+id/trackingFragment"
-            app:launchSingleTop="true" />
-
+    <action android:id="@+id/action_global_trackingRouteFragment"
+        app:destination="@+id/trackingRouteFragment"
+        app:launchSingleTop="true" />
     <fragment
         android:id="@+id/statisticsFragment"
         android:name="com.example.fitnesstrackerapp.mvvm.fragments.main.StatisticsFragment"
@@ -20,22 +19,13 @@
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
-        android:id="@+id/trackingFragment"
-        android:name="com.example.fitnesstrackerapp.mvvm.fragments.main.TrackingFragment"
-        android:label="fragment_tracking"
-        tools:layout="@layout/fragment_tracking" >
-        <action
-            android:id="@+id/action_trackingFragment_to_trainingFragment"
-            app:destination="@id/trainingFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/trainingFragment"
         android:name="com.example.fitnesstrackerapp.mvvm.fragments.main.TrainingFragment"
         android:label="fragment_training"
         tools:layout="@layout/fragment_training" >
         <action
-            android:id="@+id/action_trainingFragment_to_trackingFragment"
-            app:destination="@id/trackingFragment" />
+            android:id="@+id/action_trainingFragment_to_trackingRouteFragment"
+            app:destination="@id/trackingRouteFragment" />
     </fragment>
     <fragment
         android:id="@+id/communityFragment"
@@ -47,9 +37,14 @@
         android:name="com.example.fitnesstrackerapp.mvvm.fragments.main.NewsFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_news" />
+
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.example.fitnesstrackerapp.mvvm.fragments.main.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:id="@+id/trackingRouteFragment"
+        android:name="com.example.fitnesstrackerapp.mvvm.fragments.main.TrackingRouteFragment"
+        android:label="fragment_tracking_route"
+        tools:layout="@layout/fragment_tracking_route" >
+        <action
+            android:id="@+id/action_trackingRouteFragment_to_trainingFragment"
+            app:destination="@id/trainingFragment" />
+    </fragment>
 </navigation>

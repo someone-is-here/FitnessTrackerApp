@@ -33,7 +33,8 @@ class MainActivity : AppCompatActivity() {
 
         navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.settingsFragment, R.id.trainingFragment, R.id.statisticsFragment ->
+                R.id.settingsFragment, R.id.trainingFragment,
+                R.id.statisticsFragment, R.id.trackingRouteFragment ->
                     binding.bottomNavigationView.visibility = View.VISIBLE
 
                 else -> {
@@ -54,7 +55,7 @@ class MainActivity : AppCompatActivity() {
             val navHostFragment = supportFragmentManager
                 .findFragmentById(R.id.navHostFragment) as NavHostFragment
 
-            navHostFragment.findNavController().navigate(R.id.action_global_trackingFragment)
+            navHostFragment.findNavController().navigate(R.id.action_global_trackingRouteFragment)
         }
     }
 }

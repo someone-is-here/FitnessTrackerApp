@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".mvvm.fragments.main.TrackingRouteFragment"
+    android:orientation="vertical">
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:contentDescription="@string/map"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clInnerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btnCancelRun"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/ic_cancel"
+            android:gravity="center_vertical|center_horizontal"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:visibility="visible"
+            app:backgroundTint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/itim"
+            android:gravity="center"
+            android:shadowColor="@color/black_opacity"
+            android:shadowDx="7"
+            android:shadowDy="7"
+            android:shadowRadius="3"
+            android:text="00:00:00"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.057" />
+
+        <TextView
+            android:id="@+id/tvDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/itim"
+            android:text="@string/duration"
+            android:autoSizeTextType="uniform"
+            android:textAllCaps="true"
+            android:textColor="@color/black_opacity"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvTimer"
+            app:layout_constraintStart_toStartOf="@+id/tvTimer"
+            app:layout_constraintTop_toBottomOf="@+id/tvTimer" />
+
+        <TextView
+            android:id="@+id/tvDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/itim"
+            android:gravity="center"
+            android:shadowColor="@color/black_opacity"
+            android:shadowDx="7"
+            android:shadowDy="7"
+            android:shadowRadius="3"
+            android:text="0.000"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/white"
+            android:textSize="35sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTimer" />
+
+        <TextView
+            android:id="@+id/tvDistanceUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/itim"
+            android:text="@string/m"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/black_opacity"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tvDistance"
+            app:layout_constraintTop_toTopOf="@+id/tvDistance" />
+
+        <TextView
+            android:id="@+id/tvDistanceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/itim"
+            android:text="@string/distance"
+            android:autoSizeTextType="uniform"
+            android:textAllCaps="true"
+            android:textColor="@color/black_opacity"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvDistance"
+            app:layout_constraintStart_toStartOf="@+id/tvDistance"
+            app:layout_constraintTop_toBottomOf="@+id/tvDistance" />
+
+        <TextView
+            android:id="@+id/tvCaloriesBurned"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/itim"
+            android:gravity="center"
+            android:shadowColor="@color/black_opacity"
+            android:shadowDx="7"
+            android:shadowDy="7"
+            android:shadowRadius="3"
+            android:text="0"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/white"
+            android:textSize="35sp"
+            app:layout_constraintEnd_toStartOf="@+id/tvAvgSpeed"
+            app:layout_constraintHorizontal_bias="0.546"
+            app:layout_constraintStart_toEndOf="@+id/tvDistance"
+            app:layout_constraintTop_toBottomOf="@+id/tvTimer" />
+
+        <TextView
+            android:id="@+id/tvCaloriesBurnedUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/itim"
+            android:text="kcal"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/black_opacity"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tvCaloriesBurned"
+            app:layout_constraintTop_toTopOf="@+id/tvCaloriesBurned" />
+
+        <TextView
+            android:id="@+id/tvCaloriesBurnedText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/itim"
+            android:text="@string/calories"
+            android:autoSizeTextType="uniform"
+            android:textAllCaps="true"
+            android:textColor="@color/black_opacity"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvCaloriesBurned"
+            app:layout_constraintStart_toStartOf="@+id/tvCaloriesBurned"
+            app:layout_constraintTop_toBottomOf="@+id/tvCaloriesBurned" />
+
+        <TextView
+            android:id="@+id/tvAvgSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="45dp"
+            android:fontFamily="@font/itim"
+            android:gravity="center"
+            android:shadowColor="@color/black_opacity"
+            android:shadowDx="7"
+            android:shadowDy="7"
+            android:shadowRadius="3"
+            android:text="0.00"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/white"
+            android:textSize="35sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.996"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTimer" />
+
+        <TextView
+            android:id="@+id/tvAvgSpeedUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/itim"
+            android:text="@string/km_h"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/black_opacity"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvAvgSpeed"
+            app:layout_constraintTop_toTopOf="@+id/tvAvgSpeed" />
+
+        <TextView
+            android:id="@+id/tvAvgSpeedText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/itim"
+            android:text="@string/avg_speed"
+            android:textAllCaps="true"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/black_opacity"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvAvgSpeed"
+            app:layout_constraintStart_toStartOf="@+id/tvAvgSpeed"
+            app:layout_constraintTop_toBottomOf="@+id/tvAvgSpeed" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnToggleRun"
+            android:layout_width="314dp"
+            android:layout_height="45dp"
+            android:background="@drawable/btn_login_welcome"
+            android:elevation="5dp"
+            android:fontFamily="@font/itim"
+            android:gravity="center"
+            android:padding="5dp"
+            android:shadowColor="@color/black_opacity"
+            android:shadowDx="7"
+            android:shadowDy="7"
+            android:shadowRadius="3"
+            android:text="@string/start"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnContinue"
+            android:layout_width="170dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/btn_login_welcome"
+            android:elevation="5dp"
+            android:fontFamily="@font/itim"
+            android:gravity="center"
+            android:padding="5dp"
+            android:shadowColor="@color/black_opacity"
+            android:shadowDx="7"
+            android:shadowDy="7"
+            android:shadowRadius="3"
+            android:text="@string/continue_str"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnFinishRun"
+            android:layout_width="170dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/btn_login_welcome"
+            android:elevation="5dp"
+            android:fontFamily="@font/itim"
+            android:gravity="center"
+            android:padding="5dp"
+            android:shadowColor="@color/black_opacity"
+            android:shadowDx="7"
+            android:shadowDy="7"
+            android:shadowRadius="3"
+            android:text="@string/finish_run"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

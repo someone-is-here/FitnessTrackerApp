@@ -9,7 +9,7 @@
         android:title="@string/community"
         android:icon="@drawable/ic_runner" />
 
-    <item android:id="@+id/trackingFragment"
+    <item android:id="@+id/trackingRouteFragment"
           android:title="@string/activity"
           android:icon="@drawable/ic_runner" />
 

@@ -92,11 +92,11 @@
         <item>Calories Burned</item>
     </string-array>
 
-    <string name="date">Date:</string>
-    <string name="duration">Duration:</string>
-    <string name="distance">Distance:</string>
-    <string name="avg_speed">Avg speed:</string>
-    <string name="calories_burned">Calories burned:</string>
+    <string name="date">Date</string>
+    <string name="duration">Duration</string>
+    <string name="distance">Distance</string>
+    <string name="avg_speed">Avg speed</string>
+    <string name="calories_burned">Calories burned</string>
 
     <!-- Tracking -->
     <string name="stop">Stop</string>
@@ -156,11 +156,15 @@
     <string name="weight_required">Weight required</string>
     <string name="username_required">Username required</string>
     <string name="profile">Profile</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="community">Community</string>
     <string name="news">News</string>
     <string name="activity">Activity</string>
+    <string name="continue_str">Continue</string>
+    <string name="calories">Calories</string>
+    <string name="m">m</string>
 
 
 </resources>

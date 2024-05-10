@@ -92,7 +92,7 @@ class TrainingFragment: Fragment(), EasyPermissions.PermissionCallbacks {
         })
 
         binding!!.fab.setOnClickListener {
-            findNavController().navigate(R.id.action_trainingFragment_to_trackingFragment)
+            findNavController().navigate(R.id.action_trainingFragment_to_trackingRouteFragment)
         }
 
     }
