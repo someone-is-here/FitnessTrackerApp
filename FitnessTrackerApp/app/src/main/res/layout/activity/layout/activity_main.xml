@@ -32,7 +32,7 @@
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/button"
+        android:background="@color/nav"
         app:itemIconTint="@drawable/bottom_nav_selector"
         app:itemTextColor="@drawable/bottom_nav_selector"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,6 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout"
         app:layout_constraintVertical_bias="1.0"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu"
         app:startDestination="@id/trainingFragment" />
 

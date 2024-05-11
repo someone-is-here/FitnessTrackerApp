@@ -47,11 +47,11 @@ class AppSettingsFragment : Fragment() {
                 R.id.action_appSettingsFragment_to_sendUsMessageFragment
             )
         }
-        binding.tvEditProfile.setOnClickListener {
-            findNavController().navigate(
-                R.id.action_appSettingsFragment_to_editProfileFragment
-            )
-        }
+//        binding.tvEditProfile.setOnClickListener {
+//            findNavController().navigate(
+//                R.id.action_appSettingsFragment_to_editProfileFragment
+//            )
+//        }
 //        requireActivity().supportFragmentManager.commit {
 //            setCustomAnimations(
 //                R.anim.slide_in, // enter
@@ -118,10 +118,10 @@ class AppSettingsFragment : Fragment() {
         val scaleAnimation = AnimationUtils.loadAnimation(context, R.anim.scale)
 
         binding.tvSettings.startAnimation(scaleAnimation)
-        binding.llUserInfo.startAnimation(topToBottomAnimation)
+       // binding.llUserInfo.startAnimation(topToBottomAnimation)
         binding.llPersonalSettings.startAnimation(topToBottomAnimation)
         binding.llAppSettings.startAnimation(topToBottomAnimation)
-        binding.llSignOut.startAnimation(topToBottomAnimation)
+       // binding.llSignOut.startAnimation(topToBottomAnimation)
     }
 
 
