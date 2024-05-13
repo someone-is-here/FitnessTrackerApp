@@ -1,11 +1,15 @@
 package com.example.fitnesstrackerapp.mvvm.fragments.main
 
 import android.annotation.SuppressLint
+import android.app.Dialog
+import android.content.DialogInterface
+import android.content.DialogInterface.OnShowListener
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -13,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.fitnesstrackerapp.R
 import com.example.fitnesstrackerapp.databinding.FragmentTrackingRouteBinding
 import com.example.fitnesstrackerapp.db.Training
+import com.example.fitnesstrackerapp.mvvm.fragments.additional.CancelTrackingDialog
 import com.example.fitnesstrackerapp.mvvm.viewmodels.MainViewModel
 import com.example.fitnesstrackerapp.other.Constants.ACTION_PAUSE_SERVICE
 import com.example.fitnesstrackerapp.other.Constants.ACTION_START_OR_RESUME_SERVICE
@@ -21,6 +26,8 @@ import com.example.fitnesstrackerapp.other.Constants.CIRCLE_RADIUS
 import com.example.fitnesstrackerapp.other.Constants.MAP_ZOOM
 import com.example.fitnesstrackerapp.other.Constants.POLYLINE_COLOR
 import com.example.fitnesstrackerapp.other.Constants.POLYLINE_WIDTH
+import com.example.fitnesstrackerapp.other.Constants.STROKE_COLOR
+import com.example.fitnesstrackerapp.other.Constants.STROKE_WIDTH
 import com.example.fitnesstrackerapp.other.TrackingUtility
 import com.example.fitnesstrackerapp.services.Polyline
 import com.example.fitnesstrackerapp.services.TrackingService
@@ -39,6 +46,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import java.util.Calendar
 import kotlin.math.round
+import kotlin.math.roundToLong
+
+const val CANCEL_TRACKING_DIALOG_TAG = "CancelDialog"
 
 @AndroidEntryPoint
 class TrackingRouteFragment : Fragment() {
@@ -68,11 +78,20 @@ class TrackingRouteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (savedInstanceState != null){
+            val cancelTrackingDialog = parentFragmentManager.findFragmentByTag(
+                CANCEL_TRACKING_DIALOG_TAG) as CancelTrackingDialog?
+            cancelTrackingDialog?.setYesListener {
+                stopRun()
+            }
+        }
+
         binding.mapView.onCreate(savedInstanceState)
 
         binding.btnToggleRun.setOnClickListener {
             toggleRun()
         }
+
         binding.btnContinue.setOnClickListener {
             binding.btnContinue.visibility = View.GONE
             binding.btnToggleRun.visibility = View.VISIBLE
@@ -84,6 +103,7 @@ class TrackingRouteFragment : Fragment() {
             addAllPolylines()
         }
         binding.btnCancelRun.setOnClickListener {
+            sendCommandToService(ACTION_PAUSE_SERVICE)
             showCancelTrackingDialog()
         }
 
@@ -94,13 +114,24 @@ class TrackingRouteFragment : Fragment() {
             endRunAndSaveToDB()
         }
 
-        binding.btnFinishRun.visibility = View.GONE
-        binding.btnCancelRun.visibility = View.GONE
-        binding.btnContinue.visibility = View.GONE
+        setInitialValues()
 
         subscribeToObservers()
 
         initMapCords()
+    }
+
+    private fun setInitialValues() {
+        binding.btnToggleRun.text = requireContext().getString(R.string.start)
+        binding.btnToggleRun.visibility = View.VISIBLE
+        binding.btnFinishRun.visibility = View.GONE
+        binding.btnCancelRun.visibility = View.GONE
+        binding.btnContinue.visibility = View.GONE
+        binding.tvTimer.text = "00:00:00"
+        binding.tvAvgSpeed.text = "0.00"
+        binding.tvCaloriesBurned.text = "0"
+        binding.tvDistance.text = "0.000"
+        currentTimeInMillis = 0
     }
 
     @SuppressLint("MissingPermission")
@@ -121,6 +152,8 @@ class TrackingRouteFragment : Fragment() {
                     .fillColor(POLYLINE_COLOR)
                     .center(LatLng(location.latitude, location.longitude))
                     .radius(CIRCLE_RADIUS.toDouble())
+                    .strokeColor(STROKE_COLOR)
+                    .strokeWidth(STROKE_WIDTH)
 
                 circlePosition = map?.addCircle(circleOptions)
             }
@@ -140,9 +173,9 @@ class TrackingRouteFragment : Fragment() {
         })
         TrackingService.timeRunInMillis.observe(viewLifecycleOwner, Observer {
             currentTimeInMillis = it
-
             val formattedTime = TrackingUtility.getFormattedStopWatchTime(currentTimeInMillis, true)
             binding.tvTimer.text = formattedTime
+            updateValues()
         })
     }
     private fun toggleRun(){
@@ -155,12 +188,12 @@ class TrackingRouteFragment : Fragment() {
     }
     private fun updateTracking(isTracking: Boolean){
         this.isTracking = isTracking
-        if(!isTracking){
+        if(!isTracking && currentTimeInMillis > 0L){
             binding.btnToggleRun.visibility = View.GONE
             binding.btnContinue.text = requireContext().getString(R.string.continue_str)
             binding.btnFinishRun.visibility = View.VISIBLE
             binding.btnContinue.visibility = View.VISIBLE
-        } else {
+        } else if(isTracking){
             binding.btnToggleRun.text = requireContext().getString(R.string.stop)
             binding.btnCancelRun.visibility = View.VISIBLE
             binding.btnFinishRun.visibility = View.GONE
@@ -187,15 +220,18 @@ class TrackingRouteFragment : Fragment() {
 
             map?.addPolyline(polylineOptions)
         }
-
         if(pathPoints.isNotEmpty() && pathPoints.last().size > 0) {
             val circleOptions = CircleOptions()
                 .fillColor(POLYLINE_COLOR)
                 .center(pathPoints.last().last())
                 .radius(CIRCLE_RADIUS.toDouble())
+                .strokeWidth(STROKE_WIDTH)
+                .strokeColor(STROKE_COLOR)
 
-            circlePosition?.remove()
-            circlePosition = map?.addCircle(circleOptions)
+            if (circlePosition != null) {
+                circlePosition?.remove()
+                circlePosition = map?.addCircle(circleOptions)
+            }
         }
     }
 
@@ -206,10 +242,11 @@ class TrackingRouteFragment : Fragment() {
                 bounds.include(cord)
             }
         }
+
         circlePosition?.remove()
 
         val mapView = binding.mapView
-
+        try{
         map?.moveCamera(
             CameraUpdateFactory.newLatLngBounds(
                 bounds.build(),
@@ -217,7 +254,24 @@ class TrackingRouteFragment : Fragment() {
                 mapView.height,
                 (mapView.height * 0.05f).toInt()
             )
-        )
+        )}catch (_:Exception){
+            return
+        }
+    }
+
+    private fun updateValues(){
+        var distanceInMeters = 0.0f
+
+        for(polyline in pathPoints){
+            distanceInMeters += TrackingUtility.calculatePolylineLength(polyline)
+        }
+
+        binding.tvDistance.text = String.format("%.3f", distanceInMeters / 100f)
+
+        binding.tvAvgSpeed.text = (round((distanceInMeters / 1000f) /
+                (currentTimeInMillis / 1000f / 60 / 60) * 10) / 10f).toString()
+
+        binding.tvCaloriesBurned.text = ((distanceInMeters / 1000f) * weight).toInt().toString()
     }
 
     private fun endRunAndSaveToDB(){
@@ -247,15 +301,20 @@ class TrackingRouteFragment : Fragment() {
     }
 
     private fun addLatestPolyline(){
-        if(pathPoints.isNotEmpty() && pathPoints.last().size == 1) {
+        if(pathPoints.isNotEmpty() && pathPoints.last().size > 0) {
             val circleOptions = CircleOptions()
                 .fillColor(POLYLINE_COLOR)
                 .center(pathPoints.last().last())
                 .radius(CIRCLE_RADIUS.toDouble())
+                .strokeWidth(STROKE_WIDTH)
+                .strokeColor(STROKE_COLOR)
 
-            circlePosition?.remove()
-            circlePosition = map?.addCircle(circleOptions)
+            if (circlePosition != null) {
+                circlePosition?.remove()
+                circlePosition = map?.addCircle(circleOptions)
+            }
         }
+
         if(pathPoints.isNotEmpty() && pathPoints.last().size > 1) {
             val preLastLatLng = pathPoints.last()[pathPoints.last().size - 2]
             val lastLatLng = pathPoints.last().last()
@@ -266,16 +325,7 @@ class TrackingRouteFragment : Fragment() {
                 .add(preLastLatLng)
                 .add(lastLatLng)
 
-            val circleOptions = CircleOptions()
-                .fillColor(POLYLINE_COLOR)
-                .center(lastLatLng)
-                .radius(CIRCLE_RADIUS.toDouble())
-
             map?.addPolyline(polylineOptions)
-
-            circlePosition?.remove()
-            circlePosition = map?.addCircle(circleOptions)
-
         }
     }
     override fun onResume() {
@@ -322,22 +372,18 @@ class TrackingRouteFragment : Fragment() {
         }
 
     private fun showCancelTrackingDialog(){
-        val dialog = MaterialAlertDialogBuilder(requireContext(), R.style.AlertDialogTheme)
-            .setTitle(requireContext().getString(R.string.cancel_the_run))
-            .setMessage(requireContext().getString(R.string.sure_cancel_run))
-            .setIcon(R.drawable.ic_delete)
-            .setPositiveButton(requireContext().getString(R.string.yes)){ _, _ ->
+        val dialog = CancelTrackingDialog()
+
+        dialog.apply {
+            setYesListener {
                 stopRun()
             }
-            .setNegativeButton(requireContext().getString(R.string.no)) { dialogInterface, _ ->
-                dialogInterface.cancel()
-            }
-            .create()
+        }.show(parentFragmentManager, CANCEL_TRACKING_DIALOG_TAG)
 
-        dialog.show()
     }
     private fun stopRun(){
         sendCommandToService(ACTION_STOP_SERVICE)
+        setInitialValues()
         findNavController().navigate(R.id.action_trackingRouteFragment_to_trainingFragment)
     }
 }

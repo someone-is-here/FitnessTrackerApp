@@ -16,8 +16,8 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/back_user_account"
+        android:layout_height="210dp"
+        android:background="@drawable/backgroud4"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +82,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="30dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -96,7 +97,7 @@
 
                     <EditText
                         android:id="@+id/etUsername"
-                        android:layout_width="172dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="-5dp"
                         android:background="@drawable/edit_text_bottom_line"
@@ -115,7 +116,47 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvLogin"
                         app:layout_constraintVertical_bias="0.0" />
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/llEmail"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="30dp"-->
+<!--                        android:orientation="vertical">-->
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/itim"
+                            android:text="@string/email"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white_60"
+                            android:textSize="12sp" />
+
+                        <EditText
+                            android:id="@+id/etEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="-5dp"
+                            android:editable="false"
+                            android:background="@drawable/edit_text_bottom_line"
+                            android:fontFamily="@font/itim"
+                            android:inputType="textEmailAddress"
+                            android:padding="1dp"
+                            android:shadowColor="@color/black_opacity"
+                            android:shadowDx="7"
+                            android:shadowDy="7"
+                            android:shadowRadius="3"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.495"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvLogin"
+                            app:layout_constraintVertical_bias="0.0" />
+
+<!--                    </LinearLayout>-->
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -159,46 +200,7 @@
                 android:textColor="@color/white"
                 android:textColorHint="@color/white_75" />
 
-            <LinearLayout
-                android:id="@+id/llEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/itim"
-                    android:text="@string/email"
-                    android:textAllCaps="true"
-                    android:textColor="@color/black_opacity"
-                    android:textSize="12sp" />
-
-                <EditText
-                    android:id="@+id/etEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="-5dp"
-                    android:editable="false"
-                    android:background="@drawable/edit_text_bottom_line"
-                    android:fontFamily="@font/itim"
-                    android:inputType="textEmailAddress"
-                    android:padding="1dp"
-                    android:shadowColor="@color/black_opacity"
-                    android:shadowDx="7"
-                    android:shadowDy="7"
-                    android:shadowRadius="3"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.495"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvLogin"
-                    app:layout_constraintVertical_bias="0.0" />
-
-            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/llCounty"

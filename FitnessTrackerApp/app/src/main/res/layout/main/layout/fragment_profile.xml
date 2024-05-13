@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="210dp"
         android:background="@drawable/backgroud4"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +61,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="160dp"
         android:layout_marginTop="-5dp"
         android:orientation="vertical">
 
@@ -162,6 +162,7 @@
                         android:shadowDx="7"
                         android:shadowDy="7"
                         android:shadowRadius="3"
+                        android:background="@drawable/btn_signing_text"
                         android:text="@string/followers"
                         android:textAllCaps="true"
                         android:textColor="@color/white"
@@ -180,7 +181,11 @@
                         android:text="|"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
-
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
                     <TextView
                         android:id="@+id/tvFollowingNumber"
                         android:layout_width="wrap_content"
@@ -207,6 +212,7 @@
                         android:shadowDy="7"
                         android:shadowRadius="3"
                         android:textAllCaps="true"
+                        android:background="@drawable/btn_signing_text"
                         android:autoSizeTextType="uniform"
                         android:text="@string/following"
                         android:textColor="@color/white"
@@ -231,7 +237,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="15dp"
+            android:layout_marginVertical="10dp"
             android:orientation="vertical">
 
             <TextView
@@ -252,8 +258,149 @@
                 android:shadowRadius="3"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white_75" />
+            <LinearLayout
+                android:id="@+id/llMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_black_white"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+
+                <!-- My trainings -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_signing_text"
+                    android:id="@+id/rlLanguageSwitch">
+
+                    <ImageView
+                        android:id="@+id/icMyTrainings"
+                        android:background="@drawable/round_button"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="7dp"
+                        android:alpha="0.7"
+                        android:src="@drawable/ic_activity" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="20dp"
+                        android:text="My trainings"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/itim"
+                        android:gravity="center"
+                        android:textSize="18sp"
+                        android:layout_toEndOf="@id/icMyTrainings"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_right_arrow"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"/>
+
+                </RelativeLayout>
+                <!-- Published trainings -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btn_signing_text"
+                    android:id="@+id/rlSentMessage">
+
+                    <ImageView
+                        android:id="@+id/icPublishedTrainings"
+                        android:background="@drawable/round_button"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="7dp"
+                        android:alpha="0.7"
+                        android:src="@drawable/ic_feed" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="20dp"
+                        android:text="Published trainings"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/itim"
+                        android:gravity="center"
+                        android:textSize="18sp"
+                        android:layout_toEndOf="@id/icPublishedTrainings"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_right_arrow"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btn_signing_text"
+                    android:id="@+id/rlGroups">
+
+                    <ImageView
+                        android:id="@+id/icGroups"
+                        android:background="@drawable/round_button"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="7dp"
+                        android:alpha="0.7"
+                        android:src="@drawable/ic_community" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="20dp"
+                        android:text="Groups"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/itim"
+                        android:gravity="center"
+                        android:textSize="18sp"
+                        android:layout_toEndOf="@id/icGroups"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_right_arrow"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llSignOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_black_white"
+                android:layout_marginVertical="20dp"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp">
+
+                <Button
+                    android:id="@+id/btnSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:drawableStart="@drawable/ic_sign_out"
+                    android:drawablePadding="15dp"
+                    android:fontFamily="@font/itim"
+                    android:text="@string/sign_out"
+                    android:textAllCaps="false"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:cornerRadius="56dp" />
 
             </LinearLayout>
+        </LinearLayout>
+
 
     </ScrollView>
 

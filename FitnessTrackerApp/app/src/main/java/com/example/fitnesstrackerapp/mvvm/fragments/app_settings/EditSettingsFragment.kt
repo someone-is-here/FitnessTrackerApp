@@ -40,7 +40,6 @@ class EditSettingsFragment : Profile() {
         binding.tvEditProfile.startAnimation(scaleAnimation)
         binding.llUserInfo.startAnimation(topToBottomAnimation)
         binding.etBio.startAnimation(topToBottomAnimation)
-        binding.llEmail.startAnimation(topToBottomAnimation)
         binding.llCounty.startAnimation(topToBottomAnimation)
         binding.llBirthday.startAnimation(topToBottomAnimation)
         binding.llHeight.startAnimation(topToBottomAnimation)

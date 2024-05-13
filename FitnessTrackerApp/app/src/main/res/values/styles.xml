@@ -5,11 +5,16 @@
         <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
     </style>
     <style name="NegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
-        <item name="android:textColor">@color/main</item>
+        <item name="android:textColor">@color/sky_blue</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/itim</item>
     </style>
 
     <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
-        <item name="android:textColor">@color/main</item>
+        <item name="android:textColor">@color/sky_blue</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/itim</item>
+
     </style>
 
     <style name="Spinner" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
