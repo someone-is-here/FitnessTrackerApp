@@ -186,7 +186,7 @@
             android:layout_marginEnd="45dp"
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/itim"
-            android:gravity="e"
+            android:gravity="end"
             android:padding="3dp"
             android:shadowColor="@color/black_opacity"
             android:shadowDx="7"
