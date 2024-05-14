@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background_edit_profile"
-    tools:context=".mvvm.fragments.app_settings.EditSettingsFragment">
+    tools:context=".mvvm.fragments.main.EditProfileFragment">
 
     <include
         android:id="@+id/include_number_pitcher_dialog"
@@ -14,7 +14,7 @@
         android:visibility="gone" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/ivBackground"
         android:layout_width="match_parent"
         android:layout_height="210dp"
         android:background="@drawable/backgroud4"
@@ -64,27 +64,89 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <ProgressBar
+                android:id="@+id/pbLoading"
+                style="?android:attr/progressBarStyle"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <LinearLayout
                 android:id="@+id/llUserInfo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginVertical="10dp"
-                    android:alpha="0.85"
-                    android:src="@drawable/img_profile_photo" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/ivPhoto"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginStart="16dp"
+                        android:alpha="0.85"
+                        android:src="@drawable/img_profile_photo"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/btnUploadPhoto"
+                        android:layout_width="25dp"
+                        android:layout_height="34dp"
+                        android:backgroundTint="@color/transparent"
+                        android:clickable="true"
+                        android:src="@drawable/ic_upload"
+                        app:borderWidth="0dp"
+                        app:fabCustomSize="30dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivPhoto"
+                        app:layout_constraintEnd_toEndOf="@+id/ivPhoto"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="@+id/ivPhoto"
+                        app:layout_constraintTop_toTopOf="@+id/ivPhoto"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/btnUploadBackground"
+                    android:layout_width="24dp"
+                    android:layout_height="34dp"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="@color/transparent"
+                    android:clickable="true"
+                    android:src="@drawable/ic_upload"
+                    app:borderWidth="0dp"
+                    app:fabCustomSize="30dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
                 <LinearLayout
+                    android:id="@+id/linearLayout2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="30dp"
-                    android:orientation="vertical">
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginEnd="35dp"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -102,6 +164,7 @@
                         android:layout_marginTop="-5dp"
                         android:background="@drawable/edit_text_bottom_line"
                         android:fontFamily="@font/itim"
+                        android:autoSizeTextType="uniform"
                         android:inputType="textEmailAddress"
                         android:padding="1dp"
                         android:shadowColor="@color/black_opacity"
@@ -116,49 +179,47 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvLogin"
                         app:layout_constraintVertical_bias="0.0" />
-<!--                    <LinearLayout-->
-<!--                        android:id="@+id/llEmail"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="30dp"-->
-<!--                        android:orientation="vertical">-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:fontFamily="@font/itim"
-                            android:text="@string/email"
-                            android:textAllCaps="true"
-                            android:textColor="@color/white_60"
-                            android:textSize="12sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/itim"
+                        android:text="@string/email"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white_60"
+                        android:textSize="12sp" />
 
-                        <EditText
-                            android:id="@+id/etEmail"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="-5dp"
-                            android:editable="false"
-                            android:background="@drawable/edit_text_bottom_line"
-                            android:fontFamily="@font/itim"
-                            android:inputType="textEmailAddress"
-                            android:padding="1dp"
-                            android:shadowColor="@color/black_opacity"
-                            android:shadowDx="7"
-                            android:shadowDy="7"
-                            android:shadowRadius="3"
-                            android:textColor="@color/white"
-                            android:textSize="20sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.495"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tvLogin"
-                            app:layout_constraintVertical_bias="0.0" />
+                    <EditText
+                        android:id="@+id/etEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-5dp"
+                        android:background="@drawable/edit_text_bottom_line"
+                        android:editable="false"
+                        android:fontFamily="@font/itim"
+                        android:inputType="textEmailAddress"
+                        android:padding="1dp"
+                        android:shadowColor="@color/black_opacity"
+                        android:shadowDx="7"
+                        android:shadowDy="7"
+                        android:shadowRadius="3"
+                        android:autoSizeTextType="uniform"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.495"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvLogin"
+                        app:layout_constraintVertical_bias="0.0" />
 
-<!--                    </LinearLayout>-->
+
                 </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
@@ -174,6 +235,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
+            android:id="@+id/llInfoFields"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
@@ -393,6 +455,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.805" />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

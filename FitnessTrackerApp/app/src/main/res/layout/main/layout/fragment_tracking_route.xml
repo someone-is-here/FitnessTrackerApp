@@ -116,16 +116,17 @@
             android:layout_height="wrap_content"
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/itim"
+            android:paddingHorizontal="5dp"
             android:text="@string/distance"
             android:textAllCaps="true"
             android:textColor="@color/black_opacity"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/tvDistanceUnit"
-            app:layout_constraintHorizontal_bias="0.437"
-            app:layout_constraintStart_toStartOf="@+id/tvDistance"
+            app:layout_constraintHorizontal_bias="0.555"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvDistance"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.25" />
 
         <TextView
             android:id="@+id/tvCaloriesBurned"
@@ -156,7 +157,7 @@
             android:layout_marginTop="16dp"
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/itim"
-            android:text="kcal"
+            android:text="@string/kcal"
             android:textColor="@color/black_opacity"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/tvCaloriesBurned"
@@ -166,15 +167,15 @@
             android:id="@+id/tvCaloriesBurnedText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/itim"
-            android:text="@string/calories"
+            android:paddingHorizontal="5dp"
+            android:text="@string/calories_burned"
             android:textAllCaps="true"
             android:textColor="@color/black_opacity"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="@+id/tvCaloriesBurnedUnit"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.513"
             app:layout_constraintStart_toStartOf="@+id/tvCaloriesBurned"
             app:layout_constraintTop_toBottomOf="@+id/tvCaloriesBurned" />
 
@@ -222,12 +223,13 @@
             android:layout_height="wrap_content"
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/itim"
+            android:paddingHorizontal="5dp"
             android:text="@string/avg_speed"
             android:textAllCaps="true"
             android:textColor="@color/black_opacity"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.408"
             app:layout_constraintStart_toStartOf="@+id/tvAvgSpeed"
             app:layout_constraintTop_toBottomOf="@+id/tvAvgSpeed" />
 
@@ -237,7 +239,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
+        android:layout_marginTop="15sp"
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal">
 

@@ -266,7 +266,7 @@ class TrackingRouteFragment : Fragment() {
             distanceInMeters += TrackingUtility.calculatePolylineLength(polyline)
         }
 
-        binding.tvDistance.text = String.format("%.3f", distanceInMeters / 100f)
+        binding.tvDistance.text = String.format("%.3f", distanceInMeters / 1000f)
 
         binding.tvAvgSpeed.text = (round((distanceInMeters / 1000f) /
                 (currentTimeInMillis / 1000f / 60 / 60) * 10) / 10f).toString()

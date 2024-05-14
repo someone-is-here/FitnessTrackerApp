@@ -1,24 +1,34 @@
 package com.example.fitnesstrackerapp.mvvm.fragments.parent
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.SharedPreferences
+import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.view.LayoutInflater
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.NumberPicker
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.example.fitnesstrackerapp.R
 import com.example.fitnesstrackerapp.databinding.NumberPitcherDialogBinding
 import com.example.fitnesstrackerapp.other.Constants.KEY_UID
+import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.storage.StorageReference
 import dagger.hilt.android.AndroidEntryPoint
+import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.coroutines.tasks.await
 import timber.log.Timber
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -28,7 +38,7 @@ import javax.inject.Inject
 open class Profile: Fragment()  {
     private lateinit var bindingPicker: NumberPitcherDialogBinding
 
-    private lateinit var countryList: Map<String,String>
+    protected lateinit var countryList: Map<String,String>
     private val calendar = Calendar.getInstance()
 
     @Inject
@@ -173,33 +183,45 @@ open class Profile: Fragment()  {
             datePickerDialog.show()
         }
     }
-    private fun setUpLocationSpinner(spLocation: Spinner) {
-        val spinner = spLocation
+    protected fun readCountriesFromDB(callback:() -> Unit) {
         databaseReference.child("Country").get().addOnSuccessListener {
             val countries = it.value as HashMap<String, String>
             countryList = countries.toSortedMap()
             Timber.i("Got value ${it.value}")
+            callback()
 
-            val adapter = ArrayAdapter(requireContext(), R.layout.spinner_location_item, countryList.values.toTypedArray())
+        }.addOnFailureListener{
+            Toast.makeText(activity, requireContext().getString(R.string.check_internet_connection),  Toast.LENGTH_SHORT).show()
+            Timber.e( "Error getting data $it")
+        }
+    }
+    protected fun setUpLocationSpinner(spLocation: Spinner, countryCode: String? = null) {
+        readCountriesFromDB {
+            val spinner = spLocation
+            val adapter = ArrayAdapter(
+                requireContext(),
+                R.layout.spinner_location_item,
+                countryList.values.toTypedArray()
+            )
             // Specify the layout to use when the list of choices appears.
             adapter.setDropDownViewResource(R.layout.spinner_location_dropdown_item)
             // Apply the adapter to the spinner.
             spinner.adapter = adapter
 
             try {
-                var currentCountry:String? = null
-                currentCountry = requireContext().resources.configuration.locale.country
+                var currentCountry: String
+                if (countryCode == null) {
+                    currentCountry = requireContext().resources.configuration.locale.country
+                } else {
+                    currentCountry = countryCode
+                }
                 val position = adapter.getPosition(countryList.getValue(currentCountry))
                 spinner.setSelection(position)
-            } catch (_:Exception) {
+            } catch (_: Exception) {
 
             }
-
-
-        }.addOnFailureListener{
-            Toast.makeText(activity, requireContext().getString(R.string.check_input_or_internet),  Toast.LENGTH_SHORT).show()
-            Timber.e( "Error getting data $it")
         }
+
     }
 
     protected fun checkInput(username:String, birthday:String, height: String, weight: String): Boolean{
@@ -237,6 +259,8 @@ open class Profile: Fragment()  {
         databaseReference.child("User").child(uid).setValue("Birthday")
         databaseReference.child("User").child(uid).setValue("Height")
         databaseReference.child("User").child(uid).setValue("Weight")
+        databaseReference.child("User").child(uid).setValue("Followers")
+        databaseReference.child("User").child(uid).setValue("Following")
 
         databaseReference.child("User").child(uid).child("Username").setValue(username)
         databaseReference.child("User").child(uid).child("Bio").setValue(bio)
@@ -244,6 +268,61 @@ open class Profile: Fragment()  {
         databaseReference.child("User").child(uid).child("Birthday").setValue(birthday)
         databaseReference.child("User").child(uid).child("Height").setValue(height)
         databaseReference.child("User").child(uid).child("Weight").setValue(weight)
+        databaseReference.child("User").child(uid).child("Followers").setValue(0)
+        databaseReference.child("User").child(uid).child("Following").setValue(0)
+    }
+    protected fun setUserInfo(etUsername: EditText,
+                              etEmail: EditText,
+                              etBio: EditText,
+                              btnBirthday: Button,
+                              spLocation:Spinner,
+                              btnHeight: Button,
+                              btnWeight: Button){
+
+        val uid = firebaseAuth.currentUser!!.uid
+
+        databaseReference.child("User").child(uid).child("Username").get().addOnSuccessListener {
+            etUsername.setText(it.value.toString())
+        }
+        val email = firebaseAuth.currentUser!!.email
+        etEmail.setText(email)
+
+        databaseReference.child("User").child(uid).child("Bio").get().addOnSuccessListener {
+            etBio.setText(it.value.toString())
+        }
+        databaseReference.child("User").child(uid).child("Country").get().addOnSuccessListener {
+            setUpLocationSpinner(spLocation, it.value.toString())
+        }
+        databaseReference.child("User").child(uid).child("Birthday").get().addOnSuccessListener {
+            btnBirthday.text = it.value.toString()
+        }
+        databaseReference.child("User").child(uid).child("Height").get().addOnSuccessListener {
+            btnHeight.text = it.value.toString()
+        }
+        databaseReference.child("User").child(uid).child("Weight").get().addOnSuccessListener {
+            btnWeight.text = it.value.toString()
+        }
+    }
+    protected fun setUpUserPhoto(uid:String, ivPhoto: CircleImageView, ivBackground: LinearLayout){
+        val profileRef = storageRef.child("images/${uid}/${"profile.jpg"}")
+
+        val localFileProfile = File.createTempFile("profile", "jpg")
+
+        profileRef.getFile(localFileProfile).addOnSuccessListener {
+            ivPhoto.setImageURI(Uri.fromFile(localFileProfile))
+        }.addOnFailureListener {
+            Toast.makeText(requireContext(),  requireContext().getString(R.string.something_went_wrong), Toast.LENGTH_SHORT).show()
+        }
+
+        val backgroundRef = storageRef.child("images/${uid}/${"background.jpg"}")
+
+        val localFileBackground = File.createTempFile("background", "jpg")
+
+        backgroundRef.getFile(localFileBackground).addOnSuccessListener {
+            ivBackground.background = Drawable.createFromPath(localFileBackground.absolutePath)
+        }.addOnFailureListener {
+            Toast.makeText(requireContext(),  requireContext().getString(R.string.something_went_wrong), Toast.LENGTH_SHORT).show()
+        }
     }
 
     protected fun writeUIDToSharedPref(){
@@ -253,6 +332,26 @@ open class Profile: Fragment()  {
         sharedPref.edit()
             .putString(KEY_UID, uid)
             .apply()
-
+    }
+    protected fun removeUIDToSharedPref(){
+        sharedPref.edit()
+            .remove(KEY_UID)
+            .apply()
+    }
+    protected fun checkUserExists(callback:(Boolean) -> Unit) {
+        val uid = firebaseAuth.currentUser!!.uid
+        try {
+            databaseReference.child("User").child(uid).get().addOnSuccessListener {
+                if(it.value != null){
+                    callback(true)
+                } else {
+                    callback(false)
+                }
+            }.addOnFailureListener{
+                callback(false)
+            }
+        }catch (ex:Exception){
+            callback(false)
+        }
     }
 }

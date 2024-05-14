@@ -62,12 +62,12 @@
     <string name="apply_changes">Пацвердзіць змены</string>
     <string name="kg">кг</string>
     <string name="your_weight">Вага</string>
-    <string name="total_distance">Пройдзеная дыстанцыя</string>
+    <string name="total_distance">Дыстанцыя</string>
     <string name="_0km">0км</string>
-    <string name="total_time">Агульны час</string>
-    <string name="total_calories_burned">Спалена калорый</string>
-    <string name="_0kcal">0ккал</string>
-    <string name="average_speed">Сярэдняя хуткасць</string>
+    <string name="total_time">Працягласць</string>
+    <string name="total_calories_burned">Спалена кал.</string>
+    <string name="_0kcal">0кал</string>
+    <string name="average_speed">Сяр. хуткасць</string>
     <string name="start">Старт</string>
     <string name="finish_run">Завяршыць трэніроўку</string>
 
@@ -92,11 +92,11 @@
         <item>Спалена калорый</item>
     </string-array>
 
-    <string name="date">Дата:</string>
-    <string name="duration">Працягласць:</string>
-    <string name="distance">Пройдзеная дыстанцыя:</string>
-    <string name="avg_speed">Сярэдняя хуткасць:</string>
-    <string name="calories_burned">Спалена калорый:</string>
+    <string name="date">Дата</string>
+    <string name="duration">Працягласць</string>
+    <string name="distance">Дыстанцыя</string>
+    <string name="avg_speed">Сяр. хуткасць</string>
+    <string name="calories_burned">Спалена кал.</string>
 
     <!-- Tracking -->
     <string name="stop">Стоп</string>
@@ -111,6 +111,7 @@
     <string name="login_successfully">Уваход паспяховы!</string>
     <string name="pause">Паўза</string>
     <string name="resume">Аднавіць</string>
+    <string name="continue_str">Працягнуць</string>
 
     <!-- Settings fragment -->
     <string name="update_your_data">Абнавіць Вашы данныя</string>
@@ -158,4 +159,17 @@
     <string name="height_required">Увядзіце вышыню</string>
     <string name="weight_required">Увядзіце вагу</string>
     <string name="username_required">Увядзіце імя</string>
+
+    <!-- Profile / Edit profile -->
+    <string name="profile">Профіль</string>
+    <string name="profile_updated_successfully">Профіль паспяхова адноўлены!</string>
+    <string name="check_internet_connection">Праверце далучэнне да інтернету!</string>
+    <string name="following"><u>Падпісак</u></string>
+    <string name="followers"><u>Падпісчыкаў</u></string>
+
+    <!-- Nav menu -->
+    <string name="community">Супольнасць</string>
+    <string name="news">Навіны</string>
+    <string name="activity">Актыўнасць</string>
+
 </resources>

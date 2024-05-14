@@ -51,5 +51,9 @@
         <item name="android:shadowDy">3</item>
         <item name="android:shadowRadius">3</item>
     </style>
+    <style name="circleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 
 </resources>

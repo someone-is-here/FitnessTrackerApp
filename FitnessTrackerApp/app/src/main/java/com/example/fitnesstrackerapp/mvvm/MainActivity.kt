@@ -3,7 +3,9 @@ package com.example.fitnesstrackerapp.mvvm
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.marginBottom
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         binding.bottomNavigationView.setupWithNavController(navController)
+        binding.bottomNavigationView.setOnNavigationItemReselectedListener { /* No operation */ }
 
         navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
@@ -41,6 +44,9 @@ class MainActivity : AppCompatActivity() {
 
                 else -> {
                     binding.bottomNavigationView.visibility = View.GONE
+                    val param = binding.frameLayoutContainer.layoutParams as ViewGroup.MarginLayoutParams
+                    param.setMargins(0,0,0,0)
+                    binding.frameLayoutContainer.layoutParams = param
                 }
 
             }

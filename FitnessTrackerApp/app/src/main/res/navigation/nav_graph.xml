@@ -43,13 +43,33 @@
             app:destination="@id/trainingFragment" />
     </fragment>
     <fragment
-        android:id="@+id/editSettingsFragment"
-        android:name="com.example.fitnesstrackerapp.mvvm.fragments.app_settings.EditSettingsFragment"
-        android:label="fragment_edit_profile"
-        tools:layout="@layout/fragment_edit_profile" />
-    <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.fitnesstrackerapp.mvvm.fragments.main.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_appSettingsFragment2"
+            app:destination="@id/appSettingsFragment2" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/appSettingsFragment2"
+        android:name="com.example.fitnesstrackerapp.mvvm.fragments.app_settings.AppSettingsFragment"
+        android:label="fragment_app_settings"
+        tools:layout="@layout/fragment_app_settings" >
+        <action
+            android:id="@+id/action_appSettingsFragment2_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.fitnesstrackerapp.mvvm.fragments.main.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfileFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 </navigation>

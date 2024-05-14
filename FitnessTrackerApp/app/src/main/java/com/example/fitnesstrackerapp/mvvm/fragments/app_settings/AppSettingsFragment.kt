@@ -107,6 +107,13 @@ class AppSettingsFragment : Fragment() {
                         findNavController().popBackStack(R.id.appSettingsFragment,true)
                         findNavController().popBackStack(R.id.resetPasswordFragment,true)
                     }
+                    R.id.profileFragment -> {
+                        findNavController().navigate(R.id.action_appSettingsFragment2_to_profileFragment,
+                            savedInstanceState,
+                            navOptions)
+                        // Clear stack
+                        findNavController().popBackStack(R.id.appSettingsFragment2,true)
+                    }
 
                     else -> Timber.e("%s not found", destination)
                 }

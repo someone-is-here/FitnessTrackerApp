@@ -8,7 +8,7 @@
     android:background="@drawable/background_app_settings"
     tools:context=".mvvm.fragments.main.ProfileFragment">
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/ivBackground"
         android:layout_width="match_parent"
         android:layout_height="210dp"
         android:background="@drawable/backgroud4"
@@ -74,7 +74,9 @@
             android:layout_marginHorizontal="10dp"
             android:background="@drawable/white_borders">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/ivPhoto"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
@@ -267,12 +269,47 @@
                 android:orientation="vertical"
                 android:padding="15dp">
 
+                <!-- Edit profile -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_signing_text"
+                    android:id="@+id/rlEditProfile">
+
+                    <ImageView
+                        android:id="@+id/icEditProfile"
+                        android:background="@drawable/round_button"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="7dp"
+                        android:alpha="0.7"
+                        android:src="@drawable/ic_edit" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="20dp"
+                        android:text="@string/edit_profile"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/itim"
+                        android:gravity="center"
+                        android:textSize="18sp"
+                        android:layout_toEndOf="@id/icEditProfile"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_right_arrow"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"/>
+
+                </RelativeLayout>
 
                 <!-- My trainings -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_signing_text"
+                    android:layout_marginTop="10dp"
                     android:id="@+id/rlLanguageSwitch">
 
                     <ImageView
@@ -384,10 +421,10 @@
                 android:paddingHorizontal="20dp">
 
                 <Button
-                    android:id="@+id/btnSignUp"
+                    android:id="@+id/btnSignOut"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/transparent"
+                    android:background="@drawable/round_black_white"
                     android:drawableStart="@drawable/ic_sign_out"
                     android:drawablePadding="15dp"
                     android:fontFamily="@font/itim"
@@ -395,6 +432,7 @@
                     android:textAllCaps="false"
                     android:textAlignment="textStart"
                     android:textColor="@color/white"
+                    android:padding="15dp"
                     android:textSize="18sp"
                     app:cornerRadius="56dp" />
 

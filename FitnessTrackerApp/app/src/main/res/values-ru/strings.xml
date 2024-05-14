@@ -62,12 +62,12 @@
     <string name="apply_changes">Подтвердить изменения</string>
     <string name="kg">кг</string>
     <string name="your_weight">Вес</string>
-    <string name="total_distance">Пройденная дистанция</string>
+    <string name="total_distance">Дистанция</string>
     <string name="_0km">0км</string>
-    <string name="total_time">Общее время</string>
-    <string name="total_calories_burned">Сожжено калорий</string>
+    <string name="total_time">Время</string>
+    <string name="total_calories_burned">Сожжено кал.</string>
     <string name="_0kcal">0ккал</string>
-    <string name="average_speed">Средняя скорость</string>
+    <string name="average_speed">Ср. скорость</string>
     <string name="start">Старт</string>
     <string name="finish_run">Завершить тренировку</string>
 
@@ -93,10 +93,10 @@
     </string-array>
 
     <string name="date">Дата:</string>
-    <string name="duration">Продолжительность:</string>
-    <string name="distance">Пройденная дистанция:</string>
-    <string name="avg_speed">Средняя скорость:</string>
-    <string name="calories_burned">Сожжено калорий:</string>
+    <string name="duration">Продолжительность</string>
+    <string name="distance">Дистанция</string>
+    <string name="avg_speed">Ср. скорость</string>
+    <string name="calories_burned">Сожжено кал.</string>
 
     <!-- Tracking -->
     <string name="stop">Стоп</string>
@@ -111,6 +111,7 @@
     <string name="login_successfully">Вход успешный!</string>
     <string name="pause">Пауза</string>
     <string name="resume">Возобновить</string>
+    <string name="continue_str">Продолжить</string>
 
     <!-- Settings fragment -->
     <string name="update_your_data">Обновить Ваши данные</string>
@@ -160,4 +161,16 @@
     <string name="height_required">Введите высоту</string>
     <string name="weight_required">Введите вес</string>
     <string name="username_required">Введите имя пользователя</string>
+
+    <!-- Profile / Edit profile -->
+    <string name="profile">Профиль</string>
+    <string name="profile_updated_successfully">Профиль успешно обновлен!</string>
+    <string name="check_internet_connection">Проверьте соединения с интернетом!</string>
+    <string name="following"><u>Подписок</u></string>
+    <string name="followers"><u>Подписчиков</u></string>
+
+    <!-- Nav menu -->
+    <string name="community">Сообщество</string>
+    <string name="news">Новости</string>
+    <string name="activity">Активность</string>
 </resources>

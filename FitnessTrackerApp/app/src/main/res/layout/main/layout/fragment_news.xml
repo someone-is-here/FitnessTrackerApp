@@ -5,8 +5,4 @@
     android:layout_height="match_parent"
     tools:context=".mvvm.fragments.main.NewsFragment">
 
-
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 </FrameLayout>

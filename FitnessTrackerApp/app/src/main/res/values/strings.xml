@@ -96,7 +96,7 @@
     <string name="duration">Duration</string>
     <string name="distance">Distance</string>
     <string name="avg_speed">Avg speed</string>
-    <string name="calories_burned">Calories burned</string>
+    <string name="calories_burned">Cal. burned</string>
 
     <!-- Tracking -->
     <string name="stop">Stop</string>
@@ -110,6 +110,7 @@
     <string name="login_successfully">Login successfully!</string>
     <string name="pause">Pause</string>
     <string name="resume">Resume</string>
+    <string name="continue_str">Continue</string>
 
     <!-- Settings fragment -->
     <string name="update_your_data">Update your data</string>
@@ -155,17 +156,18 @@
     <string name="height_required">Height required</string>
     <string name="weight_required">Weight required</string>
     <string name="username_required">Username required</string>
-    <string name="profile">Profile</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Profile / Edit profile -->
+    <string name="profile">Profile</string>
+    <string name="profile_updated_successfully">Profile updated successfully!</string>
+    <string name="check_internet_connection">Check internet connection!</string>
+    <string name="following"><u>following</u></string>
+    <string name="followers"><u>followers</u></string>
+
+    <!-- Nav menu -->
     <string name="community">Community</string>
     <string name="news">News</string>
     <string name="activity">Activity</string>
-    <string name="continue_str">Continue</string>
-    <string name="calories">Calories</string>
-    <string name="following"><u>following</u></string>
-    <string name="followers"><u>followers</u></string>
 
 
 </resources>

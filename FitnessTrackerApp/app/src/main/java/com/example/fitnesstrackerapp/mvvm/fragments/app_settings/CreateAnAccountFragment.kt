@@ -35,6 +35,14 @@ class CreateAnAccountFragment : Profile() {
 
         uid = firebaseAuth.currentUser?.uid.toString()
 
+        checkUserExists{
+            if(it){
+                val intent = Intent(context, MainActivity::class.java)
+                startActivity(intent)
+                activity?.finish()
+            }
+        }
+
         setAnimation()
         setUpHandlers()
         setUpEditProfileView(binding.etEmail,
