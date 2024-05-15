@@ -6,6 +6,7 @@ buildscript {
         maven {url = uri("https://jitpack.io") }
     }
     dependencies {
+        classpath("com.github.jd-alexander:LikeButton:0.2.3")
         classpath("com.google.gms:google-services:4.4.0")
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.7.5")
        // classpath("com.google.dagger:hilt-android-gradle-plugin:2.28-alpha")
