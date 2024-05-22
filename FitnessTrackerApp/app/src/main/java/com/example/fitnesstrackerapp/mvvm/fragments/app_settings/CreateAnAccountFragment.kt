@@ -30,9 +30,8 @@ class CreateAnAccountFragment : Profile() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         uid = firebaseAuth.currentUser?.uid.toString()
 
         checkUserExists{
@@ -42,6 +41,10 @@ class CreateAnAccountFragment : Profile() {
                 activity?.finish()
             }
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         setAnimation()
         setUpHandlers()
@@ -113,7 +116,12 @@ class CreateAnAccountFragment : Profile() {
                          binding.btnHeight.text.toString(),
                          binding.btnWeight.text.toString())
 
-                writeUIDToSharedPref()
+                writeUIDToSharedPref(binding.etUsername.text.toString(),
+                                     binding.etBio.text.toString(),
+                                     binding.spLocation.selectedItem.toString(),
+                                     binding.btnBirthday.text.toString(),
+                                     binding.btnHeight.text.toString(),
+                                     binding.btnWeight.text.toString())
 
                 val intent = Intent(context, MainActivity::class.java)
                 startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle())

@@ -149,7 +149,7 @@
     <string name="country">Country</string>
 
     <!-- Create an account -->
-    <string name="create_an_account">Create an account</string>
+    <string name="create_an_account">Create profile</string>
     <string name="something_went_wrong">Something went wrong</string>
     <string name="upload_successful">Upload successful!</string>
     <string name="birthday_required">Birthday is required</string>
@@ -164,10 +164,16 @@
     <string name="following"><u>following</u></string>
     <string name="followers"><u>followers</u></string>
 
+    <string name="my_trainings">My trainings</string>
+    <string name="published_trainings">Published trainings</string>
+    <string name="groups">Groups</string>
+
     <!-- Nav menu -->
     <string name="community">Community</string>
     <string name="news">News</string>
     <string name="activity">Activity</string>
+
+
 
 
 </resources>

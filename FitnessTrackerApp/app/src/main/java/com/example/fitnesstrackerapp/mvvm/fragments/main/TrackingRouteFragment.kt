@@ -119,6 +119,7 @@ class TrackingRouteFragment : Fragment() {
         subscribeToObservers()
 
         initMapCords()
+
     }
 
     private fun setInitialValues() {
@@ -128,9 +129,9 @@ class TrackingRouteFragment : Fragment() {
         binding.btnCancelRun.visibility = View.GONE
         binding.btnContinue.visibility = View.GONE
         binding.tvTimer.text = "00:00:00"
-        binding.tvAvgSpeed.text = "0.00"
+        binding.tvAvgSpeed.text = "0,00"
         binding.tvCaloriesBurned.text = "0"
-        binding.tvDistance.text = "0.000"
+        binding.tvDistance.text = "0,000"
         currentTimeInMillis = 0
     }
 
@@ -162,6 +163,7 @@ class TrackingRouteFragment : Fragment() {
             }
     }
 
+
     private fun subscribeToObservers(){
         TrackingService.isTracking.observe(viewLifecycleOwner, Observer {
             updateTracking(it)
@@ -171,8 +173,8 @@ class TrackingRouteFragment : Fragment() {
             addLatestPolyline()
             updateMapAccordingToCoordinate()
         })
-        TrackingService.timeRunInMillis.observe(viewLifecycleOwner, Observer {
-            currentTimeInMillis = it
+        TrackingService.timeRunInSeconds.observe(viewLifecycleOwner, Observer {
+            currentTimeInMillis = it * 1000L
             val formattedTime = TrackingUtility.getFormattedStopWatchTime(currentTimeInMillis, true)
             binding.tvTimer.text = formattedTime
             updateValues()
@@ -268,8 +270,12 @@ class TrackingRouteFragment : Fragment() {
 
         binding.tvDistance.text = String.format("%.3f", distanceInMeters / 1000f)
 
-        binding.tvAvgSpeed.text = (round((distanceInMeters / 1000f) /
-                (currentTimeInMillis / 1000f / 60 / 60) * 10) / 10f).toString()
+        val avgSpeed = (round((distanceInMeters / 1000f) /
+                (currentTimeInMillis / 1000f / 60 / 60) * 10) / 10f)
+
+        if(!avgSpeed.isNaN()){
+            binding.tvAvgSpeed.text = avgSpeed.toString()
+        }
 
         binding.tvCaloriesBurned.text = ((distanceInMeters / 1000f) * weight).toInt().toString()
     }
@@ -336,8 +342,12 @@ class TrackingRouteFragment : Fragment() {
         binding.btnFinishRun.visibility = View.GONE
     }
     override fun onStart() {
-        super.onStart()
+        binding.mapView.invalidate()
         binding.mapView.onStart()
+        addAllPolylines()
+
+        super.onStart()
+
     }
 
     override fun onStop() {

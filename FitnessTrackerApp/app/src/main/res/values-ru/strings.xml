@@ -69,7 +69,7 @@
     <string name="_0kcal">0ккал</string>
     <string name="average_speed">Ср. скорость</string>
     <string name="start">Старт</string>
-    <string name="finish_run">Завершить тренировку</string>
+    <string name="finish_run">Завершить</string>
 
     <string name="sort_by">Сортировать по:</string>
     <string name="add">Добавить</string>
@@ -154,7 +154,7 @@
     <string name="set">Установить</string>
 
     <!-- Create an account -->
-    <string name="create_an_account">Создание аккаунта</string>
+    <string name="create_an_account">Создание профиля</string>
     <string name="something_went_wrong">Что-то пошло не так</string>
     <string name="upload_successful">Загружено успешно!</string>
     <string name="birthday_required">Введите день рождения</string>
@@ -168,6 +168,10 @@
     <string name="check_internet_connection">Проверьте соединения с интернетом!</string>
     <string name="following"><u>Подписок</u></string>
     <string name="followers"><u>Подписчиков</u></string>
+
+    <string name="my_trainings">Мои тренировки</string>
+    <string name="published_trainings">Опубликованные тренировки</string>
+    <string name="groups">Группы</string>
 
     <!-- Nav menu -->
     <string name="community">Сообщество</string>

@@ -19,7 +19,16 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.example.fitnesstrackerapp.R
 import com.example.fitnesstrackerapp.databinding.NumberPitcherDialogBinding
+import com.example.fitnesstrackerapp.other.Constants.KEY_BACKGROUND_SAVED
+import com.example.fitnesstrackerapp.other.Constants.KEY_BIO
+import com.example.fitnesstrackerapp.other.Constants.KEY_BIRTHDAY
+import com.example.fitnesstrackerapp.other.Constants.KEY_COUNTRY
+import com.example.fitnesstrackerapp.other.Constants.KEY_EMAIL
+import com.example.fitnesstrackerapp.other.Constants.KEY_HEIGHT
+import com.example.fitnesstrackerapp.other.Constants.KEY_PROFILE_SAVED
 import com.example.fitnesstrackerapp.other.Constants.KEY_UID
+import com.example.fitnesstrackerapp.other.Constants.KEY_USERNAME
+import com.example.fitnesstrackerapp.other.Constants.KEY_WEIGHT
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -29,6 +38,7 @@ import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.tasks.await
 import timber.log.Timber
 import java.io.File
+import java.nio.file.Files
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -245,7 +255,7 @@ open class Profile: Fragment()  {
     }
     protected fun saveUser(username:String, bio:String, location:String, birthday:String, height:String, weight:String){
         val uid = firebaseAuth.currentUser!!.uid
-        var countryCode:String? =null
+        var countryCode = ""
 
         countryList.forEach { entry ->
             if (entry.value == location){
@@ -270,6 +280,8 @@ open class Profile: Fragment()  {
         databaseReference.child("User").child(uid).child("Weight").setValue(weight)
         databaseReference.child("User").child(uid).child("Followers").setValue(0)
         databaseReference.child("User").child(uid).child("Following").setValue(0)
+
+        writeUIDToSharedPref(username, bio, countryCode, birthday, height, weight)
     }
     protected fun setUserInfo(etUsername: EditText,
                               etEmail: EditText,
@@ -281,61 +293,163 @@ open class Profile: Fragment()  {
 
         val uid = firebaseAuth.currentUser!!.uid
 
+        val user = firebaseAuth.currentUser!!
+
+        sharedPref.edit()
+            .putString(KEY_UID, user.uid)
+            .putString(KEY_EMAIL, user.email)
+            .apply()
+
         databaseReference.child("User").child(uid).child("Username").get().addOnSuccessListener {
             etUsername.setText(it.value.toString())
+            sharedPref.edit()
+                .putString(KEY_USERNAME, it.value.toString())
+                .apply()
         }
         val email = firebaseAuth.currentUser!!.email
         etEmail.setText(email)
 
         databaseReference.child("User").child(uid).child("Bio").get().addOnSuccessListener {
             etBio.setText(it.value.toString())
+            sharedPref.edit()
+                .putString(KEY_BIO, it.value.toString())
+                .apply()
         }
         databaseReference.child("User").child(uid).child("Country").get().addOnSuccessListener {
             setUpLocationSpinner(spLocation, it.value.toString())
+            sharedPref.edit()
+                .putString(KEY_COUNTRY, it.value.toString())
+                .apply()
         }
         databaseReference.child("User").child(uid).child("Birthday").get().addOnSuccessListener {
             btnBirthday.text = it.value.toString()
+            sharedPref.edit()
+                .putString(KEY_BIRTHDAY, it.value.toString())
+                .apply()
         }
         databaseReference.child("User").child(uid).child("Height").get().addOnSuccessListener {
             btnHeight.text = it.value.toString()
+            sharedPref.edit()
+                .putString(KEY_HEIGHT, it.value.toString())
+                .apply()
         }
         databaseReference.child("User").child(uid).child("Weight").get().addOnSuccessListener {
             btnWeight.text = it.value.toString()
+            sharedPref.edit()
+                .putString(KEY_WEIGHT, it.value.toString())
+                .apply()
         }
     }
     protected fun setUpUserPhoto(uid:String, ivPhoto: CircleImageView, ivBackground: LinearLayout){
-        val profileRef = storageRef.child("images/${uid}/${"profile.jpg"}")
+        val localFileProfile = File(requireContext().cacheDir, "profile.jpg")
+        val localFileBackground = File(requireContext().cacheDir, "background.jpg")
 
-        val localFileProfile = File.createTempFile("profile", "jpg")
+        val profilePictureExists:Boolean = sharedPref.getBoolean(KEY_PROFILE_SAVED, false)
+        val backgroundPictureExists:Boolean = sharedPref.getBoolean(KEY_BACKGROUND_SAVED, false)
 
-        profileRef.getFile(localFileProfile).addOnSuccessListener {
+        if(!profilePictureExists) {
+            val profileRef = storageRef.child("images/${uid}/${"profile.jpg"}")
+
+            profileRef.getFile(localFileProfile).addOnSuccessListener {
+                ivPhoto.setImageURI(Uri.fromFile(localFileProfile))
+                sharedPref.edit().putBoolean(KEY_PROFILE_SAVED, true).apply()
+            }.addOnFailureListener {
+                Toast.makeText(
+                    requireContext(),
+                    requireContext().getString(R.string.something_went_wrong),
+                    Toast.LENGTH_SHORT
+                ).show()
+                sharedPref.edit().putBoolean(KEY_PROFILE_SAVED, false).apply()
+            }
+        }else{
             ivPhoto.setImageURI(Uri.fromFile(localFileProfile))
-        }.addOnFailureListener {
-            Toast.makeText(requireContext(),  requireContext().getString(R.string.something_went_wrong), Toast.LENGTH_SHORT).show()
         }
+        if(!backgroundPictureExists){
+            val backgroundRef = storageRef.child("images/${uid}/${"background.jpg"}")
 
-        val backgroundRef = storageRef.child("images/${uid}/${"background.jpg"}")
+            backgroundRef.getFile(localFileBackground).addOnSuccessListener {
+                ivBackground.background = Drawable.createFromPath(localFileBackground.absolutePath)
+                sharedPref.edit().putBoolean(KEY_BACKGROUND_SAVED, true).apply()
+            }.addOnFailureListener {
+                Toast.makeText(
+                    requireContext(),
+                    requireContext().getString(R.string.something_went_wrong),
+                    Toast.LENGTH_SHORT
+                ).show()
+                sharedPref.edit().putBoolean(KEY_BACKGROUND_SAVED, false).apply()
+            }
 
-        val localFileBackground = File.createTempFile("background", "jpg")
-
-        backgroundRef.getFile(localFileBackground).addOnSuccessListener {
+        } else {
             ivBackground.background = Drawable.createFromPath(localFileBackground.absolutePath)
-        }.addOnFailureListener {
-            Toast.makeText(requireContext(),  requireContext().getString(R.string.something_went_wrong), Toast.LENGTH_SHORT).show()
         }
+
+
     }
 
-    protected fun writeUIDToSharedPref(){
 
-        val uid = firebaseAuth.currentUser!!.uid
+    protected fun writeUIDToSharedPref(username:String,
+                                       bio:String,
+                                       countryCode:String,
+                                       birthday:String,
+                                       height:String,
+                                       weight:String){
+
+        val user = firebaseAuth.currentUser!!
 
         sharedPref.edit()
-            .putString(KEY_UID, uid)
+            .putString(KEY_UID, user.uid)
+            .putString(KEY_USERNAME, username)
+            .putString(KEY_EMAIL, user.email)
+            .putString(KEY_BIO, bio)
+            .putString(KEY_COUNTRY, countryCode)
+            .putString(KEY_BIRTHDAY, birthday)
+            .putString(KEY_HEIGHT, height)
+            .putString(KEY_WEIGHT, weight)
             .apply()
+    }
+    protected fun checkUIDInSharedPref():Boolean{
+        val uid = sharedPref.getString(KEY_UID, "")
+        if (uid == ""){
+            return false
+        }
+
+        return true
+    }
+    protected fun checkEmailInSharedPref():Boolean{
+        val email = sharedPref.getString(KEY_EMAIL, "")
+        if (email == ""){
+            return false
+        }
+
+        return true
+    }
+    protected fun setInfoFromSharedPref(etUsername: EditText,
+                                        etEmail: EditText,
+                                        etBio: EditText,
+                                        btnBirthday: Button,
+                                        spLocation:Spinner,
+                                        btnHeight: Button,
+                                        btnWeight: Button){
+
+        etUsername.setText(sharedPref.getString(KEY_USERNAME, ""))
+        etEmail.setText(sharedPref.getString(KEY_EMAIL, ""))
+        etBio.setText(sharedPref.getString(KEY_BIO, ""))
+        btnBirthday.text = sharedPref.getString(KEY_BIRTHDAY, "")
+        btnHeight.text = sharedPref.getString(KEY_HEIGHT, "")
+        btnWeight.text = sharedPref.getString(KEY_WEIGHT, "")
+
+        setUpLocationSpinner(spLocation, sharedPref.getString(KEY_COUNTRY,""))
     }
     protected fun removeUIDToSharedPref(){
         sharedPref.edit()
             .remove(KEY_UID)
+            .remove(KEY_USERNAME)
+            .remove(KEY_EMAIL)
+            .remove(KEY_BIO)
+            .remove(KEY_COUNTRY)
+            .remove(KEY_BIRTHDAY)
+            .remove(KEY_HEIGHT)
+            .remove(KEY_WEIGHT)
             .apply()
     }
     protected fun checkUserExists(callback:(Boolean) -> Unit) {

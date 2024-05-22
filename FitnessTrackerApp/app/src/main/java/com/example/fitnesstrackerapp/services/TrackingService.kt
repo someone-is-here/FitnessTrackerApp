@@ -3,10 +3,9 @@ package com.example.fitnesstrackerapp.services
 import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.NotificationManager.IMPORTANCE_LOW
+import android.app.NotificationManager.IMPORTANCE_HIGH
 import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_IMMUTABLE
-import android.app.PendingIntent.FLAG_MUTABLE
 import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context
 import android.content.Intent
@@ -45,6 +44,7 @@ import javax.inject.Inject
 
 typealias Polyline = MutableList<LatLng>
 typealias Polylines = MutableList<Polyline>
+
 @AndroidEntryPoint
 class TrackingService: LifecycleService() {
     private var isFirstRun = true
@@ -57,7 +57,7 @@ class TrackingService: LifecycleService() {
     lateinit var baseNotificationBuilder: NotificationCompat.Builder
     private lateinit var currentNotificationBuilder: NotificationCompat.Builder
 
-    private val timeRunInSeconds = MutableLiveData<Long>()
+    private val timeRunInMillis = MutableLiveData<Long>()
 
     private var isTimeEnabled = false
     private var lapTime = 0L
@@ -66,7 +66,7 @@ class TrackingService: LifecycleService() {
     private var lastSecondTimestamp = 0L
 
     companion object {
-        val timeRunInMillis = MutableLiveData<Long>()
+        val timeRunInSeconds = MutableLiveData<Long>()
         val isTracking = MutableLiveData<Boolean>()
         val pathPoints = MutableLiveData<Polylines>()
         var distance:Float = 0f
@@ -201,7 +201,7 @@ class TrackingService: LifecycleService() {
         val channel = NotificationChannel(
             NOTIFICATION_CHANNEL_ID,
             NOTIFICATION_CHANNEL_NAME,
-            IMPORTANCE_LOW)
+            IMPORTANCE_HIGH)
 
         notificationManager.createNotificationChannel(channel)
     }
@@ -259,6 +259,7 @@ class TrackingService: LifecycleService() {
             isAccessible = true
             set(currentNotificationBuilder, ArrayList<NotificationCompat.Action>())
         }
+
         if(!serviceKilled) {
             currentNotificationBuilder = baseNotificationBuilder.addAction(
                 R.drawable.ic_pause,

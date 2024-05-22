@@ -47,13 +47,24 @@ class EditProfileFragment : Profile() {
                              binding.btnBirthday,
                              binding.spLocation)
 
-        setUserInfo(binding.etUsername,
-            binding.etEmail,
-            binding.etBio,
-            binding.btnBirthday,
-            binding.spLocation,
-            binding.btnHeight,
-            binding.btnWeight)
+        if(checkUIDInSharedPref() && checkEmailInSharedPref()){
+            setInfoFromSharedPref(binding.etUsername,
+                                  binding.etEmail,
+                                  binding.etBio,
+                                  binding.btnBirthday,
+                                  binding.spLocation,
+                                  binding.btnHeight,
+                                  binding.btnWeight)
+        } else {
+            setUserInfo(binding.etUsername,
+                        binding.etEmail,
+                        binding.etBio,
+                        binding.btnBirthday,
+                        binding.spLocation,
+                        binding.btnHeight,
+                        binding.btnWeight)
+
+        }
 
         setUpUserPhoto(uid, binding.ivPhoto, binding.ivBackground)
     }

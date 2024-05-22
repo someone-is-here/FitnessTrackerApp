@@ -69,11 +69,11 @@
     <string name="_0kcal">0кал</string>
     <string name="average_speed">Сяр. хуткасць</string>
     <string name="start">Старт</string>
-    <string name="finish_run">Завяршыць трэніроўку</string>
+    <string name="finish_run">Завяршыць</string>
 
     <string name="sort_by">Сарціраваць па:</string>
     <string name="add">Дадаць</string>
-    <string name="cancel_run">Адмяніць трэніроўку</string>
+    <string name="cancel_run">Адмяніць</string>
 
     <!-- Strings for training adapter -->
     <string name="km_h">км/ч</string>
@@ -152,7 +152,7 @@
     <string name="set">Усталяваць</string>
 
     <!-- Create an account -->
-    <string name="create_an_account">Стварэнне акаўнта</string>
+    <string name="create_an_account">Стварэнне профіля</string>
     <string name="something_went_wrong">Нешта здарылася! Паспрабуйце яшчэ раз</string>
     <string name="upload_successful">Загружана паспяхова!</string>
     <string name="birthday_required">Увядзіце дзень нараджэння</string>
@@ -166,6 +166,10 @@
     <string name="check_internet_connection">Праверце далучэнне да інтернету!</string>
     <string name="following"><u>Падпісак</u></string>
     <string name="followers"><u>Падпісчыкаў</u></string>
+
+    <string name="my_trainings">Мае трэніроўкі</string>
+    <string name="published_trainings">Апублікаваныя трэніроўкі</string>
+    <string name="groups">Супольнасць</string>
 
     <!-- Nav menu -->
     <string name="community">Супольнасць</string>

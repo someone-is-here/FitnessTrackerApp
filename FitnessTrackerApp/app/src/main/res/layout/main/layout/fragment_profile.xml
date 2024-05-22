@@ -103,7 +103,6 @@
                     android:shadowDx="7"
                     android:shadowDy="7"
                     android:shadowRadius="3"
-                    android:text="Alexandr"
                     android:textColor="@color/white"
                     android:textSize="26sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -124,7 +123,6 @@
                     android:shadowDx="7"
                     android:shadowDy="7"
                     android:shadowRadius="3"
-                    android:text="Belarus"
                     android:textColor="@color/white_75"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -148,7 +146,6 @@
                         android:shadowDy="7"
                         android:shadowRadius="3"
                         android:textAllCaps="true"
-                        android:text="10"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
 
@@ -199,7 +196,6 @@
                         android:shadowDy="7"
                         android:shadowRadius="3"
                         android:textAllCaps="true"
-                        android:text="220"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
 
@@ -325,7 +321,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="20dp"
-                        android:text="My trainings"
+                        android:text="@string/my_trainings"
                         android:textColor="@color/white"
                         android:fontFamily="@font/itim"
                         android:gravity="center"
@@ -360,7 +356,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="20dp"
-                        android:text="Published trainings"
+                        android:text="@string/published_trainings"
                         android:textColor="@color/white"
                         android:fontFamily="@font/itim"
                         android:gravity="center"
@@ -395,7 +391,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="20dp"
-                        android:text="Groups"
+                        android:text="@string/groups"
                         android:textColor="@color/white"
                         android:fontFamily="@font/itim"
                         android:gravity="center"
