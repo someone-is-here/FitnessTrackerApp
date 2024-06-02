@@ -48,20 +48,35 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/action_profileFragment_to_appSettingsFragment2"
-            app:destination="@id/appSettingsFragment2" />
+            android:id="@+id/action_profileFragment_to_appSettingsFragment"
+            app:destination="@id/appSettingsFragment" />
         <action
             android:id="@+id/action_profileFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_communityFragment"
+            app:destination="@id/communityFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_trainingFragment"
+            app:destination="@id/trainingFragment" />
     </fragment>
     <fragment
-        android:id="@+id/appSettingsFragment2"
+        android:id="@+id/appSettingsFragment"
         android:name="com.example.fitnesstrackerapp.mvvm.fragments.app_settings.AppSettingsFragment"
         android:label="fragment_app_settings"
         tools:layout="@layout/fragment_app_settings" >
         <action
-            android:id="@+id/action_appSettingsFragment2_to_profileFragment"
+            android:id="@+id/action_appSettingsFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_appSettingsFragment_to_languagesFragment"
+            app:destination="@id/languagesFragment" />
+        <action
+            android:id="@+id/action_appSettingsFragment_to_sendUsMessageFragment"
+            app:destination="@id/sendUsMessageFragment" />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
@@ -71,5 +86,23 @@
         <action
             android:id="@+id/action_editProfileFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/languagesFragment"
+        android:name="com.example.fitnesstrackerapp.mvvm.fragments.app_settings.LanguagesFragment"
+        android:label="fragment_languages"
+        tools:layout="@layout/fragment_languages" >
+        <action
+            android:id="@+id/action_languagesFragment_to_appSettingsFragment"
+            app:destination="@id/appSettingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sendUsMessageFragment"
+        android:name="com.example.fitnesstrackerapp.mvvm.fragments.app_settings.SendUsMessageFragment"
+        android:label="fragment_send_us_message"
+        tools:layout="@layout/fragment_send_us_message" >
+        <action
+            android:id="@+id/action_sendUsMessageFragment_to_appSettingsFragment"
+            app:destination="@id/appSettingsFragment" />
     </fragment>
 </navigation>

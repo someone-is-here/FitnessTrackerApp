@@ -4,48 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cyan"
+    android:background="@color/sky_blue"
     tools:context=".mvvm.fragments.main.TrainingFragment">
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:background="@drawable/ic_back"
+        android:padding="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/spFilter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/spFilter"
-        android:layout_width="190dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:theme="@style/Spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
         android:entries="@array/filter_options"
+        android:paddingVertical="10dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:textColor="@color/black"
+        android:shadowColor="@color/black_opacity"
+        android:shadowDx="7"
+        android:shadowDy="7"
+        android:shadowRadius="3"
+        android:textColor="@color/white"
         android:textSize="22sp"
         android:textStyle="bold"
+        android:theme="@style/Spinner"
+        app:layout_constraintBottom_toTopOf="@+id/rvRuns"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvFilterBy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/black"
+        android:layout_width="84dp"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:shadowColor="@color/black_opacity"
+        android:shadowDx="7"
+        android:shadowDy="7"
+        android:shadowRadius="3"
         android:text="@string/sort_by"
+        android:textColor="@color/white"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/spFilter"
+        app:layout_constraintBottom_toTopOf="@+id/rvRuns"
         app:layout_constraintEnd_toStartOf="@+id/spFilter"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRuns"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/black"
-        android:background="@drawable/gradient_background"
+        android:background="@color/nav"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spFilter" />
 
@@ -53,15 +70,18 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_black"
-        app:backgroundTint="@color/cyan"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="@color/white"
+        android:backgroundTint="@color/sky_blue"
+        app:maxImageSize="26dp"
         android:contentDescription="@string/add"
+        app:borderWidth="4dp"
         app:fabSize="normal"
         app:rippleColor="@android:color/white"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@android:color/black" />
+        app:tint="@android:color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,10 +20,14 @@
     <style name="Spinner" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
         <item name="android:paddingStart">5dp</item>
         <item name="android:paddingEnd">5dp</item>
-        <item name="android:background">@color/cyan</item>
-        <item name="android:backgroundTint">@color/cyan</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:background">@color/sky_blue</item>
+        <item name="android:backgroundTint">@color/sky_blue</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:shadowColor">@color/black_opacity</item>
+        <item name="android:shadowDx">7</item>
+        <item name="android:shadowDy">7</item>
+        <item name="android:shadowRadius">3</item>
+        <item name="android:textSize">22sp</item>
     </style>
 
     <style name="spinnerItemStyle" parent="android:Widget.TextView.SpinnerItem">

@@ -63,10 +63,10 @@ class TrainingAdapter: RecyclerView.Adapter<TrainingAdapter.TrainingViewHolder>(
             val distanceInKm = "${training.distanceInMeters / 1000f} ${context.resources.getString(R.string.km)}"
             holder.itemView.findViewById<TextView>(R.id.tvDistance).text = distanceInKm
 
-            holder.itemView.findViewById<TextView>(R.id.tvTime).text = TrackingUtility.getFormattedStopWatchTime(training.timeInMills)
+            holder.itemView.findViewById<TextView>(R.id.tvDuration).text = TrackingUtility.getFormattedStopWatchTime(training.timeInMills)
 
             val caloriesBurned = "${training.caloriesBurned} ${context.resources.getString(R.string.kcal)}"
-            holder.itemView.findViewById<TextView>(R.id.tvCalories).text = caloriesBurned
+            holder.itemView.findViewById<TextView>(R.id.tvCaloriesBurned).text = caloriesBurned
         }
     }
 

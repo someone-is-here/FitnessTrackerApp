@@ -31,11 +31,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+        app:layout_constraintTop_toBottomOf="@+id/frameLayoutContainer">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
@@ -49,7 +49,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayoutContainer"
             app:menu="@menu/bottom_nav_menu"
             app:startDestination="@id/trainingFragment" />
     </LinearLayout>

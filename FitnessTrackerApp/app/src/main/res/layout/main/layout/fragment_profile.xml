@@ -306,7 +306,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_signing_text"
                     android:layout_marginTop="10dp"
-                    android:id="@+id/rlLanguageSwitch">
+                    android:id="@+id/rlMyTrainings">
 
                     <ImageView
                         android:id="@+id/icMyTrainings"
@@ -341,7 +341,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/btn_signing_text"
-                    android:id="@+id/rlSentMessage">
+                    android:id="@+id/rlPublishedTrainings">
 
                     <ImageView
                         android:id="@+id/icPublishedTrainings"

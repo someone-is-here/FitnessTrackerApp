@@ -52,10 +52,19 @@ class ProfileFragment : Profile() {
 
     private fun setUpHandlers() {
         binding.btnSettings.setOnClickListener {
-            findNavController().navigate(R.id.action_profileFragment_to_appSettingsFragment2)
+            findNavController().navigate(R.id.action_profileFragment_to_appSettingsFragment)
         }
         binding.rlEditProfile.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment)
+        }
+        binding.rlMyTrainings.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_trainingFragment)
+        }
+        binding.rlGroups.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_communityFragment)
+        }
+        binding.rlPublishedTrainings.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_newsFragment)
         }
         binding.btnSignOut.setOnClickListener {
             firebaseAuth.signOut()
