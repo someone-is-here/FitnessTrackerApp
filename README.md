@@ -3,6 +3,9 @@ TEAM is an Android application for sport lovers.
 
 <img width="517" alt="image" src="https://github.com/user-attachments/assets/6968a517-8576-4fe3-8f26-68c1ce2f542a">
 
+## Technology
+Android Studio, Kotlin, SQLite3, Firebase Authentication
+
 ## Mission
 Unite sports fans and inspire users to achieve better results. Doing sports is free and easy with the TEAM app.
 ## 3 languages availiable:
