@@ -2,7 +2,7 @@
     <string name="app_name">TEAM</string>
     <string name="title_activity_sign_in">SignInActivity</string>
 
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCGtt6Mvfu15bMqwFuYy69fAW4ursVTNN8</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false"></string>
     <string name="app_title">TEAM</string>
 
     <!-- Welcome fragment -->
